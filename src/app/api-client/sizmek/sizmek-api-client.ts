@@ -28,7 +28,6 @@ export class SizmekApiClient {
 	}
 	public getReqHeaders(): HttpHeaders {
 		const httpHeaders: HttpHeaders = new HttpHeaders
-
 		for (const header in this.provider.reqHeaders) {
 			if ( this.provider.reqHeaders.hasOwnProperty(header) ) {
 				httpHeaders.set(header, this.provider.reqHeaders[header])

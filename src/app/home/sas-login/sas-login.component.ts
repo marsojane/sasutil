@@ -6,6 +6,7 @@ import { NotificationsService } from '../../notifications/notifications.service'
 import { SizmekApiClient } from '../../api-client/sizmek/sizmek-api-client'
 import { SessionDataService } from '../../session-data.service'
 import { format } from '../../utils'
+import { validate } from '../../validators'
 
 @Component({
 	selector: 'app-sas-login',
@@ -24,15 +25,8 @@ export class SasLoginComponent implements OnInit {
 		private sizmekApiClient: SizmekApiClient,
 		private sessionData: SessionDataService) {}
 	ngOnInit() {
-
-		const formCtrlReq = (): FormControl => {
-			return new FormControl('', [
-				Validators.required
-			])
-		}
-
-		this.usernameFormCtrl = formCtrlReq()
-		this.passwordFormCtrl = formCtrlReq()
+		this.usernameFormCtrl = validate([ Validators.required ])
+		this.passwordFormCtrl = validate([ Validators.required ])
 		this.loginParams.sessionId = this.sessionData.getData('sessionId') || ''
 	}
 

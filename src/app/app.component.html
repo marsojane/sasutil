@@ -1,14 +1,16 @@
 <mat-toolbar class="app-component-header" color="primary">{{ title }}!
+	<div class="app-component-header-nav">
 		<button mat-button [matMenuTriggerFor]="menu" color="accent">Navigation</button>
 		<mat-menu #menu="matMenu">
-			<button mat-menu-item>Home</button>
-			<button mat-menu-item>Entity Info (ECS)</button>
-			<button mat-menu-item>EDS Commands Queue</button>
-			<button mat-menu-item>SAS History</button>
+			<a routerLink="/home" routerLinkActive="active"><button mat-menu-item>Home</button></a>
+			<a routerLink="/ecsentityinfo" routerLinkActive="active"><button mat-menu-item>Entity Info (ECS)</button></a>
+			<a routerLink="/cmqueue" routerLinkActive="active"><button mat-menu-item>Entity Sync Logs</button></a>
+			<a routerLink="/entityhistory" routerLinkActive="active"><button mat-menu-item>SAS History</button></a>
 			<!--<button mat-menu-item>Rufus</button>-->
-			<button mat-menu-item>MRAID SDK Emulator</button>
+			<!--<button mat-menu-item>MRAID SDK Emulator</button>-->
 			<!--<button mat-menu-item>Breadfruit</button>-->
 		</mat-menu>
+	</div>
 </mat-toolbar>
 
 

@@ -16,3 +16,7 @@ declare module 'apptypes.api' {
 		'reqHeaders': {[index: string]: string}
 	}
 }
+
+declare module 'apptypes.entity' {
+	
+}

@@ -22,19 +22,26 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
+import { MatSelectModule } from '@angular/material/select'
 // animations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 // end @angular material imports
 
 import { SasLoginComponent } from './home/sas-login/sas-login.component'
 import { NotificationsComponent } from './notifications/notifications.component'
+import { CmqueueComponent } from './cmqueue/cmqueue.component'
+import { EntityHistoryComponent } from './entityhistory/entityhistory.component'
+import { ECSEntityInfoComponent } from './ecsentityinfo/ecsentityinfo.component'
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HomeComponent,
 		SasLoginComponent,
-		NotificationsComponent
+		NotificationsComponent,
+		CmqueueComponent,
+		EntityHistoryComponent,
+		ECSEntityInfoComponent
 	],
 	imports: [
 		BrowserModule,
@@ -50,7 +57,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
 		MatFormFieldModule,
 		MatInputModule,
 		MatSidenavModule,
-		MatButtonToggleModule
+		MatButtonToggleModule,
+		MatSelectModule
 		// end @angular/material imports
 	],
 	providers: [
