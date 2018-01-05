@@ -22,5 +22,31 @@ export const entityTypes: {[index: string]: any} = {
 		{ value: '20', viewValue: 'Strategy' },
 		{ value: '20', viewValue: 'Upload Scripts' },
 		{ value: '22', viewValue: 'Strategy Budget' }
+	],
+	'sas': [
+		{ value: 'Account', viewValue: 'Account' },
+		{ value: 'Ad', viewValue: 'Ad' },
+		{ value: 'AdsServingData', viewValue: 'AdsServingData' },
+		{ value: 'Campaign', viewValue: 'Campaign' },
+		{ value: 'Conversion', viewValue: 'Conversion' },
+		{ value: 'DeliveryGroup', viewValue: 'DeliveryGroup' },
+		{ value: 'OneTag', viewValue: 'OneTag' },
+		{ value: 'OneTagRule', viewValue: 'OneTagRule' },
+		{ value: 'Placement', viewValue: 'Placement' },
+		{ value: 'Retargeting', viewValue: 'Retargeting' },
+		{ value: 'Site', viewValue: 'Site' },
+		{ value: 'SmartVersion', viewValue: 'SmartVersion' },
+		{ value: 'TargetAudience', viewValue: 'TargetAudience' },
+		{ value: 'ThirdParty', viewValue: 'ThirdParty' }
+	],
+	'sas-sync': [ // need to improve this list
+		{ value: 'Account', viewValue: 'Account' },
+		{ value: 'Ad', viewValue: 'Ad' },
+		{ value: 'AdsServingData', viewValue: 'AdsServingData' },
+		{ value: 'Campaign', viewValue: 'Campaign' },
+		{ value: 'DeliveryGroup', viewValue: 'DeliveryGroup' },
+		{ value: 'Placement', viewValue: 'Placement' },
+		{ value: 'Site', viewValue: 'Site' },
+		{ value: 'TargetAudience', viewValue: 'TargetAudience' }
 	]
 }

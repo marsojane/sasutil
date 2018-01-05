@@ -1,0 +1,22 @@
+<div class="ecsentityinfo-container">
+	<mat-toolbar>Sync Entity</mat-toolbar>
+	<form (ngSubmit)="onSubmit()" #syncEntity="ngForm">
+		<mat-form-field floatLabel="auto">
+				<mat-select placeholder="EntityType" name="entitytype" [(ngModel)]="entityType" [formControl]="entityTypeFormCtrl">
+					<mat-option *ngFor="let entityType of entityTypes" [value]="entityType.value">
+						{{ entityType.viewValue }}
+					</mat-option>
+				</mat-select>
+				<mat-error *ngIf="entityTypeFormCtrl.hasError('required')">
+					EntityType should not be empty
+				</mat-error>
+		</mat-form-field>
+		<mat-form-field floatLabel="auto">
+				<textarea matInput placeholder="Enter entity ID(s) in comma separated" name="entityIDs" [(ngModel)]="entityIDs" [formControl]="entityIDsFormCtrl"></textarea>
+				<mat-error *ngIf="entityIDsFormCtrl.hasError('required') || entityIDsFormCtrl.hasError('notNumbersCommaSeparated')">					
+						EntityIDs should be a valid number or comma separated number
+				</mat-error>
+		</mat-form-field>
+		<button type="submit" mat-raised-button color="primary" [disabled]="disableSubmit">Submit</button>
+	</form>
+</div>

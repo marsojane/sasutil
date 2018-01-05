@@ -7,3 +7,5 @@ export function format(...args: any[]): string {
 	})
 	return msg
 }
+
+export const inArray = (needle: any, haystack: any[]): boolean => !!haystack.find((hay) => hay === needle)

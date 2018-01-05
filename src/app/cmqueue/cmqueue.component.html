@@ -12,7 +12,7 @@
 				</mat-error>
 		</mat-form-field>
 		<mat-form-field floatLabel="auto" *ngIf="selectedPlatform=='mdx2'">
-				<mat-select placeholder="EntityType" name="entitytype" [formControl]="entityTypeFormCtrl">
+				<mat-select placeholder="EntityType" name="entitytype" [(ngModel)]="entityType" [formControl]="entityTypeFormCtrl">
 					<mat-option *ngFor="let entityType of entityTypes[selectedPlatform]" [value]="entityType.value">
 						{{ entityType.viewValue }}
 					</mat-option>
@@ -29,4 +29,48 @@
 		</mat-form-field>
 		<button type="submit" mat-raised-button color="primary" [disabled]="disableSubmit">Submit</button>
 	</form>
+</div>
+
+<div class="cmqueue-container-mdx2" *ngIf="mdx2DataSource">
+	<mat-table [dataSource]="mdx2DataSource">
+
+		<ng-container matColumnDef="IndexID">
+			<mat-header-cell *matHeaderCellDef>IndexID</mat-header-cell>
+			<mat-cell *matCellDef="let recordset"> {{recordset.IndexID}} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="ObjectID">
+			<mat-header-cell *matHeaderCellDef>ObjectID</mat-header-cell>
+			<mat-cell *matCellDef="let recordset"> {{recordset.ObjectID}} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="ShouldDelete">
+			<mat-header-cell *matHeaderCellDef>ShouldDelete</mat-header-cell>
+			<mat-cell *matCellDef="let recordset"> {{recordset.ShouldDelete}} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="CommandStatus">
+			<mat-header-cell *matHeaderCellDef>CommandStatus</mat-header-cell>
+			<mat-cell *matCellDef="let recordset"> {{recordset.CommandStatus}} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="ObjectType">
+			<mat-header-cell *matHeaderCellDef>ObjectType</mat-header-cell>
+			<mat-cell *matCellDef="let recordset"> {{recordset.ObjectType}} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="CreationDate">
+			<mat-header-cell *matHeaderCellDef>CreationDate</mat-header-cell>
+			<mat-cell *matCellDef="let recordset"> {{recordset.CreationDate}} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="CompletionDate">
+			<mat-header-cell *matHeaderCellDef>CompletionDate</mat-header-cell>
+			<mat-cell *matCellDef="let recordset"> {{recordset.CompletionDate}} </mat-cell>
+		</ng-container>
+
+		<mat-header-row *matHeaderRowDef="mdx2DisplayedColumns"></mat-header-row>
+    	<mat-row *matRowDef="let row; columns: mdx2DisplayedColumns;"></mat-row>
+
+	</mat-table>
 </div>
