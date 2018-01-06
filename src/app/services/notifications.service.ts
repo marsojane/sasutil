@@ -11,11 +11,13 @@ export class NotificationsService {
 	constructor() { }
 	public notify(type: 'info' | 'error' | 'success', msg: string, showSnackBar?: boolean): void {
 		console.log('[NotificationsService] notify()', arguments)
-		!this.sideNotificationTouched && (this.sideNotifications = [{msg, type}], this.sideNotificationTouched = !0)
-		|| this.sideNotifications.push({
-			msg: 'No notifications for this session',
-			type: 'info'
-		})
+		console.log('this.sideNotificationTouched', this.sideNotificationTouched)
+		if (!this.sideNotificationTouched) {
+			this.sideNotificationTouched = !0
+			this.sideNotifications = [{msg, type}]
+		} else {
+			this.sideNotifications.push({msg, type})
+		}
 	}
 	public clear(): void {
 		this.sideNotificationTouched = !1

@@ -8,6 +8,8 @@ import { AppComponent } from './app.component'
 import { SideNotificationsComponent } from './side-notifications/side-notifications.component'
 // app services
 import { NotificationsService } from './services/notifications.service'
+import { SessionDataService } from './services/session-data.service'
+import { HttpMainMiddleware } from './services/http-main-middleware'
 
 // material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -16,11 +18,14 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
+import { MatMenuModule } from '@angular/material/menu'
+import { DashboardComponent } from './dashboard/dashboard.component'
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		SideNotificationsComponent
+		SideNotificationsComponent,
+		DashboardComponent
 	],
 	imports: [
 		BrowserModule,
@@ -32,11 +37,16 @@ import { MatButtonModule } from '@angular/material/button'
 		MatSidenavModule,
 		MatGridListModule,
 		MatIconModule,
-		MatButtonModule
+		MatButtonModule,
+		MatMenuModule
 		// end @angular/material imports
 	],
 	providers: [
-		NotificationsService
+		NotificationsService,
+		SessionDataService,
+		HttpClient,
+		// start of Http Middlewares
+		{ provide: HTTP_INTERCEPTORS, useClass: HttpMainMiddleware, multi: true },
 	],
 	bootstrap: [AppComponent]
 })

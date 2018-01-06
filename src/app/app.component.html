@@ -1,9 +1,17 @@
 <mat-toolbar class="app-component-header" color="primary">
 		<mat-grid-list cols="3" rowHeight="fit">
 			<mat-grid-tile>
-				<button mat-button color="accent">
+				<button mat-button color="accent" mat-button [matMenuTriggerFor]="menu">
 					<mat-icon svgIcon="apps"></mat-icon>
 				</button>
+				<mat-menu #menu="matMenu">
+					<a routerLink="/dashboard" routerLinkActive="active"><button mat-menu-item>Dashboard</button></a>
+					<a routerLink="/ecsentityinfo" routerLinkActive="active"><button mat-menu-item>Entity Info (ECS)</button></a>
+					<a routerLink="/synclogs" routerLinkActive="active"><button mat-menu-item>Entity Sync Logs</button></a>
+					<a routerLink="/syncentity" routerLinkActive="active"><button mat-menu-item>Sync Entity</button></a>
+					<a routerLink="/updateads" routerLinkActive="active"><button mat-menu-item>Update Ads (SAS)</button></a>
+					<a routerLink="/entityhistory" routerLinkActive="active"><button mat-menu-item>SAS History</button></a>
+				</mat-menu>
 			</mat-grid-tile>
 			<mat-grid-tile>{{ title }}</mat-grid-tile>
 			<mat-grid-tile>

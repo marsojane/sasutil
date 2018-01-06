@@ -8,3 +8,7 @@
 ### Side Notifications 
 
 - allow export functionality
+
+## Bugs
+
+- side notifications clear and export not working
