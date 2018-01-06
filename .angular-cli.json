@@ -55,6 +55,7 @@
   },
   "defaults": {
     "styleExt": "css",
+<<<<<<< HEAD
     "class": {
       "spec": false
     },
@@ -78,5 +79,8 @@
     "service": {
       "spec": false
     }
+=======
+    "component": {}
+>>>>>>> 8f1d63dad9925b5af4a057d17476563b94b12a91
   }
 }
