@@ -11,7 +11,8 @@ import { filter } from 'lodash'
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {	
+export class AppComponent implements OnInit {
+	public opened = false
 	public title = 'SAS Helper Tools - Support'
 	public hasNotifications: boolean
 	public appsNav = filter(appsNav, (nav) => nav.enabled)
