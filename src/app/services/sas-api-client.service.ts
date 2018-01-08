@@ -28,7 +28,7 @@ export class SasApiClientService {
 	}
 	public getAdsByPlacement(placementID: number): Observable<any> {
 		return this.constructRequest('get',
-			format('/ads?q={"1":{"PLACEMENTID":[{0}]}}&from=0&max=150', placementID),
+			format('/ads?placementId={0}&from=0&max=150', placementID),
 				this.sessionData.getData('sessionId'))
 	}
 

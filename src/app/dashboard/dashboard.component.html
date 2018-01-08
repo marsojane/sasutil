@@ -1,1 +1,18 @@
-<p>Under construction</p>
+<div class="dashboard-container">
+		<mat-tab-group>
+				<mat-tab label="Apps">
+					<mat-list role="list">
+							<a *ngFor="let nav of appsNav" [routerLink]="nav.link" routerLinkActive="active">
+								<mat-list-item role="listitem"><button mat-button>{{ nav.view }}</button></mat-list-item>
+							</a>
+					</mat-list>
+				</mat-tab>
+				<mat-tab label="Services">
+					<mat-list role="list">
+						<mat-list-item role="listitem">Session IDs validity (todo).</mat-list-item>
+						<mat-list-item role="listitem">Check MSQ-B is up (todo).</mat-list-item>
+						<mat-list-item role="listitem">Check Rufus is up (todo).</mat-list-item>
+					</mat-list>
+				</mat-tab>
+			  </mat-tab-group>
+</div>

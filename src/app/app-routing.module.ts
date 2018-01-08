@@ -15,6 +15,7 @@ const routes: Routes = [
 	{ path: 'resaveads', component: UpdateadsComponent },
 	{ path: 'ecsentityinfo', component: EcsEntityInfoComponent },
 	{ path: 'synclogs', component: SynclogsComponent },
+	{ path: 'sasutil', redirectTo: '/dashboard', pathMatch: 'full' }, // for production compat with sebas
 	{ path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ]
 

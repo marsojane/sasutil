@@ -34,6 +34,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatSelectModule } from '@angular/material/select'
 import { MatTableModule } from '@angular/material/table'
 import { MatTabsModule } from '@angular/material/tabs'
+import { MatListModule } from '@angular/material/list'
 
 @NgModule({
 	declarations: [
@@ -66,7 +67,8 @@ import { MatTabsModule } from '@angular/material/tabs'
 		MatButtonToggleModule,
 		MatSelectModule,
 		MatTableModule,
-		MatTabsModule
+		MatTabsModule,
+		MatListModule
 		// end @angular/material imports
 	],
 	providers: [
