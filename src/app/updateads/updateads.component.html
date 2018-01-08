@@ -1,0 +1,22 @@
+<div class="updateads-container">
+	<mat-toolbar>Resave Ads (SAS)</mat-toolbar>
+	<form (ngSubmit)="onSubmit()" #updateadsForm="ngForm">
+		<mat-form-field floatLabel="auto">
+				<mat-select placeholder="EntityType" name="entityType" [(ngModel)]="selectedEntityType" [formControl]="entityTypeFormCtrl">
+					<mat-option *ngFor="let entityType of entityTypes" [value]="entityType.value">
+						{{ entityType.viewValue }}
+					</mat-option>
+				</mat-select>
+				<mat-error *ngIf="entityTypeFormCtrl.hasError('required')">
+						EntityType should not be empty
+				</mat-error>
+		</mat-form-field>
+		<mat-form-field floatLabel="auto" *ngIf="selectedEntityType === 'Campaign' || selectedEntityType === 'Placement'">				
+			<textarea matInput placeholder="{{ txtAreaplaceHolder[selectedEntityType] }}" name="entityIDs" [(ngModel)]="entityIDs" [formControl]="entityIDsFormCtrl"></textarea>
+			<mat-error *ngIf="disableSubmit">					
+					{{ entityIDsValidationMessage }}
+			</mat-error>			
+		</mat-form-field>
+		<button type="submit" mat-raised-button color="primary" [disabled]="disableSubmit">Submit</button>
+	</form>
+</div>

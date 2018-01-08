@@ -1,0 +1,21 @@
+.ecsentityinfo-container {
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+	margin: 0 auto;
+}
+
+mat-form-field {
+	width: 100%
+}
+
+.ecsentityinfo-container-dcs {
+	display: flex;
+	flex-direction: column;
+	width: 1200px;
+	margin: 0 auto;
+}
+
+mat-tab-group {
+	margin-top: 50px
+}

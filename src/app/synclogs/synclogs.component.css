@@ -1,0 +1,24 @@
+.cmqueue-container {
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+	margin: 0 auto;
+}
+
+mat-form-field {
+	width: 100%
+}
+
+.cmqueue-container-mdx2 {
+	display: flex;
+	flex-direction: column;
+	max-height: 600px;
+	width: 1200px;
+	margin: 0 auto;
+}
+  
+  mat-table {
+	margin-top: 100px;
+	overflow: auto;
+	max-height: 500px;
+  }

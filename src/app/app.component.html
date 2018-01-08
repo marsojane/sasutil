@@ -5,12 +5,9 @@
 					<mat-icon svgIcon="apps"></mat-icon>
 				</button>
 				<mat-menu #menu="matMenu">
-					<a routerLink="/dashboard" routerLinkActive="active"><button mat-menu-item>Dashboard</button></a>
-					<a routerLink="/ecsentityinfo" routerLinkActive="active"><button mat-menu-item>Entity Info (ECS)</button></a>
-					<a routerLink="/synclogs" routerLinkActive="active"><button mat-menu-item>Entity Sync Logs</button></a>
-					<a routerLink="/syncentity" routerLinkActive="active"><button mat-menu-item>Sync Entity</button></a>
-					<a routerLink="/updateads" routerLinkActive="active"><button mat-menu-item>Update Ads (SAS)</button></a>
-					<a routerLink="/entityhistory" routerLinkActive="active"><button mat-menu-item>SAS History</button></a>
+					<a *ngFor="let nav of appsNav" [routerLink]="nav.link" routerLinkActive="active">
+						<button mat-menu-item>{{ nav.view }}</button>
+					</a>
 				</mat-menu>
 			</mat-grid-tile>
 			<mat-grid-tile>{{ title }}</mat-grid-tile>

@@ -1,0 +1,40 @@
+<div class="ecsentityinfo-container">
+	<mat-toolbar>Entity Info (ECS)</mat-toolbar>
+	<form (ngSubmit)="onSubmit()" #ecsEntityInfo="ngForm">
+		<mat-form-field floatLabel="auto">
+				<mat-select placeholder="Platform" name="platform" [(ngModel)]="selectedPlatform" [formControl]="platformFormCtrl">
+					<mat-option *ngFor="let platform of platforms" [value]="platform.value">
+						{{ platform.viewValue }}
+					</mat-option>
+				</mat-select>
+				<mat-error *ngIf="platformFormCtrl.hasError('required')">
+					Platform should not be empty
+				</mat-error>
+		</mat-form-field>
+		<mat-form-field floatLabel="auto">
+				<mat-select placeholder="EntityType" name="entitytype" [(ngModel)]="entityType" [formControl]="entityTypeFormCtrl">
+					<mat-option *ngFor="let entityType of entityTypes[selectedPlatform]" [value]="entityType.value">
+						{{ entityType.viewValue }}
+					</mat-option>
+				</mat-select>
+				<mat-error *ngIf="entityTypeFormCtrl.hasError('required')">
+					EntityType should not be empty
+				</mat-error>
+		</mat-form-field>
+		<mat-form-field floatLabel="auto">
+			<input matInput placeholder="EntityID" name="entityid" [(ngModel)]="entityID" [formControl]="entityIDFormCtrl">
+			<mat-error *ngIf="entityIDFormCtrl.hasError('required') || entityIDFormCtrl.hasError('notNumber')">
+				EntityID should be a number.
+			</mat-error>
+		</mat-form-field>
+		<button type="submit" mat-raised-button color="primary" [disabled]="disableSubmit">Submit</button>
+	</form>
+</div>
+
+<div class="ecsentityinfo-container-dcs">
+	<mat-tab-group *ngIf="ecsInfoSet" disableRipple dynamicHeight>
+		<mat-tab *ngFor="let record of ecsInfoSet" [label]="record.dbInfo">
+			<pre>{{ record | json }}</pre>
+		</mat-tab>
+	</mat-tab-group>
+</div>

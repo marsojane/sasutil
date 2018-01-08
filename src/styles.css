@@ -1,7 +1,8 @@
 @import '~@angular/material/prebuilt-themes/purple-green.css';
 
 body {
-	margin: 0
+	margin: 0;
+	font: 500 16px/28px Roboto,"Helvetica Neue",sans-serif
 }
 
 .root-container {
