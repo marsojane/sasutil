@@ -31,7 +31,10 @@ export class EcsEntityInfoComponent implements OnInit {
 	constructor(
 		private notifications: NotificationsService,
 		private msqbClient: MsqbClient
-	) { }
+	) { 
+		// for now, we only support SAS
+		this.selectedPlatform = 'sas'
+	}
 
 	ngOnInit() {
 		this.platformFormCtrl = validate([ Validators.required ])

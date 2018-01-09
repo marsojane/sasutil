@@ -2,7 +2,7 @@
 	<mat-toolbar>Entity Info (ECS)</mat-toolbar>
 	<form (ngSubmit)="onSubmit()" #ecsEntityInfo="ngForm">
 		<mat-form-field floatLabel="auto">
-				<mat-select placeholder="Platform" name="platform" [(ngModel)]="selectedPlatform" [formControl]="platformFormCtrl">
+				<mat-select placeholder="Platform" name="platform" [(ngModel)]="selectedPlatform" [formControl]="platformFormCtrl" disabled>
 					<mat-option *ngFor="let platform of platforms" [value]="platform.value">
 						{{ platform.viewValue }}
 					</mat-option>
