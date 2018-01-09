@@ -20,7 +20,11 @@ export class SideNotificationsComponent implements OnInit {
 		iconRegistry.addSvgIcon('export', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/export_white.svg'))
 	}
 	ngOnInit() {
-		this.msgStack = this.notifications.sideNotifications
+		this.notifications.eventMgr
+		.filter((event) => event.type === 'notificationsChange')
+		.subscribe((event) => {
+			this.msgStack = event.data.sideNotifications
+		})
 	}
 	clearMsgStack(): void {	
 		this.notifications.clear()

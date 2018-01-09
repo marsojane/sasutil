@@ -5,6 +5,7 @@ import { MatIconRegistry } from '@angular/material'
 import { AppSideNotificationMessage } from 'sasutil.common'
 import { appsNav } from './data/appsnav'
 import { filter } from 'lodash'
+import 'rxjs/add/operator/filter'
 
 @Component({
 	selector: 'app-root',
@@ -26,6 +27,10 @@ export class AppComponent implements OnInit {
 		iconRegistry.addSvgIcon('apps', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/apps.svg'))
 	}
 	ngOnInit() {
-		this.hasNotifications = this.notifications.sideNotificationTouched
+		this.notifications.eventMgr
+		.filter((event) => event.type === 'notificationsChange')
+		.subscribe((event) => {
+			this.hasNotifications = event.data.sideNotificationTouched
+		})
 	}
 }

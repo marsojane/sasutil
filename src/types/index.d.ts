@@ -3,6 +3,10 @@ declare module 'sasutil.common' {
 		msg: string
 		type: 'info' | 'error' | 'success'
 	}
+	interface ApplicationEvent {
+		type: string,
+		data: {[index: string]: any}
+	}
 }
 
 declare module 'sasutil.api' {
