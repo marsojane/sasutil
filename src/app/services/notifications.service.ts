@@ -15,6 +15,7 @@ export class NotificationsService {
 	public notify(type: 'info' | 'error' | 'success', msg: string, showSnackBar?: boolean): void {
 		// console.log('[NotificationsService] notify()', arguments)
 		// console.log('this.sideNotificationTouched', this.sideNotificationTouched)
+		// 
 		if (!this.sideNotificationTouched) {
 			this.sideNotificationTouched = !0
 			this.sideNotifications = [{msg, type}]
