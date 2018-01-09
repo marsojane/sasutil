@@ -1,8 +1,8 @@
 <mat-toolbar>
-	<button mat-button color="accent">
+	<button mat-button color="accent" (click)="export()">
 		<mat-icon svgIcon="export"></mat-icon>
-	</button>
-	<button mat-button color="accent" (click)="clearMsgStack()">
+	</button>	
+	<button mat-button color="accent" (click)="clear()">
 		<mat-icon svgIcon="clear"></mat-icon>
 	</button>
 </mat-toolbar>
@@ -10,3 +10,6 @@
 <span *ngFor="let msg of msgStack" class="side-notification-msg" [class.error]="msg.type === 'error'" [class.success]="msg.type === 'success'">
 	{{ msg.msg }}
 </span>
+
+<!-- this is a hidden element used to export files -->
+<a class="exportlink" #exportlink></a>

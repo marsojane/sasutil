@@ -9,3 +9,13 @@ export function format(...args: any[]): string {
 }
 
 export const inArray = (needle: any, haystack: any[]): boolean => !!haystack.find((hay) => hay === needle)
+
+export function exportLogs(linkRef, msgStack): void {
+	if (msgStack.length > 0) {
+		const fileName = format('sasutillogs{0}', (new Date).getTime())
+		const url = URL.createObjectURL(new Blob([JSON.stringify(msgStack)], { type: 'text/plain;charset=utf-8;' }))
+		linkRef.setAttribute('href', url)
+		linkRef.setAttribute('download', fileName)
+		linkRef.click()
+	}
+}

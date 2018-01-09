@@ -13,3 +13,7 @@
 .success {
 	color: #428f03
 }
+
+.exportlink {
+	display: none
+}

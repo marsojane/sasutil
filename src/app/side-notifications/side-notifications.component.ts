@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core'
 import { AppSideNotificationMessage } from 'sasutil.common'
 import { NotificationsService } from '../services/notifications.service'
 import { DomSanitizer } from '@angular/platform-browser'
 import { MatIconRegistry } from '@angular/material'
+import { exportLogs } from '../public/utils'
 
 @Component({
 	selector: 'app-side-notifications',
@@ -10,7 +11,8 @@ import { MatIconRegistry } from '@angular/material'
 	styleUrls: ['./side-notifications.component.css']
 })
 export class SideNotificationsComponent implements OnInit {
-	msgStack: AppSideNotificationMessage[]
+	msgStack: AppSideNotificationMessage[] = []
+	@ViewChild('exportlink') exportlink: ElementRef
 	constructor(
 		private iconRegistry: MatIconRegistry,
 		private sanitizer: DomSanitizer,
@@ -26,7 +28,10 @@ export class SideNotificationsComponent implements OnInit {
 			this.msgStack = event.data.sideNotifications
 		})
 	}
-	clearMsgStack(): void {	
+	clear(): void {
 		this.notifications.clear()
+	}
+	export(): void {
+		exportLogs(this.exportlink.nativeElement, this.msgStack)
 	}
 }

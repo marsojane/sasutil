@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
-import { AppSideNotificationMessage, ApplicationEvent } from 'sasutil.common'
 import { MatSnackBar } from '@angular/material'
 import { Subject } from 'rxjs/Subject'
+import { AppSideNotificationMessage, ApplicationEvent } from 'sasutil.common'
 
 @Injectable()
 export class NotificationsService {
@@ -10,7 +10,7 @@ export class NotificationsService {
 	public sideNotificationTouched: boolean = !1
 	constructor(
 		private snackBar: MatSnackBar
-	) { 
+	) {
 		this._eventMgr = new Subject<ApplicationEvent>()
 	}
 	public notify(type: 'info' | 'error' | 'success', msg: string, showSnackBar?: boolean): void {
@@ -25,7 +25,6 @@ export class NotificationsService {
 		}
 		this.notificationsChange()
 	}
-
 	public clear(): void {
 		this.sideNotificationTouched = !1
 		this.sideNotifications = []
@@ -34,13 +33,12 @@ export class NotificationsService {
 	public notificationsChange(): void {
 		this._eventMgr.next({
 			type: 'notificationsChange',
-			data: { 
+			data: {
 				sideNotificationTouched: this.sideNotificationTouched,
 				sideNotifications: this.sideNotifications
 			}
 		})
 	}
-
 	public get eventMgr():  Subject<any> {
 		return this._eventMgr
 	}
