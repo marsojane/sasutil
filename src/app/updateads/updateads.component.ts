@@ -10,7 +10,8 @@ import { AdsupdateService } from '../services/adsupdate.service'
 	templateUrl: './updateads.component.html',
 	styleUrls: ['./updateads.component.css'],
 	providers: [
-		NotificationsService, SasApiClientService, AdsupdateService
+		SasApiClientService, 
+		AdsupdateService
 	]
 })
 export class UpdateadsComponent implements OnInit {

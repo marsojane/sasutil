@@ -14,15 +14,17 @@ export class NotificationsService {
 		this._eventMgr = new Subject<ApplicationEvent>()
 	}
 	public notify(type: 'info' | 'error' | 'success', msg: string, showSnackBar?: boolean): void {
+		console.log('[sv - notify]', type, msg, this.sideNotificationTouched)
 		if (!this.sideNotificationTouched) {
 			this.sideNotificationTouched = !0
-			this.sideNotifications = [{msg, type}]
+			this.sideNotifications = [{msg, type, timestamp: (new Date).getTime()}]
 		} else {
-			this.sideNotifications.unshift({msg, type})
+			this.sideNotifications.unshift({msg, type, timestamp: (new Date).getTime()})
 		}
 		if (showSnackBar) {
 			this.snackBar.open(msg, 'close', { duration: 3000 })
 		}
+		console.log('this.sideNotifications', this.sideNotifications)
 		this.notificationsChange()
 	}
 	public clear(): void {

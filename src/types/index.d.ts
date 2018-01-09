@@ -2,6 +2,7 @@ declare module 'sasutil.common' {
 	interface AppSideNotificationMessage {
 		msg: string
 		type: 'info' | 'error' | 'success'
+		timestamp: number
 	}
 	interface ApplicationEvent {
 		type: string,
