@@ -37,9 +37,9 @@ export class EcsEntityInfoComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.platformFormCtrl = validate([ Validators.required ])
-		this.entityTypeFormCtrl = validate([ Validators.required ])
-		this.entityIDFormCtrl = validate([ Validators.required, validateNumberField ])
+		this.platformFormCtrl = validate('', [ Validators.required ])
+		this.entityTypeFormCtrl = validate('', [ Validators.required ])
+		this.entityIDFormCtrl = validate('', [ Validators.required, validateNumberField ])
 
 		// dont combine obervables its buggy
 		this.platformFormCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())

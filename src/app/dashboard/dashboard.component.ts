@@ -8,7 +8,7 @@ import { filter } from 'lodash'
 	styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-	public appsNav = filter(appsNav, (nav) => nav.enabled)
+	public appsNav = filter(appsNav, (nav) => nav.enabled && nav.view !== 'Dashboard')
 	constructor() { }
 	ngOnInit() {  }
 }

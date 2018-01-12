@@ -21,6 +21,26 @@
 					EntityType should not be empty
 				</mat-error>
 		</mat-form-field>
+
+		<mat-form-field floatLabel="auto" *ngIf="selectedPlatform=='sas'">
+			<input matInput [matDatepicker]="startDate" [min]="minDate" [max]="maxDate" name="startDate" placeholder="Start Date" [formControl]="startDateCtrl">
+ 			<mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+			<mat-datepicker #startDate disabled="false"></mat-datepicker>
+			<mat-error *ngIf="startDateCtrl.hasError('notValidDate')">
+				Start Date should be in validate date format. Use the datepicker button.
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field floatLabel="auto" *ngIf="selectedPlatform=='sas'">
+			<input matInput [matDatepicker]="endDate" [min]="minDate" [max]="maxDate" name="endDate" placeholder="End Date" [formControl]="endDateCtrl">
+ 			<mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+			<mat-datepicker #endDate disabled="false"></mat-datepicker>
+			<mat-error *ngIf="endDateCtrl.hasError('notValidDate')">
+				End Date should be in validate date format. Use the datepicker button.
+			</mat-error>
+		</mat-form-field>
+
+
 		<mat-form-field floatLabel="auto">
 			<input matInput placeholder="EntityID" name="entityid" [(ngModel)]="entityID" [formControl]="entityIDFormCtrl">
 			<mat-error *ngIf="entityIDFormCtrl.hasError('required') || entityIDFormCtrl.hasError('notNumber')">

@@ -29,8 +29,8 @@ export class SyncentityComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.entityTypeFormCtrl = validate([ Validators.required ])
-		this.entityIDsFormCtrl = validate([ Validators.required, validateNumbersCommaSeparated ])
+		this.entityTypeFormCtrl = validate('', [ Validators.required ])
+		this.entityIDsFormCtrl = validate('', [ Validators.required, validateNumbersCommaSeparated ])
 
 		this.entityTypeFormCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())
 		this.entityIDsFormCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())

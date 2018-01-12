@@ -41,8 +41,8 @@ export class UpdateadsComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.entityTypeFormCtrl = validate([ Validators.required ])
-		this.entityIDsFormCtrl = validate([ Validators.required, validateNumbersCommaSeparated, validateNumberField ])
+		this.entityTypeFormCtrl = validate('', [ Validators.required ])
+		this.entityIDsFormCtrl = validate('', [ Validators.required, validateNumbersCommaSeparated, validateNumberField ])
 
 		this.entityTypeFormCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())
 		this.entityIDsFormCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())

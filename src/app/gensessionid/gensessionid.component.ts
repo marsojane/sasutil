@@ -28,8 +28,8 @@ export class GensessionidComponent implements OnInit {
 		private sessionData: SessionDataService
 	) { }
 	ngOnInit() {
-		this.usernameFormCtrl = validate([ Validators.required ])
-		this.passwordFormCtrl = validate([ Validators.required ])
+		this.usernameFormCtrl = validate('', [ Validators.required ])
+		this.passwordFormCtrl = validate('', [ Validators.required ])
 		this.loginParams.sessionId = this.sessionData.getData('sessionId') || ''
 
 		this.usernameFormCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())

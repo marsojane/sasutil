@@ -35,6 +35,8 @@ import { MatSelectModule } from '@angular/material/select'
 import { MatTableModule } from '@angular/material/table'
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatListModule } from '@angular/material/list'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatMomentDateModule } from '@angular/material-moment-adapter'
 
 @NgModule({
 	declarations: [
@@ -68,7 +70,9 @@ import { MatListModule } from '@angular/material/list'
 		MatSelectModule,
 		MatTableModule,
 		MatTabsModule,
-		MatListModule
+		MatListModule,
+		MatDatepickerModule,
+		MatMomentDateModule
 		// end @angular/material imports
 	],
 	providers: [
