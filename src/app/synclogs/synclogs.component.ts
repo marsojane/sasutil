@@ -53,7 +53,7 @@ export class SynclogsComponent implements OnInit {
 					|| this.entityIDFormCtrl.hasError('notNumber')
 	}
 
-	onSubmit(): void {		
+	onSubmit(): void {
 		this.selectedPlatform === 'mdx2' && this.msqbClient.getSyncLogs('mm2', this.entityType, this.entityID)
 		.subscribe((result) => {
 			if (result.success && result.length > 0) {

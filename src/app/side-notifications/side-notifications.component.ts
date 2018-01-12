@@ -18,8 +18,8 @@ export class SideNotificationsComponent implements OnInit {
 		private sanitizer: DomSanitizer,
 		private notifications: NotificationsService
 	) {
-		iconRegistry.addSvgIcon('clear', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/clear_white.svg'))
-		iconRegistry.addSvgIcon('export', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/export_white.svg'))
+		iconRegistry.addSvgIcon('clear', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/clear.svg'))
+		iconRegistry.addSvgIcon('export', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/export.svg'))
 	}
 	ngOnInit() {
 		this.notifications.eventMgr
