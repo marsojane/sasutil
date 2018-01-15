@@ -1,27 +1,18 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable'
 import { SessionDataService } from './session-data.service'
-
-import { Provider } from 'sasutil.api' // Method type should be used in constructRequest
 import { SASLoginParams } from 'sasutil.api.sas'
 import { providers } from '../data/apiserviceproviders'
-import { format, inArray } from '../public/utils'
+import { format } from '../public/utils'
+
+import { APIClient } from './apiclient'
 
 @Injectable()
-export class SasApiClientService {
-	private provider: Provider = providers['sas']
-	constructor(private httpClient: HttpClient, private sessionData: SessionDataService ) {}
-	public constructRequest(method: string, url: string, sessionId?: string, body?: any): Observable<any> {
-
-		const requestURL = this.getReqURL(url)
-		const requestHeaders = this.getReqHeaders(sessionId)
-
-		return inArray(method, ['post', 'put']) ? this.httpClient[method](requestURL, body, {
-			headers: new HttpHeaders(requestHeaders)
-		}) :  this.httpClient[method](requestURL, {
-			headers: new HttpHeaders(requestHeaders)
-		})
+export class SasApiClientService extends APIClient {
+	constructor(httpClient: HttpClient, sessionData: SessionDataService ) {	
+		super(httpClient, sessionData)
+		this.provider = providers['sas']
 	}
 	public login(params: SASLoginParams): Observable<any> {
 		return this.constructRequest('post', '/login/login', null, params)
@@ -54,20 +45,5 @@ export class SasApiClientService {
 			}]
 		}
 		return this.constructRequest('post', '/replay/syncLastEntities', this.sessionData.getData('sessionId'), body)
-	}
-
-	public getReqURL(url: string): string {
-		return format('{0}{1}', this.provider.base, url)
-	}
-
-	public getReqHeaders(sessionId: string): any {
-		let requestHeaders
-		requestHeaders = {
-			'content-type': 'application/json'
-		}
-		if (!!sessionId) {
-			requestHeaders['Authorization'] = sessionId
-		}
-		return requestHeaders
 	}
 }

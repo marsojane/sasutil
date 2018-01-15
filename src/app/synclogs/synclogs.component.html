@@ -1,6 +1,7 @@
 <div class="cmqueue-container">
 	<mat-toolbar>Entity Sync Logs</mat-toolbar>
 	<form (ngSubmit)="onSubmit()" #cmQueueForm="ngForm">
+
 		<mat-form-field floatLabel="auto">
 				<mat-select placeholder="Platform" name="platform" [(ngModel)]="selectedPlatform" [formControl]="platformFormCtrl">
 					<mat-option *ngFor="let platform of platforms" [value]="platform.value">
@@ -11,6 +12,7 @@
 					Platform should not be empty
 				</mat-error>
 		</mat-form-field>
+
 		<mat-form-field floatLabel="auto" *ngIf="selectedPlatform=='mdx2'">
 				<mat-select placeholder="EntityType" name="entitytype" [(ngModel)]="entityType" [formControl]="entityTypeFormCtrl">
 					<mat-option *ngFor="let entityType of entityTypes[selectedPlatform]" [value]="entityType.value">
@@ -39,7 +41,6 @@
 				End Date should be in validate date format. Use the datepicker button.
 			</mat-error>
 		</mat-form-field>
-
 
 		<mat-form-field floatLabel="auto">
 			<input matInput placeholder="EntityID" name="entityid" [(ngModel)]="entityID" [formControl]="entityIDFormCtrl">
@@ -93,4 +94,19 @@
     	<mat-row *matRowDef="let row; columns: mdx2DisplayedColumns;"></mat-row>
 
 	</mat-table>
+</div>
+
+<div class="cmqueue-container-sas" *ngIf="sasSyncLogs">
+	<div class="blankspacebaby"></div>
+	<mat-accordion>
+		<mat-expansion-panel *ngFor="let hit of sasSyncLogs.hits.hits">
+			<mat-expansion-panel-header>
+				<mat-panel-title>{{ hit._source.eventtime }} ({{ hit._source.eventID }})</mat-panel-title>
+				<mat-panel-description>
+					Expand to see more data
+				</mat-panel-description>
+			</mat-expansion-panel-header>
+			<pre class="json">{{ hit | json }}</pre>
+		</mat-expansion-panel>	
+	</mat-accordion>
 </div>

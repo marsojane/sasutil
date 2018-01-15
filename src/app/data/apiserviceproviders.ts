@@ -14,7 +14,7 @@ export const providers: {[index: string]: Provider} = {
 		}
 	},
 	'elasticsearch': {
-		'base': 'http://elkbd.sizmdx.com:9200',
+		'base': 'http://10.10.1.149:8200',
 		'reqHeaders': {
 			'content-type': 'application/json'
 		}

@@ -1,43 +1,21 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable'
-
-import { Provider } from 'sasutil.api'
 import { providers } from '../data/apiserviceproviders'
 import { format } from '../public/utils'
+import { APIClient } from './apiclient'
 
 @Injectable()
-export class ElasticAPIClientService {
-
-	private provider: Provider = providers['elasticsearch']
-
-	constructor(private httpClient: HttpClient) { }
-
-	public constructRequest(url: string): Observable<any> {
-		const requestURL = this.getReqURL(url)
-		const requestHeaders = this.getReqHeaders()
-
-		// hope all is get
-		return this.httpClient.get(requestURL, {
-			headers: new HttpHeaders(requestHeaders)
-		})
+export class ElasticAPIClientService extends APIClient {
+	constructor(httpClient: HttpClient ) {
+		super(httpClient)
+		this.provider = providers['elasticsearch']
 	}
-
-	public getSyncLogs(entityId: number, start: number, end: number): Observable<any> {
-		// add handler for sas sync logs here once available
-		return this.constructRequest(format('/synclogs/mdx2/type/{0}/id/{1}'))
+	public getSyncLogs(entityId: number, start: number, end: number): Observable<any> {	
+		/* tslint:disable */
+		const query = format('{"query":{"filtered":{"query":{"query_string":{"query":"_type:WindowsEventLog AND task:10 AND entityID:{0}"}},"filter":{"bool":{"must":[{"range":{"@timestamp":{"gte":{1},"lte":{2}}}}],"must_not":[]}}}}}', entityId, start, end)
+		/* tslint:enable */	
+		// return  this.constructRequest('post', format('/_all/WindowsEventLog/_search', null, JSON.parse(query)))
+		return  this.constructRequest('post', '/synclogs/sas', null, JSON.parse(query))
 	}
-
-	public getReqURL(url: string): string {
-		return format('{0}{1}', this.provider.base, url)
-	}
-
-	public getReqHeaders(): any {
-		let requestHeaders
-		requestHeaders = {
-			'content-type': 'application/json'
-		}
-		return requestHeaders
-	}
-
 }

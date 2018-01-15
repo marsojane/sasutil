@@ -8,3 +8,9 @@ body {
 .root-container {
 	height: 100vh
 }
+
+.json {
+	font-size: .8em;
+	background-color: #131f1f1c;
+	overflow: auto;
+}

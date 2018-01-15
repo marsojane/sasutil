@@ -48,9 +48,10 @@ export class SynclogsComponent implements OnInit {
 
 	// SAS Date picker
 	minDate = moment([2017, 0, 1])
-	maxDate = moment([]).add(1, 'days')
+	maxDate = moment([])
 	startDateCtrl: FormControl
 	endDateCtrl: FormControl
+	sasSyncLogs: any
 
 	constructor(
 		private notifications: NotificationsService,
@@ -103,6 +104,17 @@ export class SynclogsComponent implements OnInit {
 			const startts = unAwareToTime(this.startDateCtrl.value)
 			const endts = unAwareToTime(this.endDateCtrl.value, !0)
 			this.elasticClient.getSyncLogs(this.entityID, startts, endts)
+			.subscribe((result) => {
+				if (result.hits && result.hits.total > 0) {
+					console.log(result)
+					this.sasSyncLogs = result
+					this.notifications.notify('success', `Get Sync logs for entityType:${ this.entityType }, entityID:${ this.entityID } is successful`)
+				} else {
+					this.notifications.notify('info', 'There seems to be no sync logs for this entity.', !0)
+				}
+			}, (error) => {
+				this.notifications.notify('error', error.message, !0)
+			})
 		}
 	}
 }

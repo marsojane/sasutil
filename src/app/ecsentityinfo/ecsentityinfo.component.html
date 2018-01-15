@@ -34,7 +34,7 @@
 <div class="ecsentityinfo-container-dcs">
 	<mat-tab-group *ngIf="ecsInfoSet" disableRipple dynamicHeight>
 		<mat-tab *ngFor="let record of ecsInfoSet" [label]="record.dbInfo">
-			<pre>{{ record | json }}</pre>
+			<pre class="json">{{ record | json }}</pre>
 		</mat-tab>
 	</mat-tab-group>
 </div>
