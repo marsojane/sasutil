@@ -13,9 +13,9 @@ export class ElasticAPIClientService extends APIClient {
 	}
 	public getSyncLogs(entityId: number, start: number, end: number): Observable<any> {	
 		/* tslint:disable */
-		const query = format('{"query":{"filtered":{"query":{"query_string":{"query":"_type:WindowsEventLog AND task:10 AND entityID:{0}"}},"filter":{"bool":{"must":[{"range":{"@timestamp":{"gte":{1},"lte":{2}}}}],"must_not":[]}}}}}', entityId, start, end)
+		const query = format('{"query":{"filtered":{"query":{"query_string":{"query":"task:10 AND entityID:{0}"}},"filter":{"bool":{"must":[{"range":{"@timestamp":{"gte":{1},"lte":{2}}}}],"must_not":[]}}}}}', entityId, start, end)
 		/* tslint:enable */	
 		// return  this.constructRequest('post', format('/_all/WindowsEventLog/_search', null, JSON.parse(query)))
-		return  this.constructRequest('post', '/synclogs/sas', null, JSON.parse(query))
+		return  this.constructRequest('post', '/elastic/search/WindowsEventLog', null, JSON.parse(query))
 	}
 }

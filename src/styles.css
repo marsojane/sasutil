@@ -1,8 +1,8 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 
 body {
 	margin: 0;
-	font: 500 16px/28px Roboto,"Helvetica Neue",sans-serif
+	font: 500 16px/28px Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .root-container {
@@ -13,4 +13,5 @@ body {
 	font-size: .8em;
 	background-color: #131f1f1c;
 	overflow: auto;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

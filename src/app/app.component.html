@@ -1,24 +1,26 @@
-<mat-toolbar class="app-component-header" color="primary">
-		<mat-grid-list cols="3" rowHeight="fit">
-			<mat-grid-tile>
-				<button mat-button color="accent" mat-button [matMenuTriggerFor]="menu">
-					<mat-icon svgIcon="apps"></mat-icon>
-				</button>
-				<mat-menu #menu="matMenu">
-					<a *ngFor="let nav of appsNav" [routerLink]="nav.link" routerLinkActive="active">
-						<button mat-menu-item>{{ nav.view }}</button>
-					</a>
-				</mat-menu>
-			</mat-grid-tile>
-			<mat-grid-tile>{{ title }}</mat-grid-tile>
-			<mat-grid-tile>
-				<button mat-button color="accent" (click)="sideNotifcations.toggle()">
-					<mat-icon *ngIf="hasNotifications" svgIcon="notifications-active"></mat-icon>
-					<mat-icon *ngIf="!hasNotifications" svgIcon="notifications-none"></mat-icon>
-				</button>
-			</mat-grid-tile>
-		</mat-grid-list>
-</mat-toolbar>
+<div class="app-component-header">
+	<mat-toolbar color="primary">
+			<mat-grid-list cols="3" rowHeight="fit">
+				<mat-grid-tile>
+					<button mat-button color="accent" mat-button [matMenuTriggerFor]="menu">
+						<mat-icon svgIcon="apps"></mat-icon>
+					</button>
+					<mat-menu #menu="matMenu">
+						<a *ngFor="let nav of appsNav" [routerLink]="nav.link" routerLinkActive="active">
+							<button mat-menu-item>{{ nav.view }}</button>
+						</a>
+					</mat-menu>
+				</mat-grid-tile>
+				<mat-grid-tile>{{ title }}</mat-grid-tile>
+				<mat-grid-tile>
+					<button mat-button color="accent" (click)="sideNotifcations.toggle()">
+						<mat-icon *ngIf="hasNotifications" svgIcon="notifications-active"></mat-icon>
+						<mat-icon *ngIf="!hasNotifications" svgIcon="notifications-none"></mat-icon>
+					</button>
+				</mat-grid-tile>
+			</mat-grid-list>
+	</mat-toolbar>
+</div>
 
 <mat-sidenav-container class="app-component-content">
 	<mat-sidenav [(opened)]="opened" #sideNotifcations position="end">
