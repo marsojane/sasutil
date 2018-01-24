@@ -1,6 +1,6 @@
 mat-toolbar {
 	padding: 0;
-	max-height: 50px;
+	height: 100%;
 }
 
 mat-grid-list {
@@ -13,13 +13,32 @@ mat-sidenav {
 }
 
 .app-component-header {
-	height: 10%;
-	min-height: 50px;
+	height: 8%;
 	background-color: #303030;
 }
 
 .app-component-content {
-	height: 90%
+	height: 92%
+}
+
+@media (min-height: 650px) {
+	.app-component-header {
+		height: 7%;
+	}
+	
+	.app-component-content {
+		height: 93%
+	}
+}
+
+@media (min-height: 850px) {
+	.app-component-header {
+		height: 6%;
+	}
+	
+	.app-component-content {
+		height: 94%
+	}
 }
 
 a {
