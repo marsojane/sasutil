@@ -99,9 +99,9 @@
 <div class="cmqueue-container-sas" *ngIf="sasSyncLogs">
 	<div class="blankspacebaby"></div>
 	<mat-accordion>
-		<mat-expansion-panel *ngFor="let hit of sasSyncLogs.hits.hits">
+		<mat-expansion-panel *ngFor="let hit of sasSyncLogs">
 			<mat-expansion-panel-header>
-				<mat-panel-title>{{ hit._source.eventtime }} ({{ hit._source.eventID }})</mat-panel-title>
+				<mat-panel-title color="accent">{{ hit._source.eventtime }} ({{ hit._source.eventID }})</mat-panel-title>
 				<mat-panel-description>
 					Expand to see more data
 				</mat-panel-description>

@@ -92,10 +92,10 @@ export class SynclogsComponent implements OnInit {
 		this.selectedPlatform === 'mdx2' && this.msqbClient.getSyncLogs(this.entityType, this.entityID)
 		.subscribe((result) => {
 			if (result.success && result.length > 0) {
-				this.notifications.notify('success', `Get Sync logs for entityType:${ this.entityType }, entityID:${ this.entityID } is successful`)
+				this.notifications.notify('success', `Get Sync logs for entityType:${ this.entityType }, entityID:${ this.entityID } competed.`)
 				this.mdx2DataSource = new MatTableDataSource<SyncLogsRecordSet>(result.recordset)
 			} else {
-				this.notifications.notify('info', 'There seems to be no sync logs for this entity for the last 3 days.', !0)
+				this.notifications.notify('info', 'Can\'t find sync logs for this entity for the last 3 days.', !0)
 			}
 		}, (error) => {
 			this.notifications.notify('error', error.message, !0)
@@ -106,11 +106,16 @@ export class SynclogsComponent implements OnInit {
 			this.elasticClient.getSyncLogs(this.entityID, startts, endts)
 			.subscribe((result) => {
 				if (result.hits && result.hits.total > 0) {
-					console.log(result)
-					this.sasSyncLogs = result
-					this.notifications.notify('success', `Get Sync logs for entityType:${ this.entityType }, entityID:${ this.entityID } is successful`)
+
+					// sort hits ascending
+					this.sasSyncLogs = result.hits.hits.sort((a, b) => {
+						const anum: any = moment(a._source.eventtime).format('x')
+						const bnum: any = moment(b._source.eventtime).format('x')
+						return anum - bnum
+					})
+					this.notifications.notify('success', `Get Sync logs for entityType:${ this.entityType }, entityID:${ this.entityID } competed.`)
 				} else {
-					this.notifications.notify('info', 'There seems to be no sync logs for this entity.', !0)
+					this.notifications.notify('info', 'Can\'t find sync logs for this entity.', !0)
 				}
 			}, (error) => {
 				this.notifications.notify('error', error.message, !0)
