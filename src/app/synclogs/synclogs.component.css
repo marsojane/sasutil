@@ -28,3 +28,15 @@ mat-table {
 	width: 800px;
 	margin: 0 auto;
 }
+
+.success {
+	background-color: #0aaa05
+}
+
+.error {
+	background-color: #ac1b1b
+}
+
+.unknown {
+	background-color: #2a70c0
+}

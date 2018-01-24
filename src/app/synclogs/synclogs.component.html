@@ -101,9 +101,9 @@
 	<mat-accordion>
 		<mat-expansion-panel *ngFor="let hit of sasSyncLogs">
 			<mat-expansion-panel-header>
-				<mat-panel-title color="accent">{{ hit._source.eventtime }} ({{ hit._source.eventID }})</mat-panel-title>
+				<mat-panel-title>{{ hit._source.eventtime }}</mat-panel-title>
 				<mat-panel-description>
-					Expand to see more data
+						<span [ngClass]="{'success': hit._source.eventID == 260, 'error': hit._source.eventID == 257, 'unknown': hit._source.eventID != 257 && hit._source.eventID != 260}"> ({{ hit._source.eventID }}) </span>
 				</mat-panel-description>
 			</mat-expansion-panel-header>
 			<pre class="json">{{ hit | json }}</pre>
