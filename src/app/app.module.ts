@@ -18,6 +18,7 @@ import { SyncentityComponent } from './syncentity/syncentity.component'
 import { UpdateadsComponent } from './updateads/updateads.component'
 import { EcsEntityInfoComponent } from './ecsentityinfo/ecsentityinfo.component'
 import { SynclogsComponent } from './synclogs/synclogs.component'
+import { ESMSearchComponent } from './esmsearch/esmsearch.component'
 
 // material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -48,7 +49,8 @@ import { MatExpansionModule } from '@angular/material/expansion'
 		SyncentityComponent,
 		UpdateadsComponent,
 		EcsEntityInfoComponent,
-		SynclogsComponent
+		SynclogsComponent,
+		ESMSearchComponent
 	],
 	imports: [
 		BrowserModule,

@@ -17,4 +17,11 @@ export class ElasticAPIClientService extends APIClient {
 		/* tslint:enable */			
 		return  this.constructRequest('post', '/elastic/search/', null, JSON.parse(query))
 	}
+
+	public multiSearch(entityId: number, start: number, end: number): Observable<any> {	
+		/* tslint:disable */
+		const query = format('{"size":100000,"query":{"filtered":{"query":{"query_string":{"query":"{0}"}},"filter":{"bool":{"must":[{"range":{"@timestamp":{"gte":{1},"lte":{2}}}}],"must_not":[]}}}}}', entityId, start, end)
+		/* tslint:enable */
+		return  this.constructRequest('post', '/elastic/search/', null, JSON.parse(query))
+	}
 }

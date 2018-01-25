@@ -7,6 +7,7 @@ import { SyncentityComponent } from './syncentity/syncentity.component'
 import { UpdateadsComponent } from './updateads/updateads.component'
 import { EcsEntityInfoComponent } from './ecsentityinfo/ecsentityinfo.component'
 import { SynclogsComponent } from './synclogs/synclogs.component'
+import { ESMSearchComponent } from './esmsearch/esmsearch.component'
 
 const routes: Routes = [
 	{ path: 'dashboard', component: DashboardComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
 	{ path: 'resaveads', component: UpdateadsComponent },
 	{ path: 'ecsentityinfo', component: EcsEntityInfoComponent },
 	{ path: 'synclogs', component: SynclogsComponent },
+	{ path: 'esmsearch', component: ESMSearchComponent },
 	{ path: 'sasutil', redirectTo: '/dashboard', pathMatch: 'full' }, // for production compat with sebas
 	{ path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ]

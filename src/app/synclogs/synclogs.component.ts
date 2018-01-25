@@ -82,7 +82,7 @@ export class SynclogsComponent implements OnInit {
 			|| (this.selectedPlatform === 'mdx2' && this.entityTypeFormCtrl.hasError('required'))
 		// we now have data source from elastic so add a validation
 			|| (this.selectedPlatform === 'sas' &&
-				(validateNF(this.startDateCtrl.value, this.endDateCtrl.value)
+				(validateNF(this.startDateCtrl.value, this.endDateCtrl.value, 2.592e+9)
 				|| this.startDateCtrl.hasError('notValidDate') || this.endDateCtrl.hasError('notValidDate')))
 				|| this.entityIDFormCtrl.hasError('required')
 					|| this.entityIDFormCtrl.hasError('notNumber')

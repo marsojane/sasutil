@@ -1,0 +1,15 @@
+.esmsearch-container {
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+	margin: 0 auto;
+}
+
+mat-form-field {
+	width: 100%
+}
+
+.esmsearch-container-results {
+	width: 85%;
+	margin: 0 auto;
+}

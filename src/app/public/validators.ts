@@ -17,7 +17,7 @@ export const validate = (value: any, validators: ValidatorFn[]): FormControl => 
 }
 
 // returns true if not valid
-export const validateNF = (start, end): boolean => {
+export const validateNF = (start, end, maxms): boolean => {
 	const s = start && start._isValid && start.format('x') || 0, e = end && end._isValid && end.format('x') || 0
-	return s === 0 || e === 0 || s >= e || ((e - s) > 2.592e+9)
+	return s === 0 || e === 0 || s >= e || ((e - s) > maxms)
 }
