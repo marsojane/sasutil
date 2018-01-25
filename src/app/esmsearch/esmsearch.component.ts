@@ -75,8 +75,8 @@ export class ESMSearchComponent implements OnInit {
 		.subscribe((result) => {
 			if (result.hits && result.hits.total > 0) {
 				this.searchResults = result.hits.hits.sort((a, b) => {
-					const anum: any = moment(a._source.eventtime).format('x')
-					const bnum: any = moment(b._source.eventtime).format('x')
+					const anum: any = moment(a._source['@timestamp']).format('x')
+					const bnum: any = moment(b._source['@timestamp']).format('x')
 					return anum - bnum
 				})
 				this.notifications.notify('success', `Multi search for entity:${ this.entityID } returned ${ result.hits.total  } results. 
