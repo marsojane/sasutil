@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
 import { FormControl, Validators } from '@angular/forms'
+import { DomSanitizer } from '@angular/platform-browser'
+import { MatTableDataSource, MatIconRegistry } from '@angular/material'
 import { NotificationsService } from '../services/notifications.service'
 import { ElasticAPIClientService } from '../services/elastic-client.service'
 import { validateNumberField, validate, validDate, validateNF } from '../public/validators'
@@ -9,6 +11,10 @@ import * as moment from 'moment'
 // customize date format
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core'
 import { MomentDateAdapter } from '@angular/material-moment-adapter'
+import { ElasticMultiSearchRecordSet } from '../data/esmsearchset'
+// testing only, need a way to remove this in prod
+// always remove this on prod compile so webpack don't include in the bundle
+// import { mock_esmsearch } from '../data/mock/esmsearch'
 
 @Component({
 	selector: 'app-esmsearch',
@@ -35,11 +41,17 @@ export class ESMSearchComponent implements OnInit {
 	entityIDFormCtrl: FormControl
 	notifiedOnceMaxDate = false
 	searchResults: any
+	searchResultsTableDS: MatTableDataSource<ElasticMultiSearchRecordSet>
+	searchResultsColumns = ['timestamp', 'type', 'environment/channel', 'level/severity', 'server', 'service', 'eventid', 'source']
 
 	constructor(
 		private notifications: NotificationsService,
-		private elasticClient: ElasticAPIClientService
-	) { }
+		private elasticClient: ElasticAPIClientService,
+		private iconRegistry: MatIconRegistry,
+		private sanitizer: DomSanitizer
+	) { 
+		iconRegistry.addSvgIcon('more', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/more_white.svg'))
+	}
 
 	ngOnInit() {
 		this.entityIDFormCtrl = validate('', [ Validators.required, validateNumberField ])
@@ -49,6 +61,18 @@ export class ESMSearchComponent implements OnInit {
 		this.startDateCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())
 		this.endDateCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())
 		this.entityIDFormCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())
+
+		/*
+		// testing only - need a way to auto-remove this in prod
+		if (mock_esmsearch) {
+			this.searchResults = mock_esmsearch
+			this.searchResultsTableDS = new MatTableDataSource<ElasticMultiSearchRecordSet>(this.searchResults)
+			this.searchResultsTableDS.filterPredicate = (data: ElasticMultiSearchRecordSet, filter: string) => {
+				return JSON.stringify(data).toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1
+			}
+		}
+		*/
+		
 	}
 
 	shouldDisableSubmit(): void {
@@ -56,6 +80,7 @@ export class ESMSearchComponent implements OnInit {
 			this.notifications.notify('info', 'Due to performance concerns, search is limited only to 3 days and results are capped to 100000', !0)
 			this.notifiedOnceMaxDate = true
 		}
+
 		this.disableSubmit = validateNF(this.startDateCtrl.value, this.endDateCtrl.value, 2.592e+8)
 				|| this.startDateCtrl.hasError('notValidDate')
 				|| this.endDateCtrl.hasError('notValidDate')
@@ -63,7 +88,16 @@ export class ESMSearchComponent implements OnInit {
 				|| this.entityIDFormCtrl.hasError('notNumber')
 	}
 
+	applyFilter(filterValue: string) {
+		this.searchResultsTableDS.filter = filterValue.trim().toLowerCase()
+	}
+
+	showMore(result: any) {
+		// open dialog
+	}
+
 	onSubmit(): void {
+
 		// we need to be careful with users who manipulate the DOM to bypass this.
 		if (validateNF(this.startDateCtrl.value, this.endDateCtrl.value, 2.592e+8)) {
 			this.notifications.notify('error', 'Due to performance concerns, search is limited only to 3 days and results are capped to 100000', !0)
@@ -79,6 +113,10 @@ export class ESMSearchComponent implements OnInit {
 					const bnum: any = moment(b._source['@timestamp']).format('x')
 					return anum - bnum
 				})
+				this.searchResultsTableDS = new MatTableDataSource<ElasticMultiSearchRecordSet>(this.searchResults)
+				this.searchResultsTableDS.filterPredicate = (data: ElasticMultiSearchRecordSet, filter: string) => {
+					return JSON.stringify(data).toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1
+				}
 				this.notifications.notify('success', `Multi search for entity:${ this.entityID } returned ${ result.hits.total  } results. 
 				Actual returned length: ${ this.searchResults.length }`)
 			} else {

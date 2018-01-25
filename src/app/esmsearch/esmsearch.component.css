@@ -13,3 +13,22 @@ mat-form-field {
 	width: 85%;
 	margin: 0 auto;
 }
+
+.esmsearch-container-results-table {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.esmsearch-container-results-table .mat-cell {
+	font-size: 12px;
+}
+
+.filter-container {
+	min-height: 64px;
+	padding: 8px 24px 0;
+	max-width: 400px;
+}
+
+.source-column {
+	text-align: center;
+}

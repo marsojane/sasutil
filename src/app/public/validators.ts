@@ -1,4 +1,5 @@
 import { FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms'
+import { unAwareToTime } from './utils'
 
 export const validateNumberField = (control: AbstractControl): ValidationErrors | null => {
 	return !( control.value * 1 ) ? { 'notNumber': true } : null
@@ -18,6 +19,6 @@ export const validate = (value: any, validators: ValidatorFn[]): FormControl => 
 
 // returns true if not valid
 export const validateNF = (start, end, maxms): boolean => {
-	const s = start && start._isValid && start.format('x') || 0, e = end && end._isValid && end.format('x') || 0
+	const s = start && start._isValid && unAwareToTime(start) || 0, e = end && end._isValid && unAwareToTime(end, !0) || 0
 	return s === 0 || e === 0 || s > e || ((e - s) > maxms)
 }

@@ -39,6 +39,7 @@ import { MatListModule } from '@angular/material/list'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatMomentDateModule } from '@angular/material-moment-adapter'
 import { MatExpansionModule } from '@angular/material/expansion'
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 @NgModule({
 	declarations: [
@@ -76,7 +77,8 @@ import { MatExpansionModule } from '@angular/material/expansion'
 		MatListModule,
 		MatDatepickerModule,
 		MatMomentDateModule,
-		MatExpansionModule
+		MatExpansionModule,
+		MatPaginatorModule
 		// end @angular/material imports
 	],
 	providers: [
