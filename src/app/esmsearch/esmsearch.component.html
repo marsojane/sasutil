@@ -29,13 +29,7 @@
 	</form>
 </div>
 
-<!--
-<div class="esmsearch-container-results" *ngIf="searchResults">
-		<pre class="json">{{ searchResults | json }}</pre>
-</div>
--->
-
-<div class="esmsearch-container-results-table" *ngIf="searchResultsTableDS">
+<div class="esmsearch-container-results-table" *ngIf="searchResultsTableDS" [class.showSearchResultsTable]="showSearchResultsTable">
 		<div class="blankspacebaby"></div>
 		<div class="filter-container">
 		<mat-form-field floatLabel="auto">
@@ -92,4 +86,6 @@
     		<mat-row *matRowDef="let row; columns: searchResultsColumns;"></mat-row>
 
 		</mat-table>
+
+		<mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50]"></mat-paginator>
 </div>

@@ -1,13 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core'
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core'
 import { FormControl, Validators } from '@angular/forms'
 import { DomSanitizer } from '@angular/platform-browser'
-import { MatTableDataSource, MatIconRegistry, MatDialog } from '@angular/material'
+import { MatTableDataSource, MatIconRegistry, MatDialog, MatPaginator } from '@angular/material'
 import { NotificationsService } from '../services/notifications.service'
 import { ElasticAPIClientService } from '../services/elastic-client.service'
 import { validateNumberField, validate, validDate, validateNF } from '../public/validators'
 import { unAwareToTime, format } from '../public/utils'
 // we are importing a lot of functionality here - we shouldn't
 import * as moment from 'moment'
+import * as lo_ from 'lodash'
 // customize date format
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core'
 import { MomentDateAdapter } from '@angular/material-moment-adapter'
@@ -32,8 +33,9 @@ import { ESResultDialogComponent } from '../esresdialog/esresdialog.component'
 		ElasticAPIClientService
 	]
 })
-export class ESMSearchComponent implements OnInit {
+export class ESMSearchComponent implements OnInit, AfterViewInit {
 
+	@ViewChild(MatPaginator) paginator: MatPaginator
 	disableSubmit = true
 	entityID: number
 	minDate = moment([2017, 0, 1])
@@ -45,6 +47,7 @@ export class ESMSearchComponent implements OnInit {
 	searchResults: any
 	searchResultsTableDS: MatTableDataSource<ElasticMultiSearchRecordSet>
 	searchResultsColumns = ['timestamp', 'type', 'environment/channel', 'level/severity', 'server', 'service', 'eventid', 'source']
+	showSearchResultsTable = false
 
 	constructor(
 		private notifications: NotificationsService,
@@ -52,7 +55,7 @@ export class ESMSearchComponent implements OnInit {
 		private iconRegistry: MatIconRegistry,
 		private sanitizer: DomSanitizer,
 		private dialog: MatDialog
-	) { 
+	) {
 		iconRegistry.addSvgIcon('more', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/more_white.svg'))
 	}
 
@@ -64,14 +67,22 @@ export class ESMSearchComponent implements OnInit {
 		this.startDateCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())
 		this.endDateCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())
 		this.entityIDFormCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())
+
+		this.searchResults = [{ _type: 'Init', 
+		_source: { '@timestamp': '0000-00-00', environment: '', level: '', server: '', service: '', eventID: '' }}]
+		this.searchResultsTableDS = new MatTableDataSource<ElasticMultiSearchRecordSet>(this.searchResults)
 		/*
 		// testing only - need a way to auto-remove this in prod
-		if (mock_esmsearch) {
-			this.searchResults = mock_esmsearch
+		if (!0 && mock_esmsearch) {
+			this.searchResults = lo_.concat(mock_esmsearch, mock_esmsearch, mock_esmsearch)
 			this.searchResultsTableDS = new MatTableDataSource<ElasticMultiSearchRecordSet>(this.searchResults)
 			this.searchResultsTableDS.filterPredicate = this.filterPredicate
 		}
 		*/
+	}
+
+	ngAfterViewInit() {
+		this.searchResultsTableDS.paginator = this.paginator
 	}
 
 	shouldDisableSubmit(): void {
@@ -103,7 +114,7 @@ export class ESMSearchComponent implements OnInit {
 	filterPredicate(data: any, filter: string): boolean {
 		return format('{0}{1}{2}{3}{4}{5}',
 			data._source['@timestamp'],
-			data._type, 
+			data._type,
 			(data._source.environment || data._source.channel),
 			(data._source.level || data._source.severity),
 			data._source.server,
@@ -131,7 +142,9 @@ export class ESMSearchComponent implements OnInit {
 				})
 				this.searchResultsTableDS = new MatTableDataSource<ElasticMultiSearchRecordSet>(this.searchResults)
 				this.searchResultsTableDS.filterPredicate = this.filterPredicate
-				this.notifications.notify('success', `Multi search for entity:${ this.entityID } returned ${ result.hits.total  } results. 
+				this.searchResultsTableDS.paginator = this.paginator
+				this.showSearchResultsTable = true
+				this.notifications.notify('success', `Multi search for entity:${ this.entityID } returned ${ result.hits.total  } results.
 				Actual returned length: ${ this.searchResults.length }`)
 			} else {
 				this.notifications.notify('info', 'No results found. :(', !0)
@@ -140,5 +153,4 @@ export class ESMSearchComponent implements OnInit {
 			this.notifications.notify('error', error.message, !0)
 		})
 	}
-
 }

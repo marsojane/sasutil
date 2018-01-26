@@ -6,5 +6,5 @@ export class ElasticMultiSearchRecordSet {
 	server: string
 	service: string
 	eventid: number
-	source: any	
+	source: any
 }
