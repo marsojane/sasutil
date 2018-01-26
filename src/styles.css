@@ -19,3 +19,8 @@ body {
 .blankspacebaby {
 	margin-top: 20px;
 }
+
+.mat-dialog-container {
+	padding: 10px !important;
+	overflow: hidden !important;
+}

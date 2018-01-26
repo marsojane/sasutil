@@ -1,20 +1,22 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { FormControl, Validators } from '@angular/forms'
 import { DomSanitizer } from '@angular/platform-browser'
-import { MatTableDataSource, MatIconRegistry } from '@angular/material'
+import { MatTableDataSource, MatIconRegistry, MatDialog } from '@angular/material'
 import { NotificationsService } from '../services/notifications.service'
 import { ElasticAPIClientService } from '../services/elastic-client.service'
 import { validateNumberField, validate, validDate, validateNF } from '../public/validators'
-import { unAwareToTime } from '../public/utils'
+import { unAwareToTime, format } from '../public/utils'
 // we are importing a lot of functionality here - we shouldn't
 import * as moment from 'moment'
 // customize date format
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core'
 import { MomentDateAdapter } from '@angular/material-moment-adapter'
 import { ElasticMultiSearchRecordSet } from '../data/esmsearchset'
+import { ESResultDialogComponent } from '../esresdialog/esresdialog.component'
 // testing only, need a way to remove this in prod
 // always remove this on prod compile so webpack don't include in the bundle
 // import { mock_esmsearch } from '../data/mock/esmsearch'
+
 
 @Component({
 	selector: 'app-esmsearch',
@@ -48,7 +50,8 @@ export class ESMSearchComponent implements OnInit {
 		private notifications: NotificationsService,
 		private elasticClient: ElasticAPIClientService,
 		private iconRegistry: MatIconRegistry,
-		private sanitizer: DomSanitizer
+		private sanitizer: DomSanitizer,
+		private dialog: MatDialog
 	) { 
 		iconRegistry.addSvgIcon('more', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/more_white.svg'))
 	}
@@ -61,18 +64,14 @@ export class ESMSearchComponent implements OnInit {
 		this.startDateCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())
 		this.endDateCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())
 		this.entityIDFormCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())
-
 		/*
 		// testing only - need a way to auto-remove this in prod
 		if (mock_esmsearch) {
 			this.searchResults = mock_esmsearch
 			this.searchResultsTableDS = new MatTableDataSource<ElasticMultiSearchRecordSet>(this.searchResults)
-			this.searchResultsTableDS.filterPredicate = (data: ElasticMultiSearchRecordSet, filter: string) => {
-				return JSON.stringify(data).toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1
-			}
+			this.searchResultsTableDS.filterPredicate = this.filterPredicate
 		}
 		*/
-		
 	}
 
 	shouldDisableSubmit(): void {
@@ -93,7 +92,24 @@ export class ESMSearchComponent implements OnInit {
 	}
 
 	showMore(result: any) {
-		// open dialog
+		let dialogRef = this.dialog.open(ESResultDialogComponent, {
+			height: '90%',
+			width: '90%',
+			data: result
+		})
+	}
+
+
+	filterPredicate(data: any, filter: string): boolean {
+		return format('{0}{1}{2}{3}{4}{5}',
+			data._source['@timestamp'],
+			data._type, 
+			(data._source.environment || data._source.channel),
+			(data._source.level || data._source.severity),
+			data._source.server,
+			data._source.service,
+			data._source.eventID
+		).toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1
 	}
 
 	onSubmit(): void {
@@ -114,9 +130,7 @@ export class ESMSearchComponent implements OnInit {
 					return anum - bnum
 				})
 				this.searchResultsTableDS = new MatTableDataSource<ElasticMultiSearchRecordSet>(this.searchResults)
-				this.searchResultsTableDS.filterPredicate = (data: ElasticMultiSearchRecordSet, filter: string) => {
-					return JSON.stringify(data).toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1
-				}
+				this.searchResultsTableDS.filterPredicate = this.filterPredicate
 				this.notifications.notify('success', `Multi search for entity:${ this.entityID } returned ${ result.hits.total  } results. 
 				Actual returned length: ${ this.searchResults.length }`)
 			} else {

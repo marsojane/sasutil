@@ -19,6 +19,7 @@ import { UpdateadsComponent } from './updateads/updateads.component'
 import { EcsEntityInfoComponent } from './ecsentityinfo/ecsentityinfo.component'
 import { SynclogsComponent } from './synclogs/synclogs.component'
 import { ESMSearchComponent } from './esmsearch/esmsearch.component'
+import { ESResultDialogComponent } from './esresdialog/esresdialog.component'
 
 // material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -39,7 +40,8 @@ import { MatListModule } from '@angular/material/list'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatMomentDateModule } from '@angular/material-moment-adapter'
 import { MatExpansionModule } from '@angular/material/expansion'
-import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatDialogModule } from '@angular/material/dialog'
+// import { MatPaginatorModule } from '@angular/material/paginator'
 
 @NgModule({
 	declarations: [
@@ -51,7 +53,8 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 		UpdateadsComponent,
 		EcsEntityInfoComponent,
 		SynclogsComponent,
-		ESMSearchComponent
+		ESMSearchComponent,
+		ESResultDialogComponent
 	],
 	imports: [
 		BrowserModule,
@@ -78,8 +81,12 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 		MatDatepickerModule,
 		MatMomentDateModule,
 		MatExpansionModule,
-		MatPaginatorModule
+		MatDialogModule
+		// MatPaginatorModule
 		// end @angular/material imports
+	],
+	entryComponents: [
+		ESResultDialogComponent
 	],
 	providers: [
 		NotificationsService,

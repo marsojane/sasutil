@@ -1,0 +1,21 @@
+<div class="header">
+	<mat-grid-list cols="2" rowHeight="fit">
+		<mat-grid-tile></mat-grid-tile>
+		<mat-grid-tile>
+				<div class="header-actions">
+					<button mat-button color="accent" (click)="copyToClipBoard()">
+						<mat-icon svgIcon="copy"></mat-icon>
+					</button>
+					<button mat-button color="accent" (click)="closeDialog()">
+						<mat-icon svgIcon="close"></mat-icon>
+					</button>
+				</div>
+		</mat-grid-tile>
+	</mat-grid-list>
+</div>
+
+<div class="content">
+		<pre>{{ data | json }}</pre>
+</div>
+
+<input #contentinput type="text" [value]="dataStr" id="contentinput">
