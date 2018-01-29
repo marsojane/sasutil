@@ -5,7 +5,7 @@ export const appsNav = [
 	{ link: '/synclogs', view: 'Sync Logs', enabled: true },
 	{ link: '/syncentity', view: 'Sync Entity', enabled: true },
 	{ link: '/resaveads', view: 'Resave Ads', enabled: true },
-	{ link: '/esmsearch', view: 'ES MultiSearch', enabled: true },
+	{ link: '/esmsearch', view: 'Elastic MultiSearch', enabled: true },
 	{ link: '/integrity', view: 'Integrity Check', enabled: false },
-	{ link: '/entityhistory', view: 'History', enabled: true }
+	{ link: '/entityhistory', view: 'Entity History', enabled: false }
 ]

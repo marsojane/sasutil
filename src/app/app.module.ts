@@ -6,7 +6,7 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { AppRoutingModule } from './app-routing.module'
 // app components
 import { AppComponent } from './app.component'
-import { SideNotificationsComponent } from './side-notifications/side-notifications.component'
+import { SideNotificationsComponent } from './sidenotifications/side-notifications.component'
 // app services
 import { NotificationsService } from './services/notifications.service'
 import { SessionDataService } from './services/session-data.service'
@@ -20,6 +20,7 @@ import { EcsEntityInfoComponent } from './ecsentityinfo/ecsentityinfo.component'
 import { SynclogsComponent } from './synclogs/synclogs.component'
 import { ESMSearchComponent } from './esmsearch/esmsearch.component'
 import { ESResultDialogComponent } from './esresdialog/esresdialog.component'
+import { EntityHistoryComponent } from './entityhistory/entityhistory.component'
 
 // material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -55,7 +56,8 @@ import { MatDividerModule } from '@angular/material/divider'
 		EcsEntityInfoComponent,
 		SynclogsComponent,
 		ESMSearchComponent,
-		ESResultDialogComponent
+		ESResultDialogComponent,
+		EntityHistoryComponent
 	],
 	imports: [
 		BrowserModule,
