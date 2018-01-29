@@ -24,3 +24,14 @@ declare module 'sasutil.api.sas' {
 		sessionId?: string
 	}
 }
+
+declare module 'sasutil.dashboard' {
+	type Icon = 'sync' | 'warning' | 'error' | 'check'
+	type Status = 'connected' | 'noconnection' | 'expired' | 'checking'
+	class ConnectionsData {
+		icon: string
+		message: string
+		name: string
+		status: Status
+	}
+}

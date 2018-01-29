@@ -10,7 +10,7 @@ import { APIClient } from './apiclient'
 
 @Injectable()
 export class SasApiClientService extends APIClient {
-	constructor(httpClient: HttpClient, sessionData: SessionDataService ) {	
+	constructor(httpClient: HttpClient, sessionData: SessionDataService ) {
 		super(httpClient, sessionData)
 		this.provider = providers['sas']
 	}
@@ -45,5 +45,9 @@ export class SasApiClientService extends APIClient {
 			}]
 		}
 		return this.constructRequest('post', '/replay/syncLastEntities', this.sessionData.getData('sessionId'), body)
+	}
+
+	public statusCheck(): Observable<any> {
+		return this.constructRequest('get', '/login/tokens/check', this.sessionData.getData('sessionId'))
 	}
 }

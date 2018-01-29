@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { MatDialogRef } from '@angular/material'
 import { FormControl, Validators } from '@angular/forms'
 import { NotificationsService } from '../services/notifications.service'
 import { SessionDataService } from '../services/session-data.service'
@@ -20,9 +21,10 @@ export class GensessionidComponent implements OnInit {
 	loginParams: SASLoginParams = { username: '', password: '', sessionId: '' }
 	usernameFormCtrl: FormControl
 	passwordFormCtrl: FormControl
-	disableSubmit: boolean = !1
+	disableSubmit: boolean = !1	
 
 	constructor(
+		private dialogRef: MatDialogRef<GensessionidComponent>,
 		private notifications: NotificationsService,
 		private sizmekApiClient: SasApiClientService,
 		private sessionData: SessionDataService
@@ -43,11 +45,19 @@ export class GensessionidComponent implements OnInit {
 
 	onSubmit() {
 		this.disableSubmit = !0
+		this.dialogRef.close()
 		this.sizmekApiClient.login(this.loginParams).subscribe((data) => {
 				this.disableSubmit = !1
 				this.loginParams.sessionId = data.result.sessionId
 				this.sessionData.setData('sessionId', this.loginParams.sessionId)
 				this.notifications.notify('success', format('SessionID successfully generated. SID: {0}', this.loginParams.sessionId))
+				this.notifications.eventMgr.next({
+					type: 'connectionStatusChange',
+					data: {
+						name: 'SAS-API',
+						status: 'connected'
+					}
+				})
 			}, (err) => {
 				this.disableSubmit = !1
 				this.notifications.notify('error', err.message, !0)

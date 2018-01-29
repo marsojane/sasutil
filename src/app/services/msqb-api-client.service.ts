@@ -22,4 +22,8 @@ export class MsqbClient extends APIClient {
 		// add handler for mm2 ecs entity info here once available or we should support it?
 		return this.constructRequest('get', format('/entityinfo/platform/sas/type/{0}/id/{1}', type, id))
 	}
+
+	public statusCheck(): Observable<any> {	
+		return this.constructRequest('get', '/status')
+	}
 }

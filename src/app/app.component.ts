@@ -14,7 +14,7 @@ import 'rxjs/add/operator/filter'
 })
 export class AppComponent implements OnInit {
 	public opened = false
-	public title = 'SAS Helper Tools - Support'
+	public title = 'Support SAS Helpers'
 	public hasNotifications: boolean
 	public appsNav = filter(appsNav, (nav) => nav.enabled)
 	constructor(

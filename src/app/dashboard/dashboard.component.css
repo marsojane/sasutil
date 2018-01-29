@@ -1,16 +1,36 @@
 .dashboard-container {
-	display: flex;
-	flex-direction: column;
-	width: 1000px;
-	height: 500px;
+	width: 80%;
 	margin: 0 auto;
 }
 
-mat-grid-list {
-	width: 100%;
-	height:100%;
+a {
+	text-decoration: none;
+	color: rgba(255, 255, 255, 0.61);
 }
 
-a {
-	text-decoration: none
+.container-label {
+	color: rgba(255, 255, 255, 0.61);
+	font-size: 1.2em;
+}
+
+.status-container {
+	width: 100%;
+	min-height: 100px;
+}
+
+.apps-container {
+	width: 100%;
+	min-height: 100px;
+}
+
+.apps-container-sub {
+	width: 100%;
+	margin-top: 20px;
+	display: inline-block;
+}
+
+.appnav-button {
+	min-width: 200px;
+	min-height: 50px;
+	margin: 5px 2px;
 }

@@ -24,4 +24,8 @@ export class ElasticAPIClientService extends APIClient {
 		/* tslint:enable */
 		return  this.constructRequest('post', '/elastic/search/', null, JSON.parse(query))
 	}
+	
+	public statusCheck(): Observable<any> {	
+		return this.constructRequest('get', '/status')
+	}
 }

@@ -42,6 +42,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatDividerModule } from '@angular/material/divider'
 
 @NgModule({
 	declarations: [
@@ -82,7 +83,8 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 		MatMomentDateModule,
 		MatExpansionModule,
 		MatDialogModule,
-		MatPaginatorModule
+		MatPaginatorModule,
+		MatDividerModule
 		// end @angular/material imports
 	],
 	entryComponents: [

@@ -1,18 +1,22 @@
 <div class="dashboard-container">
-		<mat-tab-group>
-				<mat-tab label="Apps">
-					<mat-list role="list">
-							<a *ngFor="let nav of appsNav" [routerLink]="nav.link" routerLinkActive="active">
-								<mat-list-item role="listitem"><button mat-button>{{ nav.view }}</button></mat-list-item>
-							</a>
-					</mat-list>
-				</mat-tab>
-				<mat-tab label="Services">
-					<mat-list role="list">
-						<mat-list-item role="listitem">Session IDs validity (todo).</mat-list-item>
-						<mat-list-item role="listitem">Check MSQ-B is up (todo).</mat-list-item>
-						<mat-list-item role="listitem">Check Rufus is up (todo).</mat-list-item>
-					</mat-list>
-				</mat-tab>
-			  </mat-tab-group>
+	<div class="status-container">
+		<p class="container-label">Status</p>
+		<mat-divider></mat-divider>
+		<mat-list>
+			<mat-list-item *ngFor="let connection of connections">
+				<mat-icon matListIcon svgIcon="{{ connection.icon }}"></mat-icon>
+				<p>{{ connection.message }}</p>
+			</mat-list-item>
+		</mat-list>
+	</div>
+	<div class="apps-container">
+		<p class="container-label">Apps</p>
+		<mat-divider></mat-divider>
+		<div class="apps-container-sub">
+			<a (click)="genSessionToken()"><button mat-raised-button class="appnav-button">SAS Session Token</button></a>
+			<a *ngFor="let nav of appsNav" [routerLink]="nav.link" routerLinkActive="active">
+				<button mat-raised-button class="appnav-button">{{ nav.view }}</button>
+			</a>
+		</div>
+	</div>	
 </div>
