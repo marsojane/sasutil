@@ -1,0 +1,498 @@
+{
+	"metadata": null,
+	"debug": null,
+	"error": null,
+	"result": {
+		"type": "DeliveryGroup",
+		"id": 1073815164,
+		"clientRefId": "dg_1452",
+		"relationsBag": {
+			"parents": {
+				"account": {
+					"id": 111249,
+					"name": "Digital Pep",
+					"internal": false
+				},
+				"advertiser": {
+					"id": 156159,
+					"name": "Amazon Studios"
+				},
+				"brand": {
+					"id": 1073807336,
+					"name": "Amazon Studios"
+				},
+				"campaign": {
+					"id": 1073787632,
+					"name": "Amazon Awards Phase 1"
+				},
+				"site": null
+			},
+			"children": {
+				"advertisers": {
+					"count": 0
+				},
+				"brands": {
+					"count": 0
+				},
+				"campaigns": {
+					"count": 0
+				},
+				"users": {
+					"count": 0
+				}
+			},
+			"creativeAccountContact": false
+		},
+		"uiPermissions": [{
+				"id": 1073741833,
+				"name": "EditAccountBasic"
+			}, {
+				"id": 1073741888,
+				"name": "DuplicateAd"
+			}, {
+				"id": 1073741886,
+				"name": "AssignSiteToProfile"
+			}, {
+				"id": 1073741898,
+				"name": "CreateEditTagManager"
+			}, {
+				"id": 1073741841,
+				"name": "CampaignsViewLimited"
+			}, {
+				"id": 1073741838,
+				"name": "UsersCreateEditBasic"
+			}, {
+				"id": 1073741874,
+				"name": "SwitchAccount"
+			}, {
+				"id": 1073741844,
+				"name": "ViewPlacementCost"
+			}, {
+				"id": 1073741868,
+				"name": "DeleteAd"
+			}, {
+				"id": 1073741893,
+				"name": "DeleteAsset"
+			}, {
+				"id": 1073741900,
+				"name": "DeleteArchiveTagManager"
+			}, {
+				"id": 1073741879,
+				"name": "EditPublishedAd"
+			}, {
+				"id": 1073741884,
+				"name": "ViewVerificationDashboard"
+			}, {
+				"id": 1073741843,
+				"name": "CampaignsCreateEdit"
+			}, {
+				"id": 1073741842,
+				"name": "CampaignsViewFull"
+			}, {
+				"id": 1073741902,
+				"name": "CreateEdit3rdPartyTagEvents"
+			}, {
+				"id": 1073741847,
+				"name": "AttachAdAndDGToPlacement"
+			}, {
+				"id": 1073741840,
+				"name": "CreateAndEditAdvertiserAndBrand"
+			}, {
+				"id": 1073741901,
+				"name": "ViewEditTagManagerCustomScript"
+			}, {
+				"id": 1073741832,
+				"name": "ViewAccount"
+			}, {
+				"id": 1073741834,
+				"name": "EditAccountAdvanced"
+			}, {
+				"id": 1073741878,
+				"name": "CreateOrEditAd"
+			}, {
+				"id": 1073741859,
+				"name": "EditSite"
+			}, {
+				"id": 1073741899,
+				"name": "ViewTagManager"
+			}, {
+				"id": 1073741848,
+				"name": "ViewUserPermissions"
+			}, {
+				"id": 1073741891,
+				"name": "UpdateDeleteAdTemplate"
+			}, {
+				"id": 1073741846,
+				"name": "ViewDeliveryGroup"
+			}, {
+				"id": 1073741839,
+				"name": "UsersCreateEditAdvanced"
+			}, {
+				"id": 1073741883,
+				"name": "CampaignsViewBasicCreative"
+			}, {
+				"id": 1073741845,
+				"name": "EditDeliveryGroup"
+			}, {
+				"id": 1073741849,
+				"name": "EditUserPermissions"
+			}, {
+				"id": 1073741882,
+				"name": "CampaignsViewBasicSite"
+			}, {
+				"id": 1073741880,
+				"name": "SubmitAdToQA"
+			}
+		],
+		"version": 1516743255746805760,
+		"createdBy": 1073746253,
+		"createdByName": "Chris Gianakas",
+		"createdByAccount": 111249,
+		"createdByAccountName": "Digital Pep",
+		"createdOn": 1476210376437,
+		"lastUpdatedBy": 425456,
+		"lastUpdatedByName": "NICOLE BUTTE",
+		"lastUpdatedByAccount": 111249,
+		"lastUpdatedByAccountName": "Digital Pep",
+		"lastUpdateOn": 1516743255745,
+		"name": "boxofficemojo_728x90_ros",
+		"subContainers": null,
+		"placementType": "IN_BANNER",
+		"width": 728,
+		"height": 90,
+		"rootContainer": {
+			"type": "RootContainer",
+			"id": null,
+			"clientRefId": null,
+			"relationsBag": null,
+			"uiPermissions": null,
+			"version": null,
+			"childRotationType": "Weighted",
+			"subContainers": [{
+					"type": "DeliveryGroupAd",
+					"id": 1073818800,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074349705,
+					"name": "WALL_728x90",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073818801,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074349700,
+					"name": "LCOZ_728x90",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073826448,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074388680,
+					"name": "BigSick_Trailer_728x90",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073807119,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074251179,
+					"name": "MBTS_728x90_POST",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073807120,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074251177,
+					"name": "The_Salesman_728x90_POST",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073805537,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074166425,
+					"name": "MBTS_Casey_728x90_PH2_V5",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073802023,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074144172,
+					"name": "The_Salesman_728x90_P20",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073805357,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074165489,
+					"name": "MBTS_728x90_PH2_V5",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073804449,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074161901,
+					"name": "MBTS_AA_BAFTA_728x90_P3",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073802024,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074144170,
+					"name": "MBTS_728x90_AA_GG_P20",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073801007,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074138882,
+					"name": "MBTS_728x90_Casey_P2O",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073799124,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074077568,
+					"name": "AZN_Awards_MBTS_Actors_728x90_Lucas_P2",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073798368,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074126869,
+					"name": "MBTS_728x90_GG_NBR",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073799670,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074133337,
+					"name": "BS_PAT_728x90_dec28_now_NYT",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073794655,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074033170,
+					"name": "AZN_Awards_Gleason_728x90",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073797435,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074077565,
+					"name": "AZN_Awards_MBTS_Actors_728x90_Casey_P2",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073797341,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074079224,
+					"name": "AZN_Awards_MBTS_728x90_CCA_GG_P2",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073794774,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074070771,
+					"name": "AZN_Awards_MBTS_SAG_GG_728x90_S",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073794654,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074067402,
+					"name": "AZN_Awards_MBTS_SAG_GG_728x90",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073793596,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074065008,
+					"name": "MBTS_CCA_GG_728x90",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073790213,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074031770,
+					"name": "AZN_Awards_MBTS_728x90_ROS_Static",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073777133,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074001163,
+					"name": "728x90_mbts_quote",
+					"adName": null
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073834832,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": false,
+						"rotationType": "Weighted",
+						"weight": 0
+					},
+					"masterAdId": 1074438284,
+					"name": "Landline_728x90",
+					"adName": "Landline_728x90"
+				}, {
+					"type": "DeliveryGroupAd",
+					"id": 1073887931,
+					"rotationSetting": {
+						"type": "Weighted",
+						"enabled": true,
+						"rotationType": "Weighted",
+						"weight": 100
+					},
+					"masterAdId": 1074738876,
+					"name": "TBS_728x90_CCA_AA",
+					"adName": "TBS_728x90_CCA_AA"
+				}
+			],
+			"childOptimizationMetric": null,
+			"childConversionTagId": null,
+			"childConversionTagName": null
+		},
+		"timeZone": 0,
+		"servingSetting": {
+			"type": "APIServingSetting",
+			"impressionsPerUser": -1,
+			"impressionsPerDay": -1,
+			"timeBetweenAds": -1,
+			"frequencyCappingLevel": true,
+			"serveDefaultImage": true
+		},
+		"rotationAds": null,
+		"placements": [
+			"1073982656"
+		],
+		"defaultAds": [],
+		"campaignId": 1073787632,
+		"campaignName": null,
+		"targetAudiencePriority": null,
+		"targetAudienceId": null,
+		"targetingTypeId": -1,
+		"geoTargetingTypeId": -1,
+		"geoTargetingCountryId": -1,
+		"aosCrossPlacement": 0,
+		"aoMethodTypeId": -1,
+		"gmt": 0,
+		"hideDisableAds": false,
+		"targetAudienceName": "Untargeted",
+		"strategyId": null,
+		"strategyName": null,
+		"automaticOptimization": false,
+		"published": true,
+		"sequenceLevelCrossPlacementSupport": true,
+		"aoMethodType": -1
+	}
+}

@@ -20,7 +20,7 @@ import { GensessionidComponent } from '../gensessionid/gensessionid.component'
 		ElasticAPIClientService, MsqbClient, SasApiClientService
 	]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit { 
 	private genSIDRef: MatDialogRef<GensessionidComponent>
 	public appsNav = lo_.filter(appsNav, (nav) => nav.enabled && nav.view !== 'Dashboard')
 
@@ -43,34 +43,10 @@ export class DashboardComponent implements OnInit {
 
 	ngOnInit() {
 		setTimeout(() => {
-			this.connections.push(this.setConnectionStatus('Elastic-Bridge', 'checking'))
-			this.elasticClient.statusCheck()
-			.subscribe((data) => {
-				lo_.remove(this.connections, (c) => c.name === 'Elastic-Bridge'),
-				this.connections.push(this.setConnectionStatus('Elastic-Bridge', 'connected'))
-			}, (error) => { 
-				lo_.remove(this.connections, (c) => c.name === 'Elastic-Bridge'),
-				this.connections.push(this.setConnectionStatus('Elastic-Bridge', 'noconnection'))
-			})
-			this.connections.push(this.setConnectionStatus('MSSQL-Bridge', 'checking'))
-			this.msqbClient.statusCheck()
-			.subscribe((data) => {
-				lo_.remove(this.connections, (c) => c.name === 'MSSQL-Bridge'), 
-				this.connections.push(this.setConnectionStatus('MSSQL-Bridge', 'connected'))
-			}, (error) => {	
-				lo_.remove(this.connections, (c) => c.name === 'MSSQL-Bridge'), 
-				this.connections.push(this.setConnectionStatus('MSSQL-Bridge', 'noconnection'))
-			})
+			this.statusCheck(this.elasticClient, 'Elastic-Bridge')
+			this.statusCheck(this.msqbClient, 'MSSQL-Bridge')
 			if (this.sessionData.getData('sessionId')) {
-				this.connections.push(this.setConnectionStatus('SAS-API', 'checking'))
-				this.sasAPIClient.statusCheck()
-				.subscribe((data) => {
-					lo_.remove(this.connections, (c) => c.name === 'SAS-API'),
-					this.connections.push(this.setConnectionStatus('SAS-API', 'connected'))
-				}, (error) => {
-					lo_.remove(this.connections, (c) => c.name === 'SAS-API'),
-					this.connections.push(this.setConnectionStatus('SAS-API', 'expired'))
-				})
+				this.statusCheck(this.sasAPIClient, 'SAS-API')
 			}
 
 			this.notifications.eventMgr
@@ -78,7 +54,7 @@ export class DashboardComponent implements OnInit {
 			.subscribe((event) => {
 				const { name, status } = event.data
 				lo_.remove(this.connections, (c) => c.name === name),
-					this.connections.push(this.setConnectionStatus(name, status))
+				this.connections.push(this.setConnectionStatus(name, status))
 			})
 		})
 	}
@@ -113,6 +89,29 @@ export class DashboardComponent implements OnInit {
 			name,
 			status
 		}
+	}
+
+	statusCheck(client: ElasticAPIClientService | MsqbClient | SasApiClientService, name: string): void {
+		this.connections.push(this.setConnectionStatus(name, 'checking'))
+		client.statusCheck()
+		.subscribe((data) => {
+			this.notifications.eventMgr.next({
+				type: 'connectionStatusChange',
+				data: {
+					name,
+					status: 'connected'
+				}
+			})
+		}, (error) => {
+			const status = error.status === 401 && name === 'SAS-API' ? 'expired' : 'noconnection'
+			this.notifications.eventMgr.next({
+				type: 'connectionStatusChange',
+				data: {
+					name,
+					status
+				}
+			})
+		})
 	}
 
 	genSessionToken(): void {

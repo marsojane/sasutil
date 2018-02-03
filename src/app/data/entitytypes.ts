@@ -48,5 +48,23 @@ export const entityTypes: {[index: string]: any} = {
 		{ value: 'Placement', viewValue: 'Placement' },
 		{ value: 'Site', viewValue: 'Site' },
 		{ value: 'TargetAudience', viewValue: 'TargetAudience' }
+	],
+	'sas-history': [ // need to improve this list
+		{ value: 'Account', viewValue: 'Account' },
+		{ value: 'Ad', viewValue: 'Ad' },
+		{ value: 'Asset', viewValue: 'Asset' },
+		{ value: 'AdEvent', viewValue: 'AdEvent' },
+		{ value: 'Advertiser', viewValue: 'Advertiser' },
+		{ value: 'Brand', viewValue: 'Brand' },
+		{ value: 'Campaign', viewValue: 'Campaign' },
+		{ value: 'DeliveryGroup', viewValue: 'DeliveryGroup' },
+		{ value: 'InStreamTemplate', viewValue: 'InStreamTemplate' },
+		{ value: 'Placement', viewValue: 'Placement' },
+		{ value: 'PlacementPackage', viewValue: 'PlacementPackage' },
+		{ value: 'Site', viewValue: 'Site' },
+		{ value: 'Strategy', viewValue: 'Strategy' },
+		{ value: 'StrategyV2', viewValue: 'StrategyV2' },
+		{ value: 'TargetAudience', viewValue: 'TargetAudience' },
+		{ value: 'User', viewValue: 'User' }
 	]
 }

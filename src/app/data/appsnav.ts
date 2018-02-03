@@ -7,5 +7,5 @@ export const appsNav = [
 	{ link: '/resaveads', view: 'Resave Ads', enabled: true },
 	{ link: '/esmsearch', view: 'Elastic MultiSearch', enabled: true },
 	{ link: '/integrity', view: 'Integrity Check', enabled: false },
-	{ link: '/entityhistory', view: 'Entity History', enabled: false }
+	{ link: '/entityhistory', view: 'Entity History', enabled: true }
 ]
