@@ -50,4 +50,8 @@ export class SasApiClientService extends APIClient {
 	public statusCheck(): Observable<any> {
 		return this.constructRequest('get', '/login/tokens/check', this.sessionData.getData('sessionId'))
 	}
+
+	public getAccountSettings(id: number): Observable<any> {
+		return this.constructRequest('get', format('/accounts/{0}', id), this.sessionData.getData('sessionId'))
+	}
 }

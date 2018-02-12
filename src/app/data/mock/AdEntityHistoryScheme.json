@@ -1,0 +1,813 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema", 
+    "required": [
+        "debug", 
+        "error", 
+        "result", 
+        "metadata"
+    ], 
+    "type": "object", 
+    "properties": {
+        "debug": {
+            "type": "null"
+        }, 
+        "metadata": {
+            "type": "null"
+        }, 
+        "result": {
+            "required": [
+                "minFlashVersion", 
+                "adAssignmentData", 
+                "lastUpdatedByName", 
+                "minAudioVersion", 
+                "massVersioning", 
+                "enableTimeBasedServing", 
+                "downloadMode", 
+                "adFormatId", 
+                "feedEnabled", 
+                "mxpVersion", 
+                "usedAsTemplate", 
+                "siteId", 
+                "adURLs", 
+                "banner", 
+                "name", 
+                "rotationType", 
+                "authoringTool", 
+                "defaultImageClickthrough", 
+                "adSmartVersionSchema", 
+                "enabled", 
+                "uiPermissions", 
+                "versionBasePath", 
+                "createdByAccount", 
+                "accountId", 
+                "dimensions", 
+                "adChoicesLocation", 
+                "tooltip", 
+                "version", 
+                "containsNonWorkspaceAssets", 
+                "forceClickthrough", 
+                "automaticOptimizationData", 
+                "createdByName", 
+                "defaultImage", 
+                "clientRefId", 
+                "html5", 
+                "fourthPartyTag", 
+                "flashIDE", 
+                "changed", 
+                "placementType", 
+                "enableRetargeting", 
+                "placementId", 
+                "siteName", 
+                "variables", 
+                "height", 
+                "initialSize", 
+                "initialLoadAsset", 
+                "placementName", 
+                "disableIncomplete", 
+                "adTemplateId", 
+                "width", 
+                "adFeatures", 
+                "customFields", 
+                "type", 
+                "lastUpdatedBy", 
+                "createdBy", 
+                "lastUpdatedByAccountName", 
+                "createdByAccountName", 
+                "lastUpdatedByAccount", 
+                "feedStatus", 
+                "templateScriptName", 
+                "urlTokens", 
+                "asVersion", 
+                "adFormatName", 
+                "advancedRetargeting", 
+                "createdOn", 
+                "overallNumberOfPlacementAds", 
+                "adStatus", 
+                "qaStatus", 
+                "analyticsSettings", 
+                "id", 
+                "servingTimeZoneType", 
+                "native", 
+                "relationsBag", 
+                "lastUpdateOn", 
+                "accountName", 
+                "overallSize", 
+                "masterAdId", 
+                "numberOfPlacementAds", 
+                "pricingSize", 
+                "osVersion", 
+                "analyticsData", 
+                "mainClickthrough", 
+                "versionTargetingType", 
+                "servingMethod", 
+                "unSavedTemplateAd", 
+                "adChoicesStatus", 
+                "adFormat"
+            ], 
+            "type": "object", 
+            "properties": {
+                "minFlashVersion": {
+                    "type": "number"
+                }, 
+                "adAssignmentData": {
+                    "required": [
+                        "advertiserName", 
+                        "campaignId", 
+                        "accountName", 
+                        "advertiserId", 
+                        "brandName", 
+                        "campaignName", 
+                        "brandId", 
+                        "type", 
+                        "accountId"
+                    ], 
+                    "type": "object", 
+                    "properties": {
+                        "advertiserId": {
+                            "type": "number"
+                        }, 
+                        "campaignId": {
+                            "type": "number"
+                        }, 
+                        "accountName": {
+                            "type": "string"
+                        }, 
+                        "advertiserName": {
+                            "type": "string"
+                        }, 
+                        "brandName": {
+                            "type": "string"
+                        }, 
+                        "campaignName": {
+                            "type": "string"
+                        }, 
+                        "brandId": {
+                            "type": "number"
+                        }, 
+                        "type": {
+                            "type": "string"
+                        }, 
+                        "accountId": {
+                            "type": "number"
+                        }
+                    }
+                }, 
+                "lastUpdatedByName": {
+                    "type": "string"
+                }, 
+                "minAudioVersion": {
+                    "type": "number"
+                }, 
+                "massVersioning": {
+                    "type": "boolean"
+                }, 
+                "enableTimeBasedServing": {
+                    "type": "boolean"
+                }, 
+                "downloadMode": {
+                    "type": "string"
+                }, 
+                "adFormatId": {
+                    "type": "number"
+                }, 
+                "feedEnabled": {
+                    "type": "null"
+                }, 
+                "mxpVersion": {
+                    "type": "null"
+                }, 
+                "usedAsTemplate": {
+                    "type": "boolean"
+                }, 
+                "siteId": {
+                    "type": "null"
+                }, 
+                "adURLs": {
+                    "type": "null"
+                }, 
+                "banner": {
+                    "type": "null"
+                }, 
+                "name": {
+                    "type": "string"
+                }, 
+                "rotationType": {
+                    "type": "string"
+                }, 
+                "authoringTool": {
+                    "type": "string"
+                }, 
+                "defaultImageClickthrough": {
+                    "required": [
+                        "targetWindowType", 
+                        "showMenuBar", 
+                        "showAddressBar", 
+                        "relationsBag", 
+                        "url", 
+                        "uiPermissions", 
+                        "version", 
+                        "clientRefId", 
+                        "closeAllAdParts", 
+                        "type", 
+                        "id"
+                    ], 
+                    "type": "object", 
+                    "properties": {
+                        "uiPermissions": {
+                            "type": "null"
+                        }, 
+                        "showMenuBar": {
+                            "type": "boolean"
+                        }, 
+                        "showAddressBar": {
+                            "type": "boolean"
+                        }, 
+                        "relationsBag": {
+                            "type": "null"
+                        }, 
+                        "url": {
+                            "type": "string"
+                        }, 
+                        "targetWindowType": {
+                            "type": "string"
+                        }, 
+                        "version": {
+                            "type": "null"
+                        }, 
+                        "clientRefId": {
+                            "type": "null"
+                        }, 
+                        "closeAllAdParts": {
+                            "type": "boolean"
+                        }, 
+                        "type": {
+                            "type": "string"
+                        }, 
+                        "id": {
+                            "type": "number"
+                        }
+                    }
+                }, 
+                "adSmartVersionSchema": {
+                    "required": [
+                        "type", 
+                        "id", 
+                        "smartElements"
+                    ], 
+                    "type": "object", 
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        }, 
+                        "id": {
+                            "type": "null"
+                        }, 
+                        "smartElements": {
+                            "items": {
+                                "required": [
+                                    "smartElementSource", 
+                                    "svKey", 
+                                    "type", 
+                                    "id", 
+                                    "value"
+                                ], 
+                                "type": "object", 
+                                "properties": {
+                                    "smartElementSource": {
+                                        "type": "string"
+                                    }, 
+                                    "svKey": {
+                                        "type": "string"
+                                    }, 
+                                    "type": {
+                                        "type": "string"
+                                    }, 
+                                    "id": {
+                                        "type": "null"
+                                    }, 
+                                    "value": {
+                                        "required": [
+                                            "stringValue", 
+                                            "type", 
+                                            "value"
+                                        ], 
+                                        "type": "object", 
+                                        "properties": {
+                                            "stringValue": {
+                                                "type": "string"
+                                            }, 
+                                            "type": {
+                                                "type": "string"
+                                            }, 
+                                            "value": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }, 
+                            "type": "array"
+                        }
+                    }
+                }, 
+                "enabled": {
+                    "type": "boolean"
+                }, 
+                "uiPermissions": {
+                    "items": {
+                        "required": [
+                            "id", 
+                            "name"
+                        ], 
+                        "type": "object", 
+                        "properties": {
+                            "id": {
+                                "type": "number"
+                            }, 
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    }, 
+                    "type": "array"
+                }, 
+                "versionBasePath": {
+                    "type": "string"
+                }, 
+                "createdByAccount": {
+                    "type": "number"
+                }, 
+                "accountId": {
+                    "type": "number"
+                }, 
+                "dimensions": {
+                    "type": "string"
+                }, 
+                "adChoicesLocation": {
+                    "type": "string"
+                }, 
+                "tooltip": {
+                    "type": "string"
+                }, 
+                "version": {
+                    "type": "number"
+                }, 
+                "containsNonWorkspaceAssets": {
+                    "type": "boolean"
+                }, 
+                "forceClickthrough": {
+                    "type": "boolean"
+                }, 
+                "automaticOptimizationData": {
+                    "type": "null"
+                }, 
+                "createdByName": {
+                    "type": "string"
+                }, 
+                "defaultImage": {
+                    "required": [
+                        "mimeType", 
+                        "uiPermissions", 
+                        "height", 
+                        "width", 
+                        "duration", 
+                        "thumbnailUrl", 
+                        "id", 
+                        "size", 
+                        "relationsBag", 
+                        "assetId", 
+                        "mediaType", 
+                        "source", 
+                        "version", 
+                        "bitRate", 
+                        "format", 
+                        "workspaceFolderId", 
+                        "clientRefId", 
+                        "external", 
+                        "folderId", 
+                        "type", 
+                        "assetName", 
+                        "assetStatus"
+                    ], 
+                    "type": "object", 
+                    "properties": {
+                        "mimeType": {
+                            "type": "string"
+                        }, 
+                        "uiPermissions": {
+                            "type": "null"
+                        }, 
+                        "height": {
+                            "type": "number"
+                        }, 
+                        "duration": {
+                            "type": "null"
+                        }, 
+                        "thumbnailUrl": {
+                            "type": "string"
+                        }, 
+                        "id": {
+                            "type": "number"
+                        }, 
+                        "size": {
+                            "type": "number"
+                        }, 
+                        "relationsBag": {
+                            "type": "null"
+                        }, 
+                        "assetId": {
+                            "type": "number"
+                        }, 
+                        "mediaType": {
+                            "type": "string"
+                        }, 
+                        "width": {
+                            "type": "number"
+                        }, 
+                        "version": {
+                            "type": "null"
+                        }, 
+                        "type": {
+                            "type": "string"
+                        }, 
+                        "format": {
+                            "type": "null"
+                        }, 
+                        "workspaceFolderId": {
+                            "type": "number"
+                        }, 
+                        "clientRefId": {
+                            "type": "null"
+                        }, 
+                        "external": {
+                            "type": "boolean"
+                        }, 
+                        "folderId": {
+                            "type": "number"
+                        }, 
+                        "bitRate": {
+                            "type": "null"
+                        }, 
+                        "source": {
+                            "type": "boolean"
+                        }, 
+                        "assetName": {
+                            "type": "string"
+                        }, 
+                        "assetStatus": {
+                            "type": "null"
+                        }
+                    }
+                }, 
+                "clientRefId": {
+                    "type": "null"
+                }, 
+                "html5": {
+                    "required": [
+                        "mimeType", 
+                        "uiPermissions", 
+                        "height", 
+                        "width", 
+                        "duration", 
+                        "thumbnailUrl", 
+                        "id", 
+                        "size", 
+                        "relationsBag", 
+                        "assetId", 
+                        "mediaType", 
+                        "source", 
+                        "version", 
+                        "bitRate", 
+                        "format", 
+                        "workspaceFolderId", 
+                        "clientRefId", 
+                        "external", 
+                        "folderId", 
+                        "assets", 
+                        "type", 
+                        "assetName", 
+                        "assetStatus"
+                    ], 
+                    "type": "object", 
+                    "properties": {
+                        "mimeType": {
+                            "type": "null"
+                        }, 
+                        "uiPermissions": {
+                            "type": "null"
+                        }, 
+                        "height": {
+                            "type": "number"
+                        }, 
+                        "duration": {
+                            "type": "null"
+                        }, 
+                        "thumbnailUrl": {
+                            "type": "null"
+                        }, 
+                        "id": {
+                            "type": "number"
+                        }, 
+                        "size": {
+                            "type": "number"
+                        }, 
+                        "relationsBag": {
+                            "type": "null"
+                        }, 
+                        "assetId": {
+                            "type": "number"
+                        }, 
+                        "mediaType": {
+                            "type": "null"
+                        }, 
+                        "width": {
+                            "type": "number"
+                        }, 
+                        "version": {
+                            "type": "null"
+                        }, 
+                        "type": {
+                            "type": "string"
+                        }, 
+                        "format": {
+                            "type": "null"
+                        }, 
+                        "workspaceFolderId": {
+                            "type": "null"
+                        }, 
+                        "clientRefId": {
+                            "type": "null"
+                        }, 
+                        "external": {
+                            "type": "null"
+                        }, 
+                        "folderId": {
+                            "type": "null"
+                        }, 
+                        "assets": {
+                            "type": "null"
+                        }, 
+                        "bitRate": {
+                            "type": "null"
+                        }, 
+                        "source": {
+                            "type": "boolean"
+                        }, 
+                        "assetName": {
+                            "type": "string"
+                        }, 
+                        "assetStatus": {
+                            "type": "null"
+                        }
+                    }
+                }, 
+                "fourthPartyTag": {
+                    "type": "string"
+                }, 
+                "flashIDE": {
+                    "type": "null"
+                }, 
+                "changed": {
+                    "type": "boolean"
+                }, 
+                "placementType": {
+                    "type": "null"
+                }, 
+                "enableRetargeting": {
+                    "type": "boolean"
+                }, 
+                "placementId": {
+                    "type": "null"
+                }, 
+                "siteName": {
+                    "type": "null"
+                }, 
+                "variables": {
+                    "type": "null"
+                }, 
+                "height": {
+                    "type": "number"
+                }, 
+                "initialSize": {
+                    "type": "number"
+                }, 
+                "initialLoadAsset": {
+                    "type": "string"
+                }, 
+                "placementName": {
+                    "type": "null"
+                }, 
+                "disableIncomplete": {
+                    "type": "boolean"
+                }, 
+                "adTemplateId": {
+                    "type": "null"
+                }, 
+                "width": {
+                    "type": "number"
+                }, 
+                "adFeatures": {
+                    "items": {
+                        "required": [
+                            "featureType", 
+                            "id"
+                        ], 
+                        "type": "object", 
+                        "properties": {
+                            "featureType": {
+                                "type": "string"
+                            }, 
+                            "id": {
+                                "type": "number"
+                            }
+                        }
+                    }, 
+                    "type": "array"
+                }, 
+                "customFields": {
+                    "type": "null"
+                }, 
+                "type": {
+                    "type": "string"
+                }, 
+                "lastUpdatedBy": {
+                    "type": "number"
+                }, 
+                "createdBy": {
+                    "type": "number"
+                }, 
+                "lastUpdatedByAccountName": {
+                    "type": "null"
+                }, 
+                "createdByAccountName": {
+                    "type": "string"
+                }, 
+                "lastUpdatedByAccount": {
+                    "type": "number"
+                }, 
+                "feedStatus": {
+                    "type": "null"
+                }, 
+                "templateScriptName": {
+                    "type": "string"
+                }, 
+                "urlTokens": {
+                    "type": "null"
+                }, 
+                "asVersion": {
+                    "type": "null"
+                }, 
+                "adFormatName": {
+                    "type": "string"
+                }, 
+                "advancedRetargeting": {
+                    "type": "null"
+                }, 
+                "createdOn": {
+                    "type": "number"
+                }, 
+                "overallNumberOfPlacementAds": {
+                    "type": "number"
+                }, 
+                "adStatus": {
+                    "type": "string"
+                }, 
+                "qaStatus": {
+                    "type": "string"
+                }, 
+                "analyticsSettings": {
+                    "type": "null"
+                }, 
+                "id": {
+                    "type": "number"
+                }, 
+                "servingTimeZoneType": {
+                    "type": "null"
+                }, 
+                "native": {
+                    "type": "boolean"
+                }, 
+                "relationsBag": {
+                    "type": "null"
+                }, 
+                "lastUpdateOn": {
+                    "type": "number"
+                }, 
+                "accountName": {
+                    "type": "string"
+                }, 
+                "overallSize": {
+                    "type": "number"
+                }, 
+                "masterAdId": {
+                    "type": "number"
+                }, 
+                "numberOfPlacementAds": {
+                    "type": "number"
+                }, 
+                "pricingSize": {
+                    "type": "number"
+                }, 
+                "osVersion": {
+                    "type": "null"
+                }, 
+                "analyticsData": {
+                    "required": [
+                        "impressions", 
+                        "ctr", 
+                        "clicks", 
+                        "lastUpdated", 
+                        "actualStartDate"
+                    ], 
+                    "type": "object", 
+                    "properties": {
+                        "impressions": {
+                            "type": "number"
+                        }, 
+                        "lastUpdated": {
+                            "type": "number"
+                        }, 
+                        "clicks": {
+                            "type": "number"
+                        }, 
+                        "ctr": {
+                            "type": "number"
+                        }, 
+                        "actualStartDate": {
+                            "type": "null"
+                        }
+                    }
+                }, 
+                "mainClickthrough": {
+                    "required": [
+                        "targetWindowType", 
+                        "showMenuBar", 
+                        "showAddressBar", 
+                        "relationsBag", 
+                        "url", 
+                        "uiPermissions", 
+                        "version", 
+                        "clientRefId", 
+                        "closeAllAdParts", 
+                        "type", 
+                        "id"
+                    ], 
+                    "type": "object", 
+                    "properties": {
+                        "uiPermissions": {
+                            "type": "null"
+                        }, 
+                        "showMenuBar": {
+                            "type": "boolean"
+                        }, 
+                        "showAddressBar": {
+                            "type": "boolean"
+                        }, 
+                        "relationsBag": {
+                            "type": "null"
+                        }, 
+                        "url": {
+                            "type": "string"
+                        }, 
+                        "targetWindowType": {
+                            "type": "string"
+                        }, 
+                        "version": {
+                            "type": "null"
+                        }, 
+                        "clientRefId": {
+                            "type": "null"
+                        }, 
+                        "closeAllAdParts": {
+                            "type": "boolean"
+                        }, 
+                        "type": {
+                            "type": "string"
+                        }, 
+                        "id": {
+                            "type": "number"
+                        }
+                    }
+                }, 
+                "versionTargetingType": {
+                    "type": "string"
+                }, 
+                "servingMethod": {
+                    "type": "null"
+                }, 
+                "unSavedTemplateAd": {
+                    "type": "boolean"
+                }, 
+                "adChoicesStatus": {
+                    "type": "boolean"
+                }, 
+                "adFormat": {
+                    "type": "string"
+                }
+            }
+        }, 
+        "error": {
+            "type": "null"
+        }
+    }
+}

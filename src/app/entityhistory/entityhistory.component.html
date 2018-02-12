@@ -1,3 +1,63 @@
-<p>
-  entityhistory works!
-</p>
+<div class="entityhistory-container">
+	<mat-toolbar>Entity History</mat-toolbar>
+	<form (ngSubmit)="onSubmit()" #entityHistoryForm="ngForm">
+			<mat-form-field floatLabel="auto">
+					<mat-select placeholder="EntityType" name="entitytype" [(ngModel)]="entityType" [formControl]="entityTypeFormCtrl">
+						<mat-option *ngFor="let entityType of entityTypes" [value]="entityType.value">
+							{{ entityType.viewValue }}
+						</mat-option>
+					</mat-select>
+					<mat-error *ngIf="entityTypeFormCtrl.hasError('required')">
+						EntityType should not be empty
+					</mat-error>
+			</mat-form-field>
+			<mat-form-field floatLabel="auto">
+					<input matInput placeholder="EntityID" name="entityid" [(ngModel)]="entityID" [formControl]="entityIDFormCtrl">
+					<mat-error *ngIf="entityIDFormCtrl.hasError('required') || entityIDFormCtrl.hasError('notNumber')">
+						EntityID should be a number.
+					</mat-error>
+			</mat-form-field>
+			<button type="submit" mat-raised-button color="primary" [disabled]="disableSubmit">Submit</button>
+	</form>
+</div>
+
+<div class="entityhistory-container-results" *ngIf="historyResultsDS" [class.showHistoryResultsTable]="showHistoryResultsTable">
+	<div class="blankspacebaby"></div>
+	<mat-table [dataSource]="historyResultsDS">
+			<ng-container matColumnDef="ID">
+				<mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+				<mat-cell *matCellDef="let result">{{ result.ID }}</mat-cell>
+			</ng-container>
+			<ng-container matColumnDef="Time">
+				<mat-header-cell *matHeaderCellDef>Time</mat-header-cell>
+				<mat-cell *matCellDef="let result">{{ result.Time }}</mat-cell>
+			</ng-container>
+			<ng-container matColumnDef="EntityID">
+				<mat-header-cell *matHeaderCellDef>EntityID</mat-header-cell>
+				<mat-cell *matCellDef="let result">{{ result.EntityID }}</mat-cell>
+			</ng-container>
+			<ng-container matColumnDef="EntityType">
+				<mat-header-cell *matHeaderCellDef>EntityType</mat-header-cell>
+				<mat-cell *matCellDef="let result">{{ result.EntityType }}</mat-cell>
+			</ng-container>
+			<ng-container matColumnDef="Type">
+				<mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+				<mat-cell *matCellDef="let result">{{ result.Type }}</mat-cell>
+			</ng-container>
+			<ng-container matColumnDef="PerformedBy">
+				<mat-header-cell *matHeaderCellDef>PerformedBy</mat-header-cell>
+				<mat-cell *matCellDef="let result">{{ result.PerformedBy }}</mat-cell>
+			</ng-container>
+			<ng-container matColumnDef="source">
+				<mat-header-cell *matHeaderCellDef class="source-column">source</mat-header-cell>
+				<mat-cell *matCellDef="let result" class="source-column">
+					<button mat-button color="primary" (click)="showMore(result.data)">
+						<mat-icon svgIcon="more"></mat-icon>
+					</button>
+				</mat-cell>
+			</ng-container>
+			<mat-header-row *matHeaderRowDef="historyResultsColumns"></mat-header-row>
+    		<mat-row *matRowDef="let row; columns: historyResultsColumns;"></mat-row>
+	</mat-table>
+	<mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50]"></mat-paginator>
+</div>

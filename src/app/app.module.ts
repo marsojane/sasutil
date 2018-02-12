@@ -21,6 +21,7 @@ import { SynclogsComponent } from './synclogs/synclogs.component'
 import { ESMSearchComponent } from './esmsearch/esmsearch.component'
 import { ESResultDialogComponent } from './esresdialog/esresdialog.component'
 import { EntityHistoryComponent } from './entityhistory/entityhistory.component'
+import { HistoryDialogComponent } from './historydialog/historydialog.component'
 
 // material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -57,7 +58,8 @@ import { MatDividerModule } from '@angular/material/divider'
 		SynclogsComponent,
 		ESMSearchComponent,
 		ESResultDialogComponent,
-		EntityHistoryComponent
+		EntityHistoryComponent,
+		HistoryDialogComponent
 	],
 	imports: [
 		BrowserModule,

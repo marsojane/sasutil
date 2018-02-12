@@ -1,0 +1,551 @@
+export const MockAdHistory = {
+	'metadata': {
+		'total': 11,
+		'types': null
+	},
+	'debug': null,
+	'error': null,
+	'result': [{
+			'type': 'EntityOperation',
+			'id': 1096853055,
+			'clientRefId': null,
+			'relationsBag': null,
+			'uiPermissions': null,
+			'version': 1508827906793603072,
+			'typeOfEntity': 'Ad',
+			'entityId': 1074482624,
+			'changerUserId': 263880,
+			'changerUserName': 'Joey Resuento',
+			'changerAccountId': 2,
+			'changerAccountName': 'JpartNXTAccount',
+			'changedDate': 1508827906771,
+			'operationType': 'Ad_Duplicated',
+			'historyCodeInt': 11000,
+			'innerMessage': 'Ad was duplicate to ad: 1074604707',
+			'params': ['1074604707']
+		}, {
+			'type': 'EntityChange',
+			'id': 1094352737,
+			'clientRefId': null,
+			'relationsBag': null,
+			'uiPermissions': null,
+			'version': 1501568735118688256,
+			'typeOfEntity': 'Ad',
+			'entityId': 1074482624,
+			'changerUserId': 263880,
+			'changerUserName': 'Joey Resuento',
+			'changerAccountId': 2,
+			'changerAccountName': null,
+			'changedDate': 1501568735108,
+			'operationType': 'General_Update',
+			'propertyChange': {
+				'type': 'ObjectPropertyChange',
+				'field': 'Ad',
+				'parentField': '',
+				'containerId': '1074482624',
+				'propertyChanges': [{
+						'type': 'TerminalPropertyChange',
+						'field': 'version',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '1501568543263162368',
+						'valueNew': '1501568735109840896'
+					}, {
+						'type': 'TerminalPropertyChange',
+						'field': 'pricingSize',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '112323',
+						'valueNew': '112310'
+					}, {
+						'type': 'TerminalPropertyChange',
+						'field': 'overallSize',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '112323',
+						'valueNew': '112310'
+					}, {
+						'type': 'TerminalPropertyChange',
+						'field': 'initialSize',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '112323',
+						'valueNew': '112310'
+					}, {
+						'type': 'ObjectPropertyChange',
+						'field': 'defaultImage',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'propertyChanges': [{
+								'type': 'TerminalPropertyChange',
+								'field': 'thumbnailUrl',
+								'parentField': 'Ad.defaultImage',
+								'containerId': '41027899381643',
+								'valueOld': 'http://resources-prod-sizmdx.s3.amazonaws.com/PROD/html5/1073742972/20170801/1074039000/30342371560391148/img/batman.jpg',
+								'valueNew': 'http://resources-prod-sizmdx.s3.amazonaws.com/PROD/html5/1073742972/20170801/1074039000/30342423159767619/img/batman.jpg'
+							}
+						]
+					}, {
+						'type': 'ObjectPropertyChange',
+						'field': 'html5',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'propertyChanges': [{
+								'type': 'TerminalPropertyChange',
+								'field': 'size',
+								'parentField': 'Ad.html5',
+								'containerId': '41027899381645',
+								'valueOld': '112323',
+								'valueNew': '112310'
+							}
+						]
+					}
+				]
+			}
+		}, {
+			'type': 'EntityChange',
+			'id': 1094352690,
+			'clientRefId': null,
+			'relationsBag': null,
+			'uiPermissions': null,
+			'version': 1501568543272927232,
+			'typeOfEntity': 'Ad',
+			'entityId': 1074482624,
+			'changerUserId': 263880,
+			'changerUserName': 'Joey Resuento',
+			'changerAccountId': 2,
+			'changerAccountName': null,
+			'changedDate': 1501568543266,
+			'operationType': 'General_Update',
+			'propertyChange': {
+				'type': 'ObjectPropertyChange',
+				'field': 'Ad',
+				'parentField': '',
+				'containerId': '1074482624',
+				'propertyChanges': [{
+						'type': 'TerminalPropertyChange',
+						'field': 'version',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '1501567974403670016',
+						'valueNew': '1501568543263162368'
+					}, {
+						'type': 'ObjectPropertyChange',
+						'field': 'defaultImage',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'propertyChanges': [{
+								'type': 'TerminalPropertyChange',
+								'field': 'thumbnailUrl',
+								'parentField': 'Ad.defaultImage',
+								'containerId': '41027899381643',
+								'valueOld': 'http://resources-prod-sizmdx.s3.amazonaws.com/PROD/html5/1073742972/20170801/1074039000/30342219148821057/img/batman.jpg',
+								'valueNew': 'http://resources-prod-sizmdx.s3.amazonaws.com/PROD/html5/1073742972/20170801/1074039000/30342371560391148/img/batman.jpg'
+							}
+						]
+					}
+				]
+			}
+		}, {
+			'type': 'EntityChange',
+			'id': 1094352659,
+			'clientRefId': null,
+			'relationsBag': null,
+			'uiPermissions': null,
+			'version': 1501567974413697024,
+			'typeOfEntity': 'Ad',
+			'entityId': 1074482624,
+			'changerUserId': 263880,
+			'changerUserName': 'Joey Resuento',
+			'changerAccountId': 2,
+			'changerAccountName': null,
+			'changedDate': 1501567974402,
+			'operationType': 'General_Update',
+			'propertyChange': {
+				'type': 'ObjectPropertyChange',
+				'field': 'Ad',
+				'parentField': '',
+				'containerId': '1074482624',
+				'propertyChanges': [{
+						'type': 'TerminalPropertyChange',
+						'field': 'version',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '1501567830088482816',
+						'valueNew': '1501567974403670016'
+					}, {
+						'type': 'TerminalPropertyChange',
+						'field': 'pricingSize',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '112283',
+						'valueNew': '112323'
+					}, {
+						'type': 'TerminalPropertyChange',
+						'field': 'overallSize',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '112283',
+						'valueNew': '112323'
+					}, {
+						'type': 'TerminalPropertyChange',
+						'field': 'initialSize',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '112283',
+						'valueNew': '112323'
+					}, {
+						'type': 'ObjectPropertyChange',
+						'field': 'defaultImage',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'propertyChanges': [{
+								'type': 'TerminalPropertyChange',
+								'field': 'thumbnailUrl',
+								'parentField': 'Ad.defaultImage',
+								'containerId': '41027899381643',
+								'valueOld': 'http://resources-prod-sizmdx.s3.amazonaws.com/PROD/html5/1073742972/20170801/1074039000/30342179897475563/img/batman.jpg',
+								'valueNew': 'http://resources-prod-sizmdx.s3.amazonaws.com/PROD/html5/1073742972/20170801/1074039000/30342219148821057/img/batman.jpg'
+							}
+						]
+					}, {
+						'type': 'ObjectPropertyChange',
+						'field': 'html5',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'propertyChanges': [{
+								'type': 'TerminalPropertyChange',
+								'field': 'size',
+								'parentField': 'Ad.html5',
+								'containerId': '41027899381645',
+								'valueOld': '112283',
+								'valueNew': '112323'
+							}
+						]
+					}
+				]
+			}
+		}, {
+			'type': 'EntityChange',
+			'id': 1094352643,
+			'clientRefId': null,
+			'relationsBag': null,
+			'uiPermissions': null,
+			'version': 1501567830104735744,
+			'typeOfEntity': 'Ad',
+			'entityId': 1074482624,
+			'changerUserId': 263880,
+			'changerUserName': 'Joey Resuento',
+			'changerAccountId': 2,
+			'changerAccountName': null,
+			'changedDate': 1501567830092,
+			'operationType': 'General_Update',
+			'propertyChange': {
+				'type': 'ObjectPropertyChange',
+				'field': 'Ad',
+				'parentField': '',
+				'containerId': '1074482624',
+				'propertyChanges': [{
+						'type': 'TerminalPropertyChange',
+						'field': 'version',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '1501567080951644160',
+						'valueNew': '1501567830088482816'
+					}, {
+						'type': 'TerminalPropertyChange',
+						'field': 'pricingSize',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '112265',
+						'valueNew': '112283'
+					}, {
+						'type': 'TerminalPropertyChange',
+						'field': 'overallSize',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '112265',
+						'valueNew': '112283'
+					}, {
+						'type': 'TerminalPropertyChange',
+						'field': 'initialSize',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '112265',
+						'valueNew': '112283'
+					}, {
+						'type': 'ObjectPropertyChange',
+						'field': 'defaultImage',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'propertyChanges': [{
+								'type': 'TerminalPropertyChange',
+								'field': 'thumbnailUrl',
+								'parentField': 'Ad.defaultImage',
+								'containerId': '41027899381643',
+								'valueOld': 'http://resources-prod-sizmdx.s3.amazonaws.com/PROD/html5/1073742972/20170801/1074039000/30340973138551222/img/batman.jpg',
+								'valueNew': 'http://resources-prod-sizmdx.s3.amazonaws.com/PROD/html5/1073742972/20170801/1074039000/30342179897475563/img/batman.jpg'
+							}
+						]
+					}, {
+						'type': 'ObjectPropertyChange',
+						'field': 'html5',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'propertyChanges': [{
+								'type': 'TerminalPropertyChange',
+								'field': 'size',
+								'parentField': 'Ad.html5',
+								'containerId': '41027899381645',
+								'valueOld': '112265',
+								'valueNew': '112283'
+							}
+						]
+					}
+				]
+			}
+		}, {
+			'type': 'EntityChange',
+			'id': 1094352524,
+			'clientRefId': null,
+			'relationsBag': null,
+			'uiPermissions': null,
+			'version': 1501567080991948800,
+			'typeOfEntity': 'Ad',
+			'entityId': 1074482624,
+			'changerUserId': 263880,
+			'changerUserName': 'Joey Resuento',
+			'changerAccountId': 2,
+			'changerAccountName': 'JpartNXTAccount',
+			'changedDate': 1501567080947,
+			'operationType': 'General_Update',
+			'propertyChange': {
+				'type': 'ObjectPropertyChange',
+				'field': 'Ad',
+				'parentField': '',
+				'containerId': '1074482624',
+				'propertyChanges': [{
+						'type': 'TerminalPropertyChange',
+						'field': 'version',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '1501567048653930496',
+						'valueNew': '1501567080951644160'
+					}, {
+						'type': 'TerminalPropertyChange',
+						'field': 'adStatus',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': 'ATTACHED',
+						'valueNew': 'PUBLISHED'
+					}
+				]
+			}
+		}, {
+			'type': 'EntityOperation',
+			'id': 1094352515,
+			'clientRefId': null,
+			'relationsBag': null,
+			'uiPermissions': null,
+			'version': 1501567048678768640,
+			'typeOfEntity': 'Ad',
+			'entityId': 1074482624,
+			'changerUserId': 263880,
+			'changerUserName': 'Joey Resuento',
+			'changerAccountId': 2,
+			'changerAccountName': 'JpartNXTAccount',
+			'changedDate': 1501567048663,
+			'operationType': 'Ad_Attach',
+			'historyCodeInt': 11010,
+			'innerMessage': 'Ad was attached to placement: JusticeLeague (1074121401)',
+			'params': ['JusticeLeague', '1074121401']
+		}, {
+			'type': 'EntityChange',
+			'id': 1094352516,
+			'clientRefId': null,
+			'relationsBag': null,
+			'uiPermissions': null,
+			'version': 1501567048687484928,
+			'typeOfEntity': 'Ad',
+			'entityId': 1074482624,
+			'changerUserId': 263880,
+			'changerUserName': 'Joey Resuento',
+			'changerAccountId': 2,
+			'changerAccountName': 'JpartNXTAccount',
+			'changedDate': 1501567048658,
+			'operationType': 'General_Update',
+			'propertyChange': {
+				'type': 'ObjectPropertyChange',
+				'field': 'Ad',
+				'parentField': '',
+				'containerId': '1074482624',
+				'propertyChanges': [{
+						'type': 'TerminalPropertyChange',
+						'field': 'version',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '1501564041050456064',
+						'valueNew': '1501567048653930496'
+					}, {
+						'type': 'TerminalPropertyChange',
+						'field': 'adStatus',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': 'ASSIGNED',
+						'valueNew': 'ATTACHED'
+					}
+				]
+			}
+		}, {
+			'type': 'EntityOperation',
+			'id': 1094352282,
+			'clientRefId': null,
+			'relationsBag': null,
+			'uiPermissions': null,
+			'version': 1501564041081520128,
+			'typeOfEntity': 'Ad',
+			'entityId': 1074482624,
+			'changerUserId': 263880,
+			'changerUserName': 'Joey Resuento',
+			'changerAccountId': 2,
+			'changerAccountName': 'JpartNXTAccount',
+			'changedDate': 1501564041056,
+			'operationType': 'Ad_AssignToCampaign',
+			'historyCodeInt': 11004,
+			'innerMessage': 'Ad was assigned to campaign: Tickets2017_DCO (1073838971)',
+			'params': ['Tickets2017_DCO', '1073838971']
+		}, {
+			'type': 'EntityChange',
+			'id': 1094352283,
+			'clientRefId': null,
+			'relationsBag': null,
+			'uiPermissions': null,
+			'version': 1501564041091743744,
+			'typeOfEntity': 'Ad',
+			'entityId': 1074482624,
+			'changerUserId': 263880,
+			'changerUserName': 'Joey Resuento',
+			'changerAccountId': 2,
+			'changerAccountName': 'JpartNXTAccount',
+			'changedDate': 1501564041050,
+			'operationType': 'General_Update',
+			'propertyChange': {
+				'type': 'ObjectPropertyChange',
+				'field': 'Ad',
+				'parentField': '',
+				'containerId': '1074482624',
+				'propertyChanges': [{
+						'type': 'TerminalPropertyChange',
+						'field': 'version',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': '1501563536707420160',
+						'valueNew': '1501564041050456064'
+					}, {
+						'type': 'TerminalPropertyChange',
+						'field': 'adStatus',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'valueOld': 'NEW',
+						'valueNew': 'ASSIGNED'
+					}, {
+						'type': 'ObjectPropertyChange',
+						'field': 'adAssignmentData',
+						'parentField': 'Ad',
+						'containerId': '1074482624',
+						'propertyChanges': [{
+								'type': 'TerminalPropertyChange',
+								'field': 'accountName',
+								'parentField': 'Ad.adAssignmentData',
+								'containerId': '1074482624',
+								'valueOld': '',
+								'valueNew': 'JpartNXTAccount'
+							}, {
+								'type': 'TerminalPropertyChange',
+								'field': 'advertiserName',
+								'parentField': 'Ad.adAssignmentData',
+								'containerId': '1074482624',
+								'valueOld': '',
+								'valueNew': 'Odin'
+							}, {
+								'type': 'TerminalPropertyChange',
+								'field': 'brandName',
+								'parentField': 'Ad.adAssignmentData',
+								'containerId': '1074482624',
+								'valueOld': '',
+								'valueNew': 'Odin'
+							}, {
+								'type': 'TerminalPropertyChange',
+								'field': 'campaignName',
+								'parentField': 'Ad.adAssignmentData',
+								'containerId': '1074482624',
+								'valueOld': '',
+								'valueNew': 'Tickets2017_DCO'
+							}, {
+								'type': 'TerminalPropertyChange',
+								'field': 'accountId',
+								'parentField': 'Ad.adAssignmentData',
+								'containerId': '1074482624',
+								'valueOld': 'null',
+								'valueNew': '1073742972'
+							}, {
+								'type': 'TerminalPropertyChange',
+								'field': 'advertiserId',
+								'parentField': 'Ad.adAssignmentData',
+								'containerId': '1074482624',
+								'valueOld': 'null',
+								'valueNew': '1073750245'
+							}, {
+								'type': 'TerminalPropertyChange',
+								'field': 'brandId',
+								'parentField': 'Ad.adAssignmentData',
+								'containerId': '1074482624',
+								'valueOld': 'null',
+								'valueNew': '1073819986'
+							}, {
+								'type': 'TerminalPropertyChange',
+								'field': 'campaignId',
+								'parentField': 'Ad.adAssignmentData',
+								'containerId': '1074482624',
+								'valueOld': 'null',
+								'valueNew': '1073838971'
+							}, {
+								'type': 'TerminalPropertyChange',
+								'field': 'assigneeId',
+								'parentField': 'Ad.adAssignmentData',
+								'containerId': '1074482624',
+								'valueOld': 'null',
+								'valueNew': '1073838971'
+							}, {
+								'type': 'TerminalPropertyChange',
+								'field': 'assigneeType',
+								'parentField': 'Ad.adAssignmentData',
+								'containerId': '1074482624',
+								'valueOld': 'null',
+								'valueNew': 'Campaign'
+							}
+						]
+					}
+				]
+			}
+		}, {
+			'type': 'EntityOperation',
+			'id': 1094352253,
+			'clientRefId': null,
+			'relationsBag': null,
+			'uiPermissions': null,
+			'version': 1501563536715874304,
+			'typeOfEntity': 'Ad',
+			'entityId': 1074482624,
+			'changerUserId': 263880,
+			'changerUserName': 'Joey Resuento',
+			'changerAccountId': 2,
+			'changerAccountName': 'JpartNXTAccount',
+			'changedDate': 1501563536707,
+			'operationType': 'General_Create',
+			'historyCodeInt': 10001,
+			'innerMessage': 'Ad 1074482624 was created',
+			'params': ['Ad', '1074482624']
+		}
+	]
+}
