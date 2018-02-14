@@ -12,7 +12,7 @@ import { HistoryDialogComponent } from '../historydialog/historydialog.component
 import { entityTypes } from '../data/entitytypes'
 // mock data //comment on production build
 // import { MockAdHistory } from '../data/mock/AdHistory'
-import { MockDGHistory2 } from '../data/mock/DeliveryGroupHistory_2'
+// import { MockDGHistory2 } from '../data/mock/DeliveryGroupHistory_2'
 
 import * as lo_ from 'lodash'
 import * as moment from 'moment'
@@ -47,7 +47,7 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 	constructor(
 		private notifications: NotificationsService,
 		private sessionData: SessionDataService,
-		private elasticClient: SasApiClientService,
+		private sasAPIClient: SasApiClientService,
 		private iconRegistry: MatIconRegistry,
 		private sanitizer: DomSanitizer,
 		private dialog: MatDialog
@@ -83,13 +83,18 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 	}
 
 	onSubmit(): void {
-		this.historyResultsRaw = []
-		lo_.forEach(MockDGHistory2.result, (record) => {
-			this.historyResultsRaw.push(this.setHistoryResult(record))
+		this.sasAPIClient.getHistory(this.entityID, this.entityType)
+		.subscribe((data) => {
+			this.historyResultsRaw = []
+			lo_.forEach(data.result, (record) => {
+				this.historyResultsRaw.push(this.setHistoryResult(record))
+			})
+			this.historyResultsDS = new MatTableDataSource<HistoryRecordSet>(this.historyResultsRaw)
+			this.historyResultsDS.paginator = this.paginator
+			this.showHistoryResultsTable = true
+		}, (error) => {
+			this.notifications.notify('error', error.message, !0)
 		})
-		this.historyResultsDS = new MatTableDataSource<HistoryRecordSet>(this.historyResultsRaw)
-		this.historyResultsDS.paginator = this.paginator
-		this.showHistoryResultsTable = true
 	}
 
 	setHistoryResult(record: any): HistoryRecordSet {

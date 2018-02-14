@@ -54,4 +54,8 @@ export class SasApiClientService extends APIClient {
 	public getAccountSettings(id: number): Observable<any> {
 		return this.constructRequest('get', format('/accounts/{0}', id), this.sessionData.getData('sessionId'))
 	}
+
+	public getHistory(id: number, type: string): Observable<any> {
+		return this.constructRequest('get', format('/history/entityhistory?id={0}&type={1}&sort=changedDate&order=desc', id, type), this.sessionData.getData('sessionId'))
+	}
 }
