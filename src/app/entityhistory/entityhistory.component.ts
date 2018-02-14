@@ -11,7 +11,8 @@ import { HistoryRecordSet } from '../data/historyrecordset'
 import { HistoryDialogComponent } from '../historydialog/historydialog.component'
 import { entityTypes } from '../data/entitytypes'
 // mock data //comment on production build
-import { MockAdHistory } from '../data/mock/AdHistory'
+// import { MockAdHistory } from '../data/mock/AdHistory'
+import { MockDGHistory2 } from '../data/mock/DeliveryGroupHistory_2'
 
 import * as lo_ from 'lodash'
 import * as moment from 'moment'
@@ -51,7 +52,7 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 		private sanitizer: DomSanitizer,
 		private dialog: MatDialog
 	) { 
-		iconRegistry.addSvgIcon('more', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/more_white.svg'))
+		iconRegistry.addSvgIcon('more', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/more.svg'))
 	}
 
 	ngOnInit() {
@@ -73,13 +74,17 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 			|| this.entityIDFormCtrl.hasError('notNumber')
 	}
 
-	showMore(): void {
-
+	showMore(data: any): void {
+		let dialogRef = this.dialog.open(HistoryDialogComponent, {
+			height: '90%',
+			width: '90%',
+			data: data
+		})
 	}
 
 	onSubmit(): void {
 		this.historyResultsRaw = []
-		lo_.forEach(MockAdHistory.result, (record) => {
+		lo_.forEach(MockDGHistory2.result, (record) => {
 			this.historyResultsRaw.push(this.setHistoryResult(record))
 		})
 		this.historyResultsDS = new MatTableDataSource<HistoryRecordSet>(this.historyResultsRaw)
@@ -89,7 +94,7 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 
 	setHistoryResult(record: any): HistoryRecordSet {
 		const id = record.id, changeDate = moment(record.changedDate), type = record.operationType.split('_')
-		if (this.sessionData.getData('userAccountTZ')) {
+		if (this.sessionData.getData('userAccountTZ') && this.sessionData.getData('isApiUser') === 'false') {
 			// possible formats
 			// * GMT - ignore GMT
 			// * GMT_Plus_01
@@ -102,8 +107,8 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 			Time: changeDate.format('YYYY-MM-DDTHH:mm:ss.SSS'),
 			EntityID: record.entityId,
 			EntityType: record.typeOfEntity,
-			Type: type[1],
-			PerformedBy: format('{0} | {1}', record.changerUserName, record.changerAccountName),
+			Type: type.length === 2 ? type[1] : record.operationType,
+			PerformedBy: format('{0} ({1})', record.changerUserName, record.changerAccountName),
 			data: record
 		}
 	}

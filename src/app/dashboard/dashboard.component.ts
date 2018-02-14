@@ -35,10 +35,10 @@ export class DashboardComponent implements OnInit {
 		private sasAPIClient: SasApiClientService,
 		private dialog: MatDialog
 	) {
-		iconRegistry.addSvgIcon('sync', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/sync_white.svg'))
-		iconRegistry.addSvgIcon('check', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/check_white.svg'))
-		iconRegistry.addSvgIcon('warning', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/warning_white.svg'))
-		iconRegistry.addSvgIcon('error', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/error_white.svg'))
+		iconRegistry.addSvgIcon('sync', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/sync.svg'))
+		iconRegistry.addSvgIcon('check', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/check.svg'))
+		iconRegistry.addSvgIcon('warning', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/warning.svg'))
+		iconRegistry.addSvgIcon('error', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/error.svg'))
 	}
 
 	ngOnInit() {

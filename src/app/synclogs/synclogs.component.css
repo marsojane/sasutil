@@ -40,3 +40,7 @@ mat-table {
 .unknown {
 	background-color: #2a70c0
 }
+
+.json {
+	font-size: 1em;
+}

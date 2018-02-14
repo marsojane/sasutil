@@ -13,9 +13,11 @@
 		<p class="container-label">Tools</p>
 		<mat-divider></mat-divider>
 		<div class="apps-container-sub">
-			<a (click)="genSessionToken()"><button mat-raised-button class="appnav-button">SAS Session Token</button></a>
+			<a (click)="genSessionToken()">
+				<button mat-raised-button class="appnav-button" color="primary">SAS Session Token</button>
+			</a>
 			<a *ngFor="let nav of appsNav" [routerLink]="nav.link" routerLinkActive="active">
-				<button mat-raised-button class="appnav-button">{{ nav.view }}</button>
+				<button mat-raised-button class="appnav-button" color="primary">{{ nav.view }}</button>
 			</a>
 		</div>
 	</div>	

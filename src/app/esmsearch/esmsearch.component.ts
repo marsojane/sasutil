@@ -56,7 +56,7 @@ export class ESMSearchComponent implements OnInit, AfterViewInit {
 		private sanitizer: DomSanitizer,
 		private dialog: MatDialog
 	) {
-		iconRegistry.addSvgIcon('more', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/more_white.svg'))
+		iconRegistry.addSvgIcon('more', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/more.svg'))
 	}
 
 	ngOnInit() {

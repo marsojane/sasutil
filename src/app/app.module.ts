@@ -92,7 +92,8 @@ import { MatDividerModule } from '@angular/material/divider'
 		// end @angular/material imports
 	],
 	entryComponents: [
-		ESResultDialogComponent
+		ESResultDialogComponent, 
+		HistoryDialogComponent
 	],
 	providers: [
 		NotificationsService,

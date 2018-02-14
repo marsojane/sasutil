@@ -16,8 +16,8 @@ export class ESResultDialogComponent implements OnInit {
 		private iconRegistry: MatIconRegistry,
 		private sanitizer: DomSanitizer
 	) { 
-		iconRegistry.addSvgIcon('close', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/close_white.svg'))
-		iconRegistry.addSvgIcon('copy', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/copy_white.svg'))
+		iconRegistry.addSvgIcon('close', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/close.svg'))
+		iconRegistry.addSvgIcon('copy', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/copy.svg'))
 	}
 
 	ngOnInit() {

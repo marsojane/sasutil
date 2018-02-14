@@ -1,0 +1,40 @@
+.header {
+	padding: 0;
+	max-height: 50px;
+	height: 10%;
+}
+
+.header-label  {
+	width: 100%;
+	height: 100%;
+}
+
+.header-actions {	
+	display: flex;	
+	position: absolute;
+	width: 175px;
+	right: 0;
+}
+
+mat-grid-list {
+	width: 100%;
+	height:100%;
+}
+
+.rawcontent {
+	height: 100%;
+	width: 100%;
+}
+
+#rawcontentinput {
+	height: 1px;
+	width: 1px;
+}
+
+mat-tab-group {
+	height: 90%;
+}
+
+.json {
+	padding: 0
+}

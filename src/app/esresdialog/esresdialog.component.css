@@ -30,8 +30,10 @@ mat-grid-list {
 	height: 100%;
 	width: 100%;
 	overflow: auto;
-	background-color: #00000061;
-	font-size: 0.9em;
+}
+
+.json {
+	padding: 0;
 }
 
 #contentinput {

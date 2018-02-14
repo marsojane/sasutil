@@ -5,12 +5,11 @@
 
 a {
 	text-decoration: none;
-	color: rgba(255, 255, 255, 0.61);
 }
 
 .container-label {
-	color: rgba(255, 255, 255, 0.61);
 	font-size: 1.2em;
+	color: #3f51b5;
 }
 
 .status-container {

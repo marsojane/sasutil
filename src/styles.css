@@ -1,4 +1,4 @@
-@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body {
 	margin: 0;
@@ -11,9 +11,11 @@ body {
 
 .json {
 	font-size: .8em;
-	background-color: #131f1f1c;
+	background-color: #cbd2f9;
 	overflow: auto;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	padding: 2px 15px;
+	color: #000;
 }
 
 .blankspacebaby {

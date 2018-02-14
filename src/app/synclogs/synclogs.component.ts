@@ -89,22 +89,26 @@ export class SynclogsComponent implements OnInit {
 	}
 
 	onSubmit(): void {
-		this.selectedPlatform === 'mdx2' && this.msqbClient.getSyncLogs(this.entityType, this.entityID)
-		.subscribe((result) => {
-			if (result.success && result.length > 0) {
-				this.notifications.notify('success', `Get Sync logs for entityType:${ this.entityType }, entityID:${ this.entityID } competed.`)
-				this.mdx2DataSource = new MatTableDataSource<SyncLogsRecordSet>(result.recordset)
-			} else {
-				this.notifications.notify('info', 'Can\'t find sync logs for this entity for the last 3 days.', !0)
-			}
-		}, (error) => {
-			this.notifications.notify('error', error.message, !0)
-		})
+		if (this.selectedPlatform === 'mdx2') {			
+			this.msqbClient.getSyncLogs(this.entityType, this.entityID)
+			.subscribe((result) => {
+				this.sasSyncLogs = void 0
+				if (result.success && result.length > 0) {
+					this.notifications.notify('success', `Get Sync logs for entityType:${ this.entityType }, entityID:${ this.entityID } competed.`)
+					this.mdx2DataSource = new MatTableDataSource<SyncLogsRecordSet>(result.recordset)
+				} else {
+					this.notifications.notify('info', 'Can\'t find sync logs for this entity for the last 3 days.', !0)
+				}
+			}, (error) => {
+				this.notifications.notify('error', error.message, !0)
+			})
+		}
 		if (this.selectedPlatform === 'sas') {
 			const startts = unAwareToTime(this.startDateCtrl.value)
 			const endts = unAwareToTime(this.endDateCtrl.value, !0)
 			this.elasticClient.getSyncLogs(this.entityID, startts, endts)
 			.subscribe((result) => {
+				this.mdx2DataSource = void 0
 				if (result.hits && result.hits.total > 0) {
 
 					// sort hits ascending
