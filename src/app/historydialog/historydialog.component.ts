@@ -11,8 +11,7 @@ export class HistoryDialogComponent implements OnInit {
 
 	@ViewChild('rawcontentinput') rawcontentinput: ElementRef
 	public dataStr: string
-
-	enableDiff = false
+	enableDiff = true
 
 	constructor(
 		public dialogRef: MatDialogRef<HistoryDialogComponent>,
