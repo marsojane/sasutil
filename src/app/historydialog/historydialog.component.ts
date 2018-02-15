@@ -11,7 +11,6 @@ export class HistoryDialogComponent implements OnInit {
 
 	@ViewChild('rawcontentinput') rawcontentinput: ElementRef
 	public dataStr: string
-	enableDiff = true
 
 	constructor(
 		public dialogRef: MatDialogRef<HistoryDialogComponent>,
@@ -24,6 +23,7 @@ export class HistoryDialogComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.dataStr = JSON.stringify(this.data)
 	}
 
 	onNoClick(): void {

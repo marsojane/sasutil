@@ -66,6 +66,11 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 
 	ngAfterViewInit() {
 		this.historyResultsDS.paginator = this.paginator
+
+		// non-production build
+		this.entityID = 1074482624
+		this.entityType = 'Ad'
+		this.onSubmit()
 	}
 
 	shouldDisableSubmit(): void {
