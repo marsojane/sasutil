@@ -6,5 +6,5 @@ export class HistoryRecordSet {
 	Type: string
 	PerformedBy: string
 	source?: any
-	data?: { [index: string]: any }
+	raw?: { [index: string]: any }
 }

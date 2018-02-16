@@ -1,6 +1,8 @@
 <div class="header">
 	<mat-grid-list cols="2" rowHeight="fit">
-		<mat-grid-tile></mat-grid-tile>
+		<mat-grid-tile>
+			<p class="header-title">{{ data.Type }} | {{ data.PerformedBy }} | {{ data.Time }}</p>
+		</mat-grid-tile>
 		<mat-grid-tile>
 				<div class="header-actions">
 					<button mat-button color="accent" (click)="copyToClipBoard()">
@@ -15,12 +17,38 @@
 </div>
 <mat-tab-group>
 	<mat-tab label="Table">
-		
+		<div class="tablecontent">			
+			<p *ngIf="!data.raw.propertyChange && data.raw.innerMessage">No Property Changes to show. Inner Message: {{ data.raw.innerMessage }}</p>
+			<mat-table [dataSource]="opChangesDS" *ngIf="opChangesDS">
+				<ng-container matColumnDef="Field">
+					<mat-header-cell *matHeaderCellDef>Field</mat-header-cell>
+					<mat-cell *matCellDef="let result">{{ result.Field }}</mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="ParentField">
+					<mat-header-cell *matHeaderCellDef>ParentField</mat-header-cell>
+					<mat-cell *matCellDef="let result">{{ result.ParentField }}</mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="ContainerID">
+					<mat-header-cell *matHeaderCellDef>ContainerID</mat-header-cell>
+					<mat-cell *matCellDef="let result">{{ result.ContainerID }}</mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="OldValue">
+					<mat-header-cell *matHeaderCellDef>OldValue</mat-header-cell>
+					<mat-cell *matCellDef="let result">{{ result.OldValue }}</mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="NewValue">
+					<mat-header-cell *matHeaderCellDef>NewValue</mat-header-cell>
+					<mat-cell *matCellDef="let result">{{ result.NewValue }}</mat-cell>
+				</ng-container>
+				<mat-header-row *matHeaderRowDef="opChangesColumns"></mat-header-row>
+    			<mat-row *matRowDef="let row; columns: opChangesColumns;"></mat-row>
+			</mat-table>
+		</div>
 	</mat-tab>
 	<mat-tab label="Raw">
 		<div class="rawcontent">
-			<pre class="json">{{ data | json }}</pre>
+			<pre class="json">{{ data.raw | json }}</pre>
 		</div>
 	</mat-tab>
-  </mat-tab-group>
+</mat-tab-group>
   <input #rawcontentinput type="text" [value]="dataStr" id="rawcontentinput">

@@ -38,3 +38,13 @@ mat-tab-group {
 .json {
 	padding: 0
 }
+
+.header-title {
+	font-size: 0.8em;
+	width: 100%;
+	text-align: left;
+}
+
+.tablecontent {
+	width: 100%;
+}

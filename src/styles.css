@@ -35,3 +35,7 @@ body {
 	color: #ffffff;
 	font-size: 1em;
 }
+
+.mat-header-row, .mat-row {
+	min-height: 35px !important;
+}

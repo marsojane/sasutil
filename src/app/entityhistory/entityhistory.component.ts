@@ -38,7 +38,7 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 	historyResultsDS: MatTableDataSource<HistoryRecordSet>
 	historyResultsRaw: HistoryRecordSet[]= [
 		{
-			ID: 1010, Time: '1010', EntityID: 1010, EntityType: 'dummy', Type: '1010', PerformedBy: '1010', data: {}
+			ID: 1010, Time: '1010', EntityID: 1010, EntityType: 'dummy', Type: '1010', PerformedBy: '1010', raw: {}
 		}
 	]
 
@@ -65,12 +65,7 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		this.historyResultsDS.paginator = this.paginator
-
-		// non-production build
-		this.entityID = 1074482624
-		this.entityType = 'Ad'
-		this.onSubmit()
+		this.historyResultsDS.paginator = this.paginator	
 	}
 
 	shouldDisableSubmit(): void {
@@ -119,7 +114,7 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 			EntityType: record.typeOfEntity,
 			Type: type.length === 2 ? type[1] : record.operationType,
 			PerformedBy: format('{0} ({1})', record.changerUserName, record.changerAccountName),
-			data: record
+			raw: record
 		}
 	}
 }
