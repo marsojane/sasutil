@@ -96,17 +96,46 @@
 	</mat-table>
 </div>
 
-<div class="cmqueue-container-sas" *ngIf="sasSyncLogs">
+<div class="cmqueue-container-sas" *ngIf="sasDataSource">
 	<div class="blankspacebaby"></div>
-	<mat-accordion>
-		<mat-expansion-panel *ngFor="let hit of sasSyncLogs">
-			<mat-expansion-panel-header>
-				<mat-panel-title>{{ hit._source.eventtime }}</mat-panel-title>
-				<mat-panel-description>
-						<span [ngClass]="{'success': hit._source.eventID == 260, 'error': hit._source.eventID == 257, 'unknown': hit._source.eventID != 257 && hit._source.eventID != 260}"> ({{ hit._source.eventID }}) </span>
-				</mat-panel-description>
-			</mat-expansion-panel-header>
-			<pre class="json">{{ hit | json }}</pre>
-		</mat-expansion-panel>	
-	</mat-accordion>
+
+	<mat-table [dataSource]="sasDataSource">
+
+		<ng-container matColumnDef="timestamp">
+			<mat-header-cell *matHeaderCellDef>timestamp</mat-header-cell>
+			<mat-cell *matCellDef="let recordset"> {{ recordset._source.eventtime }} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="type">
+			<mat-header-cell *matHeaderCellDef>type</mat-header-cell>
+			<mat-cell *matCellDef="let recordset"> {{ recordset._source.type }} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="channel">
+			<mat-header-cell *matHeaderCellDef>channel</mat-header-cell>
+			<mat-cell *matCellDef="let recordset"> {{ recordset._source.channel }} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="eventid">
+			<mat-header-cell *matHeaderCellDef>eventid</mat-header-cell>
+			<mat-cell *matCellDef="let recordset"> {{ recordset._source.eventID }} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="status">
+			<mat-header-cell *matHeaderCellDef>status</mat-header-cell>
+			<mat-cell *matCellDef="let recordset"> {{  recordset._source.eventID == 260 ? 'Success' : (  recordset._source.eventID == 257 ? 'Error' : 'Unknown' ) }} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="source">
+			<mat-header-cell *matHeaderCellDef class="source-column">source</mat-header-cell>
+			<mat-cell *matCellDef="let result" class="source-column">
+				<button mat-button color="primary" (click)="showMore(result)">
+					<mat-icon svgIcon="more"></mat-icon>
+				</button>
+			</mat-cell>
+		</ng-container>
+
+		<mat-header-row *matHeaderRowDef="sasDisplayedColumns"></mat-header-row>
+		<mat-row *matRowDef="let row; columns: sasDisplayedColumns;"></mat-row>
+	</mat-table>
 </div>

@@ -7,3 +7,12 @@ export class SyncLogsRecordSet {
 	CreationDate: string
 	CompletionDate: string
 }
+
+export class SyncLogsRecordSASSet {
+	timestamp: string
+	type: string
+	channel: string
+	eventid: number
+	status: string
+	source: any
+}

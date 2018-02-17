@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl, Validators } from '@angular/forms'
-import { MatTableDataSource } from '@angular/material'
+import { DomSanitizer } from '@angular/platform-browser'
+import { MatTableDataSource, MatIconRegistry, MatDialog } from '@angular/material'
 import { NotificationsService } from '../services/notifications.service'
 import { ElasticAPIClientService } from '../services/elastic-client.service'
 import { validateNumberField, validate, validDate, validateNF } from '../public/validators'
@@ -8,12 +9,15 @@ import { unAwareToTime } from '../public/utils'
 import { entityTypes } from '../data/entitytypes'
 import { platforms } from '../data/platforms'
 import { MsqbClient } from '../services/msqb-api-client.service'
-import { SyncLogsRecordSet } from '../data/slrecordset'
+import { SyncLogsRecordSet, SyncLogsRecordSASSet } from '../data/slrecordset'
 // we are importing a lot of functionality here - we shouldn't
 import * as moment from 'moment'
 // customize date format
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core'
 import { MomentDateAdapter } from '@angular/material-moment-adapter'
+
+// we are borrowing the es result dialog here
+import { ESResultDialogComponent } from '../esresdialog/esresdialog.component'
 
 @Component({
 	selector: 'app-synclogs',
@@ -46,6 +50,9 @@ export class SynclogsComponent implements OnInit {
 	mdx2DisplayedColumns = ['ObjectID', 'ShouldDelete', 'CommandStatus', 'ObjectType', 'CreationDate', 'CompletionDate']
 	mdx2DataSource: MatTableDataSource<SyncLogsRecordSet>
 
+	sasDisplayedColumns = ['timestamp', 'type', 'channel', 'eventid', 'status', 'source']
+	sasDataSource: MatTableDataSource<SyncLogsRecordSASSet>
+
 	// SAS Date picker
 	minDate = moment([2017, 0, 1])
 	maxDate = moment([])
@@ -56,8 +63,13 @@ export class SynclogsComponent implements OnInit {
 	constructor(
 		private notifications: NotificationsService,
 		private msqbClient: MsqbClient,
-		private elasticClient: ElasticAPIClientService
-	) { }
+		private elasticClient: ElasticAPIClientService,
+		private iconRegistry: MatIconRegistry,
+		private sanitizer: DomSanitizer,
+		private dialog: MatDialog
+	) { 
+		iconRegistry.addSvgIcon('more', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/more.svg'))
+	}
 
 	ngOnInit() {
 
@@ -88,8 +100,16 @@ export class SynclogsComponent implements OnInit {
 					|| this.entityIDFormCtrl.hasError('notNumber')
 	}
 
+	showMore(result: any) {
+		let dialogRef = this.dialog.open(ESResultDialogComponent, {
+			height: '90%',
+			width: '90%',
+			data: result
+		})
+	}
+
 	onSubmit(): void {
-		if (this.selectedPlatform === 'mdx2') {			
+		if (this.selectedPlatform === 'mdx2') {
 			this.msqbClient.getSyncLogs(this.entityType, this.entityID)
 			.subscribe((result) => {
 				this.sasSyncLogs = void 0
@@ -110,13 +130,13 @@ export class SynclogsComponent implements OnInit {
 			.subscribe((result) => {
 				this.mdx2DataSource = void 0
 				if (result.hits && result.hits.total > 0) {
-
 					// sort hits ascending
 					this.sasSyncLogs = result.hits.hits.sort((a, b) => {
 						const anum: any = moment(a._source.eventtime).format('x')
 						const bnum: any = moment(b._source.eventtime).format('x')
 						return anum - bnum
 					})
+					this.sasDataSource = new MatTableDataSource<SyncLogsRecordSASSet>(this.sasSyncLogs)
 					this.notifications.notify('success', `Get Sync logs for entityType:${ this.entityType }, entityID:${ this.entityID } competed.`)
 				} else {
 					this.notifications.notify('info', 'Can\'t find sync logs for this entity.', !0)
