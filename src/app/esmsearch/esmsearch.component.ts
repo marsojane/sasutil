@@ -71,14 +71,6 @@ export class ESMSearchComponent implements OnInit, AfterViewInit {
 		this.searchResults = [{ _type: 'Init', 
 		_source: { '@timestamp': '0000-00-00', environment: '', level: '', server: '', service: '', eventID: '' }}]
 		this.searchResultsTableDS = new MatTableDataSource<ElasticMultiSearchRecordSet>(this.searchResults)
-		/*
-		// testing only - need a way to auto-remove this in prod
-		if (!0 && mock_esmsearch) {
-			this.searchResults = lo_.concat(mock_esmsearch, mock_esmsearch, mock_esmsearch)
-			this.searchResultsTableDS = new MatTableDataSource<ElasticMultiSearchRecordSet>(this.searchResults)
-			this.searchResultsTableDS.filterPredicate = this.filterPredicate
-		}
-		*/
 	}
 
 	ngAfterViewInit() {

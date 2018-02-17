@@ -7,6 +7,8 @@ import { appsNav } from './data/appsnav'
 import { filter } from 'lodash'
 import 'rxjs/add/operator/filter'
 
+import { environment } from '../environments/environment'
+
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
@@ -14,7 +16,7 @@ import 'rxjs/add/operator/filter'
 })
 export class AppComponent implements OnInit {
 	public opened = false
-	public title = 'Support SAS Helpers'
+	public title = environment.production ? 'Support SASUtil' : 'Joey Cute'
 	public hasNotifications: boolean
 	public appsNav = filter(appsNav, (nav) => nav.enabled)
 	constructor(
