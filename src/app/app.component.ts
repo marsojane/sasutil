@@ -16,7 +16,7 @@ import { environment } from '../environments/environment'
 })
 export class AppComponent implements OnInit {
 	public opened = false
-	public title = environment.production ? 'Support SASUtil' : 'Joey Cute'
+	public title = environment.production ? 'Support SASUtil' : 'SASUtil'
 	public hasNotifications: boolean
 	public appsNav = filter(appsNav, (nav) => nav.enabled)
 	constructor(
