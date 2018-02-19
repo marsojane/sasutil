@@ -20,14 +20,14 @@ export class AdsupdateService {
 		.pipe(bufferCount(10))
 		.subscribe((value) => {
 				this.sizmekApiClient.updateAds({entities: value}).subscribe(() => {
-				this.notifications.notify('success', `Calling updateAds for adIds ${ reduceFrom(value, 'id').join(', ') } success`, !0)
+					this.notifications.notify('success', `Calling updateAds for adIds ${ reduceFrom(value, 'id').join(', ') } success`, !0)
 			}, (error) => {
 				this.notifications.notify('error', error.message, !0)
 			})
 		}, (error) => {
 				this.notifications.notify('error', error.message, !0)
 		}, () => {
-			this.notifications.notify('success', `Updating ads for adIds ${ adIds } has completed`, !0)
+			this.notifications.notify('success', `Updating ads has completed`, !0)
 		})
 	}
 
@@ -56,6 +56,8 @@ export class AdsupdateService {
 				this.notifications.notify('success', `Calling updateAds for adIds ${ reduceFrom(value, 'id').join(', ') } success`, !0)
 			}, (error) => {
 				this.notifications.notify('error', error.message, !0)
+			}, () => {
+				this.notifications.notify('success', `Updating ads has completed`, !0)
 			})
 		})
 	}
