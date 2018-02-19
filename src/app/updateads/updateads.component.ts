@@ -19,6 +19,7 @@ export class UpdateadsComponent implements OnInit {
 	entityTypes = [
 		{ value: 'Campaign', viewValue: 'Campaign' },
 		{ value: 'Placement', viewValue: 'Placement' },
+		// { value: 'MasterAd', viewValue: 'MasterAd' },
 		{ value: 'Ad', viewValue: 'Ad' }
 	]
 
@@ -37,7 +38,8 @@ export class UpdateadsComponent implements OnInit {
 	disableSubmit = true
 
 	constructor(
-		private adsupdate: AdsupdateService, private notifications: NotificationsService
+		private adsupdate: AdsupdateService,
+		private notifications: NotificationsService
 	) { }
 
 	ngOnInit() {
@@ -49,7 +51,6 @@ export class UpdateadsComponent implements OnInit {
 	}
 
 	shouldDisableSubmit(): void {
-		// for now we only support placemnet type
 		this.disableSubmit = (this.entityTypeFormCtrl.hasError('required')
 		|| this.entityIDsFormCtrl.hasError('required')
 		|| (this._selectedEntityType !== 'Campaign' && this.entityIDsFormCtrl.hasError('notNumbersCommaSeparated'))
@@ -78,6 +79,9 @@ export class UpdateadsComponent implements OnInit {
 				break
 			case 'Campaign':
 				this.adsupdate.updatebyCampaign(this.entityIDs)
+				break
+			case 'Ad':
+				this.adsupdate.updatebyAdIds(this.entityIDs)
 				break
 			default:
 				this.notifications.notify('error', 'EntityType is not supported', !0)

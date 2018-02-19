@@ -11,7 +11,7 @@
 						EntityType should not be empty
 				</mat-error>
 		</mat-form-field>
-		<mat-form-field floatLabel="auto" *ngIf="selectedEntityType === 'Campaign' || selectedEntityType === 'Placement'">				
+		<mat-form-field floatLabel="auto" *ngIf="!entityTypeFormCtrl.hasError('required')">
 			<textarea matInput placeholder="{{ txtAreaplaceHolder[selectedEntityType] }}" name="entityIDs" [(ngModel)]="entityIDs" [formControl]="entityIDsFormCtrl"></textarea>
 			<mat-error *ngIf="disableSubmit">					
 					{{ entityIDsValidationMessage }}

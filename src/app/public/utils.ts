@@ -30,3 +30,16 @@ export function unAwareToTime(ts: any, end?: boolean): any {
 	const timePart = end ? { h: 23, m: 59, s: 59 } : { h: 0, m: 0, s: 0 }
 	return moment([ts.year(), ts.month(), ts.date(), timePart.h, timePart.m, timePart.s]).format('x')
 }
+
+import { reduce, uniq } from 'lodash'
+
+export function reduceFrom<T>(collection: T[], property: string) {
+	return uniq(reduce(collection, (accu, r) => {
+		if (accu.id) {
+			return [accu.id, r.id]
+		} else {
+			accu.push(r.id)
+			return accu
+		}
+	}))
+}
