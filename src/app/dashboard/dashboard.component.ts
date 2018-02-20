@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 	public appsNav = lo_.filter(appsNav, (nav) => nav.enabled && nav.view !== 'Dashboard')
 	constructor(
 		private sessionData: SessionDataService,
-		private notifications: NotificationsService,
+		public notifications: NotificationsService,
 		private iconRegistry: MatIconRegistry,
 		private sanitizer: DomSanitizer,
 		private elasticClient: ElasticAPIClientService,
