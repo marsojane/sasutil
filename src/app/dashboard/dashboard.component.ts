@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core'
 import { DomSanitizer } from '@angular/platform-browser'
 import { MatIconRegistry, MatDialog, MatDialogRef } from '@angular/material'
 import { appsNav } from '../data/appsnav'
@@ -20,12 +20,15 @@ import { GensessionidComponent } from '../gensessionid/gensessionid.component'
 		ElasticAPIClientService, MsqbClient, SasApiClientService
 	]
 })
-export class DashboardComponent implements OnInit, OnDestroy { 
+export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit { 
 	private genSIDRef: MatDialogRef<GensessionidComponent>
 	public appsNav = lo_.filter(appsNav, (nav) => nav.enabled && nav.view !== 'Dashboard')
+	// public showConnections = !1
+	public connections: ConnectionsData[] = []
+	// private $this: DashboardComponent
 	constructor(
 		private sessionData: SessionDataService,
-		public notifications: NotificationsService,
+		private notifications: NotificationsService,
 		private iconRegistry: MatIconRegistry,
 		private sanitizer: DomSanitizer,
 		private elasticClient: ElasticAPIClientService,
@@ -37,26 +40,32 @@ export class DashboardComponent implements OnInit, OnDestroy {
 		iconRegistry.addSvgIcon('check', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/check.svg'))
 		iconRegistry.addSvgIcon('warning', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/warning.svg'))
 		iconRegistry.addSvgIcon('error', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/error.svg'))
+		// this.$this = this
 	}
 
 	ngOnInit() {
+		this.notifications.addSubscriber<DashboardComponent>('ConnectionStatus', this, () => {
+			this.notifications.eventMgr
+			.filter((event) => event.type === 'connectionStatusChange')
+			.subscribe((event) => {
+				const { name, status } = event.data
+				lo_.remove(this.connections, (c) => c.name === name)
+				this.connections.push(this.setConnectionStatus(name, status))
+				// console.log('connectionStatusChange this', this === this.$this, status) // this is true
+				// console.log('this.connections', this.connections) //
+			})
+		})
 		setTimeout(() => {
 			this.statusCheck(this.elasticClient, 'Elastic-Bridge')
 			this.statusCheck(this.msqbClient, 'MSSQL-Bridge')
 			if (this.sessionData.getData('sessionId')) {
 				this.statusCheck(this.sasAPIClient, 'SAS-API')
 			}
-
-			this.notifications.addSubscriber<DashboardComponent>('ConnectionStatus', this, () => {
-				this.notifications.eventMgr
-				.filter((event) => event.type === 'connectionStatusChange')
-				.subscribe((event) => {
-					const { name, status } = event.data
-					lo_.remove(this.notifications.connections, (c) => c.name === name)
-					this.notifications.connections.push(this.setConnectionStatus(name, status))
-				})
-			})
 		})
+	}
+
+	ngAfterViewInit() {
+		// 
 	}
 
 	ngOnDestroy() {
@@ -64,6 +73,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
 	}
 
 	setConnectionStatus(name: string, status: Status): ConnectionsData {
+
+		console.log('setConnectionStatus', name, status, (new Date).getTime())
+
 		let message: string, icon: Icon
 		switch (status) {
 			case 'checking':
@@ -96,7 +108,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 	}
 
 	statusCheck(client: ElasticAPIClientService | MsqbClient | SasApiClientService, name: string): void {
-		this.notifications.connections.push(this.setConnectionStatus(name, 'checking'))
+		this.connections.push(this.setConnectionStatus(name, 'checking'))
 		client.statusCheck()
 		.subscribe((data) => {
 			this.notifications.eventMgr.next({

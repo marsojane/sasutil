@@ -3,7 +3,7 @@
 		<p class="container-label">Status</p>
 		<mat-divider></mat-divider>
 		<mat-list>
-			<mat-list-item *ngFor="let connection of notifications.connections">
+			<mat-list-item *ngFor="let connection of connections">
 				<mat-icon matListIcon svgIcon="{{ connection.icon }}"></mat-icon>
 				<p>{{ connection.message }}</p>
 			</mat-list-item>

@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material'
 import { Subject } from 'rxjs/Subject'
 import { AppSideNotificationMessage, ApplicationEvent, SubscriberFlag } from 'sasutil.common'
 import { find, flatten } from 'lodash'
-import { ConnectionsData } from 'sasutil.dashboard'
+// import { ConnectionsData } from 'sasutil.dashboard'
 
 @Injectable()
 export class NotificationsService {
@@ -11,7 +11,7 @@ export class NotificationsService {
 	public sideNotifications: AppSideNotificationMessage[] = []
 	public sideNotificationTouched: boolean = !1
 	public subscriberFlags: SubscriberFlag[] = []
-	public connections: ConnectionsData[] = []
+	// public connections: ConnectionsData[] = []
 	constructor(
 		private snackBar: MatSnackBar
 	) {
@@ -47,14 +47,19 @@ export class NotificationsService {
 		return this._eventMgr
 	}
 
-	// Component are initialized on user navigation
+	// Component are re-initialized on user navigation
 	// We need to flag subscriptions and filter duplicates
+	// this is a bad idea - it seems that the previous subscriptions targets the previously initialized component
 	public addSubscriber<C>(name: string, scope: C, subscriber: Function, ...args: any[]): void {
+		/* 
 		if (!find(this.subscriberFlags, (v) =>
 			v.name === name && v.flag
 		)) {
 			this.subscriberFlags.push({name, flag: !0})
 			subscriber.apply(this, flatten([args]))
 		}
+		*/
+		this.subscriberFlags.push({name, flag: !0})
+		subscriber.apply(this, flatten([args]))
 	}
 }
