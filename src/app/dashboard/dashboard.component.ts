@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { DomSanitizer } from '@angular/platform-browser'
 import { MatIconRegistry, MatDialog, MatDialogRef } from '@angular/material'
 import { appsNav } from '../data/appsnav'
@@ -20,11 +20,9 @@ import { GensessionidComponent } from '../gensessionid/gensessionid.component'
 		ElasticAPIClientService, MsqbClient, SasApiClientService
 	]
 })
-export class DashboardComponent implements OnInit { 
+export class DashboardComponent implements OnInit, OnDestroy { 
 	private genSIDRef: MatDialogRef<GensessionidComponent>
 	public appsNav = lo_.filter(appsNav, (nav) => nav.enabled && nav.view !== 'Dashboard')
-
-	public connections: ConnectionsData[] = []
 	constructor(
 		private sessionData: SessionDataService,
 		private notifications: NotificationsService,
@@ -49,14 +47,20 @@ export class DashboardComponent implements OnInit {
 				this.statusCheck(this.sasAPIClient, 'SAS-API')
 			}
 
-			this.notifications.eventMgr
-			.filter((event) => event.type === 'connectionStatusChange')
-			.subscribe((event) => {
-				const { name, status } = event.data
-				lo_.remove(this.connections, (c) => c.name === name),
-				this.connections.push(this.setConnectionStatus(name, status))
+			this.notifications.addSubscriber<DashboardComponent>('ConnectionStatus', this, () => {
+				this.notifications.eventMgr
+				.filter((event) => event.type === 'connectionStatusChange')
+				.subscribe((event) => {
+					const { name, status } = event.data
+					lo_.remove(this.notifications.connections, (c) => c.name === name)
+					this.notifications.connections.push(this.setConnectionStatus(name, status))
+				})
 			})
 		})
+	}
+
+	ngOnDestroy() {
+		//
 	}
 
 	setConnectionStatus(name: string, status: Status): ConnectionsData {
@@ -92,7 +96,7 @@ export class DashboardComponent implements OnInit {
 	}
 
 	statusCheck(client: ElasticAPIClientService | MsqbClient | SasApiClientService, name: string): void {
-		this.connections.push(this.setConnectionStatus(name, 'checking'))
+		this.notifications.connections.push(this.setConnectionStatus(name, 'checking'))
 		client.statusCheck()
 		.subscribe((data) => {
 			this.notifications.eventMgr.next({
@@ -102,7 +106,7 @@ export class DashboardComponent implements OnInit {
 					status: 'connected'
 				}
 			})
-		}, (error) => {
+		}, (error) => {	
 			const status = error.status === 401 && name === 'SAS-API' ? 'expired' : 'noconnection'
 			this.notifications.eventMgr.next({
 				type: 'connectionStatusChange',

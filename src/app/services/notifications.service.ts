@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core'
 import { MatSnackBar } from '@angular/material'
 import { Subject } from 'rxjs/Subject'
-import { AppSideNotificationMessage, ApplicationEvent } from 'sasutil.common'
+import { AppSideNotificationMessage, ApplicationEvent, SubscriberFlag } from 'sasutil.common'
+import { find, flatten } from 'lodash'
+import { ConnectionsData } from 'sasutil.dashboard'
 
 @Injectable()
 export class NotificationsService {
 	private _eventMgr: Subject<ApplicationEvent>
 	public sideNotifications: AppSideNotificationMessage[] = []
 	public sideNotificationTouched: boolean = !1
+	public subscriberFlags: SubscriberFlag[] = []
+	public connections: ConnectionsData[] = []
 	constructor(
 		private snackBar: MatSnackBar
 	) {
@@ -41,5 +45,16 @@ export class NotificationsService {
 	}
 	public get eventMgr():  Subject<any> {
 		return this._eventMgr
+	}
+
+	// Component are initialized on user navigation
+	// We need to flag subscriptions and filter duplicates
+	public addSubscriber<C>(name: string, scope: C, subscriber: Function, ...args: any[]): void {
+		if (!find(this.subscriberFlags, (v) =>
+			v.name === name && v.flag
+		)) {
+			this.subscriberFlags.push({name, flag: !0})
+			subscriber.apply(this, flatten([args]))
+		}
 	}
 }

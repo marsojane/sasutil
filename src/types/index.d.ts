@@ -8,6 +8,10 @@ declare module 'sasutil.common' {
 		type: string,
 		data: {[index: string]: any}
 	}
+	interface SubscriberFlag {
+		name: string
+		flag: boolean
+	}
 }
 
 declare module 'sasutil.api' {
