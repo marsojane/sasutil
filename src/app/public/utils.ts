@@ -33,12 +33,12 @@ export function unAwareToTime(ts: any, end?: boolean): any {
 
 import { reduce, uniq } from 'lodash'
 
-export function reduceFrom<T>(collection: T[], property: string) {
+export function reduceFrom<R, T, K extends keyof T>(collection: T[], property: K): R[] {
 	return uniq(reduce(collection, (accu, r) => {
-		if (accu.id) {
-			return [accu.id, r.id]
+		if (collection.hasOwnProperty(property)) {
+			return [accu[property], r[property]]
 		} else {
-			accu.push(r.id)
+			accu.push(r[property])
 			return accu
 		}
 	}))
