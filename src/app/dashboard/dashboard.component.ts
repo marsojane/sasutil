@@ -49,10 +49,11 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
 			.filter((event) => event.type === 'connectionStatusChange')
 			.subscribe((event) => {
 				const { name, status } = event.data
-				lo_.remove(this.connections, (c) => c.name === name)
-				this.connections.push(this.setConnectionStatus(name, status))
+				// lo_.remove(this.connections, (c) => c.name === name)
+				// this.connections.push(this.setConnectionStatus(name, status))
 				// console.log('connectionStatusChange this', this === this.$this, status) // this is true
 				// console.log('this.connections', this.connections) //
+				this.statusChange(name, status)
 			})
 		})
 		setTimeout(() => {
@@ -73,9 +74,6 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
 	}
 
 	setConnectionStatus(name: string, status: Status): ConnectionsData {
-
-		console.log('setConnectionStatus', name, status, (new Date).getTime())
-
 		let message: string, icon: Icon
 		switch (status) {
 			case 'checking':
@@ -105,6 +103,11 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
 			name,
 			status
 		}
+	}
+
+	statusChange(name: string, status: Status): void {
+		lo_.remove(this.connections, (c) => c.name === name)
+		this.connections.push(this.setConnectionStatus(name, status))
 	}
 
 	statusCheck(client: ElasticAPIClientService | MsqbClient | SasApiClientService, name: string): void {

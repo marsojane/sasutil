@@ -4,6 +4,7 @@ import { Subject } from 'rxjs/Subject'
 import { AppSideNotificationMessage, ApplicationEvent, SubscriberFlag } from 'sasutil.common'
 import { find, flatten } from 'lodash'
 // import { ConnectionsData } from 'sasutil.dashboard'
+import { environment } from '../../environments/environment'
 
 @Injectable()
 export class NotificationsService {
@@ -50,16 +51,17 @@ export class NotificationsService {
 	// Component are re-initialized on user navigation
 	// We need to flag subscriptions and filter duplicates
 	// this is a bad idea - it seems that the previous subscriptions targets the previously initialized component
-	public addSubscriber<C>(name: string, scope: C, subscriber: Function, ...args: any[]): void {
-		/* 
-		if (!find(this.subscriberFlags, (v) =>
-			v.name === name && v.flag
-		)) {
+	public addSubscriber<C>(name: string, scope: C, subscriber: Function, ...args: any[]): void { 
+		if (!environment.production) {
+			if (!find(this.subscriberFlags, (v) =>
+				v.name === name && v.flag
+			)) {
+				this.subscriberFlags.push({name, flag: !0})
+				subscriber.apply(this, flatten([args]))
+			}
+		} else {
 			this.subscriberFlags.push({name, flag: !0})
 			subscriber.apply(this, flatten([args]))
 		}
-		*/
-		this.subscriberFlags.push({name, flag: !0})
-		subscriber.apply(this, flatten([args]))
 	}
 }

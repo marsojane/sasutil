@@ -43,3 +43,14 @@ mat-sidenav {
 a {
 	text-decoration: none
 }
+
+.label {
+	width: 70%;
+	background-color: #f3f99d;
+	margin: 15px auto;
+	padding: 10px;
+	text-align: center;
+	font-size: 0.9em;
+	color: rgba(0, 0, 0, .65);
+	border-radius: 5px;
+}

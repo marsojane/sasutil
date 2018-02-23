@@ -26,8 +26,8 @@
 	<mat-sidenav [(opened)]="opened" #sideNotifcations position="end">
 		<app-side-notifications></app-side-notifications>
 	</mat-sidenav>
-	<mat-sidenav-content>
-		<div class="blankspacebaby"></div>
+	<mat-sidenav-content>		
+		<div class="label" *ngIf="showLabel">{{ label }}</div>
 		<router-outlet></router-outlet>
 	</mat-sidenav-content>
 </mat-sidenav-container>

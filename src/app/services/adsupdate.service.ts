@@ -20,7 +20,7 @@ export class AdsupdateService {
 		.pipe(bufferCount(10))
 		.subscribe((value) => {
 				this.sizmekApiClient.updateAds({entities: value}).subscribe(() => {
-				this.notifications.notify('success', `Calling updateAds for adIds ${ reduceFrom(value, 'id').join(', ') } success`, !0)
+				this.notifications.notify('success', `Calling updateAds for adIds ${ reduceFrom<number, any, 'id'>(value, 'id').join(', ') } success`, !0)
 			}, (error) => {
 				this.notifications.notify('error', error.message, !0)
 			})
@@ -50,10 +50,11 @@ export class AdsupdateService {
 			}
 			next()
 		})
-		source.pipe(bufferCount(10))
+		source
+		.pipe(bufferCount(10))
 		.subscribe((value) => {
 			this.sizmekApiClient.updateAds({entities: value}).subscribe(() => {
-				this.notifications.notify('success', `Calling updateAds for adIds ${ reduceFrom(value, 'id').join(', ') } success`, !0)
+				this.notifications.notify('success', `Calling updateAds for adIds ${ reduceFrom<number, any, 'id'>(value, 'id').join(', ') } success`, !0)
 			}, (error) => {
 				this.notifications.notify('error', error.message, !0)
 			})
@@ -66,7 +67,7 @@ export class AdsupdateService {
 		} else {
 			this.sizmekApiClient.getMultipleResult<any>(this.sizmekApiClient.getPlacementsByCampaign, entityID)
 			.subscribe((data) => {
-				this.updatebyPlacements(reduceFrom(data.result, 'id').join(','))
+				this.updatebyPlacements(reduceFrom<number, any, 'id'>(data.result, 'id').join(','))
 			}, (error) => {
 				this.notifications.notify('error', error.message, !0)
 			})
