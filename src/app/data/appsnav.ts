@@ -1,7 +1,7 @@
 export const appsNav = [
 	{ link: '/dashboard', view: 'Dashboard', enabled: true },
 	{ link: '/gensessionid', view: 'Generate Session ID', enabled: false },
-	{ link: '/ecsentityinfo', view: 'Entity Info (ECS)', enabled: true, label: 'Shows information for a specific entity for all ECS DBs (NJ, NL, SG, etc..).' },
+	{ link: '/ecsentityinfo', view: 'Entity Info (ECS)', enabled: true, label: 'Shows serving data for a specific entity for all ECS DBs (NJ, NL, SG, etc..).' },
 	{ link: '/synclogs', view: 'Sync Logs', enabled: true, label: 'Shows sync logs for a specific entity.' },
 	{ link: '/syncentity', view: 'Sync Entity', enabled: true, label: 'Sync SAS entities.' },
 	{ link: '/resaveads', view: 'Resave Ads', enabled: true, label: 'Resaves ads per campaign, placement and ad level.' },
