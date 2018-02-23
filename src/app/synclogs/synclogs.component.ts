@@ -117,7 +117,7 @@ export class SynclogsComponent implements OnInit {
 					this.notifications.notify('success', `Get Sync logs for entityType:${ this.entityType }, entityID:${ this.entityID } competed.`)
 					this.mdx2DataSource = new MatTableDataSource<SyncLogsRecordSet>(result.recordset)
 				} else {
-					this.notifications.notify('info', 'Can\'t find sync logs for this entity for the last 3 days.', !0)
+					this.notifications.notify('info', 'Can\'t find sync logs for this entity for the last 30 days.', !0)
 				}
 			}, (error) => {
 				this.notifications.notify('error', error.message, !0)
