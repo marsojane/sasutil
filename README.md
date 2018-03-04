@@ -2,7 +2,7 @@
 
 https://confluence.sizmek.com/pages/viewpage.action?pageId=164200560 - internal
 
-#ChangeLog
+# ChangeLog
 
 ## Version 1
 
