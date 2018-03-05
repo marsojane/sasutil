@@ -36,7 +36,7 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 
 	historyResultsColumns = ['ID', 'Time', 'EntityID', 'EntityType', 'Type', 'PerformedBy', 'source']
 	historyResultsDS: MatTableDataSource<HistoryRecordSet>
-	historyResultsRaw: HistoryRecordSet[]= [
+	historyResultsRaw: HistoryRecordSet[] = [
 		{
 			ID: 1010, Time: '1010', EntityID: 1010, EntityType: 'dummy', Type: '1010', PerformedBy: '1010', raw: {}
 		}

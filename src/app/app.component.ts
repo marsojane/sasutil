@@ -17,11 +17,12 @@ import { environment } from '../environments/environment'
 })
 export class AppComponent implements OnInit {
 	public opened = false
-	public title = environment.production ? 'Support SASUtil' : 'SASUtil'
+	public title = environment && environment.production ? 'Support SASUtil' : 'SASUtil'
 	public hasNotifications: boolean
 	public appsNav = filter(appsNav, (nav) => nav.enabled)
 	public showLabel = !1
 	public label: string
+	public testing = !!environment.testing
 	constructor(
 		private iconRegistry: MatIconRegistry,
 		private sanitizer: DomSanitizer,
