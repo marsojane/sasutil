@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable'
 import { SessionDataService } from './session-data.service'
 import { format, inArray } from '../public/utils'
 import { Provider } from 'sasutil.api'
+import { environment } from '../../environments/environment'
 
 export class APIClient {
 	protected provider: Provider
@@ -32,5 +33,19 @@ export class APIClient {
 			requestHeaders['Authorization'] = sessionId
 		}
 		return requestHeaders
+	}
+
+	// provide an interface for testing
+	public get $provider(): Provider | undefined {
+		if (!environment.testing) {
+			return void 0
+		}
+		return this.provider
+	}
+
+	public set $provider(provider: Provider) {
+		if (environment.testing) {
+			this.provider = provider
+		}
 	}
 }

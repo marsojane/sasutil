@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { MatSnackBar } from '@angular/material'
 import { NotificationsService } from './notifications.service'
@@ -7,11 +6,10 @@ import { Subject } from 'rxjs/Subject'
 describe('NotificationsService', () => {
 	let notificationsService, snackBarSpy: jasmine.SpyObj<MatSnackBar>
 	beforeEach(() => {
-		const sbspy = jasmine.createSpyObj('MatSnackBar', ['open'])
 		TestBed.configureTestingModule({
 			providers: [
 				NotificationsService,
-				{ provide: MatSnackBar, useValue: sbspy }
+				{ provide: MatSnackBar, useValue: jasmine.createSpyObj('MatSnackBar', ['open']) }
 			] 
 		})
 		notificationsService = TestBed.get(NotificationsService)
