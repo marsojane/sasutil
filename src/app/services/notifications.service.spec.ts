@@ -10,7 +10,7 @@ describe('NotificationsService', () => {
 			providers: [
 				NotificationsService,
 				{ provide: MatSnackBar, useValue: jasmine.createSpyObj('MatSnackBar', ['open']) }
-			] 
+			]
 		})
 		notificationsService = TestBed.get(NotificationsService)
 		snackBarSpy = TestBed.get(MatSnackBar)

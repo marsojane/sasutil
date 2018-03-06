@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing'
+// import { TestBed } from '@angular/core/testing'
 import { APIClient } from './apiclient'
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable'
 import { format } from '../public/utils'
 
@@ -54,7 +54,6 @@ describe('APIClient', () => {
 	describe('GET request w/o SessionID', () => {
 		let httpClient: Observable<any>
 		beforeEach(() => {
-			// apiClient.getReqURL.and.stub() // un-delegate to prevent calling undefined properties
 			spyOn<APIClient>(apiClient, 'getReqURL').and.stub()
 			httpClient = apiClient.constructRequest('get', '/test')
 		})
@@ -80,7 +79,6 @@ describe('APIClient', () => {
 		let httpClient: Observable<any>
 
 		beforeEach(() => {
-			// apiClient.getReqURL.and.stub() // un-delegate to prevent calling undefined properties
 			spyOn<APIClient>(apiClient, 'getReqURL').and.stub()
 			httpClient = apiClient.constructRequest('post', '/test', sessionToken, { foo: 'bar' })
 		})
