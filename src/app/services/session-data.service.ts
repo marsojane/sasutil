@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core'
 
 @Injectable()
 export class SessionDataService {
-
-	constructor() { }
+	private storage: Storage
+	constructor(storage?: Storage) {
+		this.storage = storage || localStorage
+	}
 	getData(name: string): any {
-		return localStorage.getItem(name)
+		return this.storage.getItem(name)
 	}
 	setData(name: string, value: any): void {
-		localStorage.setItem(name, value)
+		this.storage.setItem(name, value)
 	}
 }

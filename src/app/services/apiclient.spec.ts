@@ -12,15 +12,8 @@ describe('APIClient', () => {
 		const httpClientSpySub = jasmine.createSpyObj('HttpClient', ['get', 'post'])
 		httpClientSpySub.get.and.returnValue(Observable.create())
 		httpClientSpySub.post.and.returnValue(Observable.create())
-		/* TestBed.configureTestingModule({
-			providers: [
-				{ provide: HttpClient, useValue: httpClientSpySub }
-			]
-		}) */
 		apiClient = new APIClient(httpClientSpySub)
-		/* httpClientSpy = TestBed.get(HttpClient) */
 		spyOn<APIClient>(apiClient, 'constructRequest').and.callThrough()
-		// spyOn<APIClient>(apiClient, 'getReqURL').and.callThrough()
 		spyOn<APIClient>(apiClient, 'getReqHeaders').and.callThrough()
 	})
 
