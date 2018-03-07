@@ -57,7 +57,7 @@ export class EcsEntityInfoComponent implements OnInit {
 
 	onSubmit(): void {
 		this.notifications.notify('info', 'This will take some time.', !0)
-		this.selectedPlatform === 'sas' && this.msqbClient.getEntityInfo('sas', this.entityType, this.entityID)
+		this.selectedPlatform === 'sas' && this.msqbClient.getEntityInfo(this.entityType, this.entityID)
 		.subscribe((result) => {
 			this.notifications.notify('success', 
 			`Get Entity Info for entityType:${ this.entityType }, entityID:${ this.entityID } is successful`, !0)

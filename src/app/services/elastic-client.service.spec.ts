@@ -17,6 +17,10 @@ describe('ElasticAPIClientService', () => {
 		expect(elasticClient).toBeDefined()
 	})
 
+	it('should define the providers property', () => {
+		expect(elasticClient.$provider).toBeDefined()
+	})
+
 	describe('(getSyncLogs)', () => {
 		let syncLogsObs: Observable<any>
 		const query = format('{"size":755,"query":{"filtered":{"query":{"query_string":{"query":"_type:WindowsEventLog AND task:10 AND entityID:{0}"}},"filter":{"bool":{"must":[{"range":{"@timestamp":{"gte":{1},"lte":{2}}}}],"must_not":[]}}}}}', entityId, start, end)
