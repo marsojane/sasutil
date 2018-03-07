@@ -25,7 +25,7 @@ describe('ElasticAPIClientService', () => {
 		let syncLogsObs: Observable<any>
 		const query = format('{"size":755,"query":{"filtered":{"query":{"query_string":{"query":"_type:WindowsEventLog AND task:10 AND entityID:{0}"}},"filter":{"bool":{"must":[{"range":{"@timestamp":{"gte":{1},"lte":{2}}}}],"must_not":[]}}}}}', entityId, start, end)
 		beforeEach(() => {
-			spyOn<ElasticAPIClientService>(elasticClient, 'getSyncLogs').and.callThrough()
+			// spyOn<ElasticAPIClientService>(elasticClient, 'getSyncLogs').and.callThrough()
 			syncLogsObs = elasticClient.getSyncLogs(entityId, start, end)
 		})
 
@@ -42,7 +42,7 @@ describe('ElasticAPIClientService', () => {
 		let multiSearchObs: Observable<any>
 		const query = format('{"size":100000,"query":{"filtered":{"query":{"query_string":{"query":"{0}"}},"filter":{"bool":{"must":[{"range":{"@timestamp":{"gte":{1},"lte":{2}}}}],"must_not":[]}}}}}', entityId, start, end)
 		beforeEach(() => {
-			spyOn<ElasticAPIClientService>(elasticClient, 'multiSearch').and.callThrough()
+			// spyOn<ElasticAPIClientService>(elasticClient, 'multiSearch').and.callThrough()
 			multiSearchObs = elasticClient.multiSearch(entityId, start, end)
 		})
 
@@ -59,7 +59,7 @@ describe('ElasticAPIClientService', () => {
 		let statusObs: Observable<any>
 		const path = '/status'
 		beforeEach(() => {
-			spyOn<ElasticAPIClientService>(elasticClient, 'statusCheck').and.callThrough()
+			// spyOn<ElasticAPIClientService>(elasticClient, 'statusCheck').and.callThrough()
 			statusObs = elasticClient.statusCheck()
 		})
 

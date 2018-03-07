@@ -25,7 +25,7 @@ describe('MsqbClient', () => {
 	describe('(getSyncLogs)', () => {
 		let syncLogsObs: Observable<any>
 		beforeEach(() => {
-			spyOn<MsqbClient>(msqbClient, 'getSyncLogs').and.callThrough()
+			// spyOn<MsqbClient>(msqbClient, 'getSyncLogs').and.callThrough()
 			syncLogsObs = msqbClient.getSyncLogs(type, id)
 		})
 
@@ -42,7 +42,7 @@ describe('MsqbClient', () => {
 	describe('(getEntityInfo)', () => {
 		let entityInfoObs: Observable<any>
 		beforeEach(() => {
-			spyOn<MsqbClient>(msqbClient, 'getEntityInfo').and.callThrough()
+			// spyOn<MsqbClient>(msqbClient, 'getEntityInfo').and.callThrough()
 			entityInfoObs = msqbClient.getEntityInfo(type, id)
 		})
 
@@ -60,7 +60,7 @@ describe('MsqbClient', () => {
 		let statusObs: Observable<any>
 		const statusPath = '/status'
 		beforeEach(() => {
-			spyOn<MsqbClient>(msqbClient, 'statusCheck').and.callThrough()
+			// spyOn<MsqbClient>(msqbClient, 'statusCheck').and.callThrough()
 			statusObs = msqbClient.statusCheck()
 		})
 

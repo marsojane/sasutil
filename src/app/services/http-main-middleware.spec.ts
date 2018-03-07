@@ -16,7 +16,7 @@ describe('HttpMainMiddleware', () => {
 		nsSpyObj = jasmine.createSpyObj<NotificationsService>('NotificationsService', ['notify'])
 		httpMiddleware = new HttpMainMiddleware(nsSpyObj)
 		TestBed.configureTestingModule({
-			imports: [ 
+			imports: [
 				HttpClientTestingModule,
 			], providers : [
 				{ provide: HTTP_INTERCEPTORS, useValue: httpMiddleware, multi: true }
