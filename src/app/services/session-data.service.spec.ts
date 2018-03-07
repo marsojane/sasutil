@@ -8,7 +8,8 @@ describe('SessionDataService', () => {
 	let items: { [index: string]: any } = {}
 	beforeEach(() => {
 		storageSpyObj = jasmine.createSpyObj<Storage>('Storage', ['getItem', 'setItem'])
-		ssdataService = new SessionDataService(storageSpyObj)
+		ssdataService = new SessionDataService
+		ssdataService.$storage = storageSpyObj
 
 		storageSpyObj.getItem.and.callFake((i: string): any | null => {
 			return items.hasOwnProperty(i) ? items[i] : null
