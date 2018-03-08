@@ -97,7 +97,7 @@ export class SasApiClientService extends APIClient {
 					typeof total === 'number' && total > 0 ? next() : (observer.next({ metadata: data.metadata, result: results}), observer.complete())
 				}, (error) => {
 					observer.error(error)
-				})
+				}) 
 			}
 			next()
 		})

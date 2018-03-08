@@ -62,8 +62,30 @@ describe('SasApiClientService', () => {
 		})
 	})
 
-	xdescribe('(getAds)', () => {
-		// pending
+	describe('(getAds)', () => {
+		let getAdsObs: Observable<any>
+		const adids = [1, 2].join(',')
+		beforeEach(() => {
+			spyOn<SasApiClientService>(sasApiClientService, 'getAd').and.returnValue(Observable.create((observer) => {
+				observer.next({})
+				observer.complete()
+			}))
+			getAdsObs = sasApiClientService.getAds(adids)
+			getAdsObs.subscribe()
+		})
+
+		it('should call the getAd method twice', () => {
+			expect(sasApiClientService.getAd).toHaveBeenCalledTimes(2)
+		})
+
+		it(format('should call the getAd method with {0}', adids), () => {
+			expect(sasApiClientService.getAd).toHaveBeenCalledWith(1)
+			expect(sasApiClientService.getAd).toHaveBeenCalledWith(2)
+		})
+
+		it('should return an Observable', () => {
+			expect(getAdsObs instanceof Observable)
+		})
 	})
 
 	describe('(getAdsByPlacement)', () => {
@@ -118,17 +140,17 @@ describe('SasApiClientService', () => {
 
 	describe('(syncEntities)', () => {
 		let syncEntitiesObs
-		const ids = [adID, adID].join(',')
+		const adids = [adID, adID].join(',')
 		const entityType = 'Test'
 		const body: any = {
 			entities: [{
-				ids: ids.split(','),
+				ids: adids.split(','),
 				entityType: entityType,
 				queueNames: ['EDS-Client']
 			}]
 		}, path = '/replay/syncLastEntities'
 		beforeEach(() => {
-			syncEntitiesObs = sasApiClientService.syncEntities(entityType, ids)
+			syncEntitiesObs = sasApiClientService.syncEntities(entityType, adids)
 		})
 
 		it(format('should call construct request with args {0},{1},{2},{3}', 'post', path, token, JSON.stringify(body)), () => {
@@ -157,7 +179,7 @@ describe('SasApiClientService', () => {
 	})
 
 	describe('(getAccountSettings)', () => {
-		let getAccountSettingsObs
+		let getAccountSettingsObs: Observable<any>
 		const accountID = 2
 		const path = format('/accounts/{0}', accountID)
 		beforeEach(() => {
@@ -174,7 +196,7 @@ describe('SasApiClientService', () => {
 	})
 
 	describe('(getHistory)', () => {
-		let getAccountSettingsObs
+		let getAccountSettingsObs: Observable<any>
 		const id = 2, type = 'Test'
 		const path = format('/history/entityhistory?id={0}&type={1}&sort=changedDate&order=desc', id, type)
 		beforeEach(() => {
@@ -190,8 +212,39 @@ describe('SasApiClientService', () => {
 		})
 	})
 
-	xdescribe('(getMultipleResult)', () => {
-		// pending
+	describe('(getMultipleResult)', () => {
+		let getMultipleResultObs: Observable<any>
+
+		beforeEach(() => {
+			spyOn<SasApiClientService>(sasApiClientService, 'getAdsByPlacement').and.callFake((pid: number) => {
+				return Observable.create((observer) => {
+					const data = {
+						metadata: { total: 11 },
+						result: [ {foo: 'bar'} ]
+					}
+					observer.next(data), observer.complete()
+				})
+			})
+			getMultipleResultObs = sasApiClientService.getMultipleResult(sasApiClientService.getAdsByPlacement, placementID)
+			getMultipleResultObs.subscribe()
+		})
+
+		it('should call the getAdsByPlacement twice', () => {
+			expect(sasApiClientService.getAdsByPlacement).toHaveBeenCalledTimes(2)
+		})
+
+		it(format('should call getAdsByPlacement method with {0},{1},{2}', placementID, 0, 10), () => {
+			expect(sasApiClientService.getAdsByPlacement).toHaveBeenCalledWith(placementID, 0, 10)
+		})
+
+		it(format('should call getAdsByPlacement method with {0},{1},{2}', placementID, 10, 10), () => {
+			expect(sasApiClientService.getAdsByPlacement).toHaveBeenCalledWith(placementID, 10, 10)
+		})
+
+		it('should return an Observable', () => {
+			expect(getMultipleResultObs instanceof Observable).toBe(true)
+		})
+
 	})
 
 })

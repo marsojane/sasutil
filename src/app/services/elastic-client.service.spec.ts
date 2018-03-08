@@ -34,7 +34,7 @@ describe('ElasticAPIClientService', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(syncLogsObs instanceof Observable)
+			expect(syncLogsObs instanceof Observable).toBe(true)
 		})
 	})
 
@@ -51,7 +51,7 @@ describe('ElasticAPIClientService', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(multiSearchObs instanceof Observable)
+			expect(multiSearchObs instanceof Observable).toBe(true)
 		})
 	})
 
@@ -68,7 +68,7 @@ describe('ElasticAPIClientService', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(statusObs instanceof Observable)
+			expect(statusObs instanceof Observable).toBe(true)
 		})
 	})
 })
