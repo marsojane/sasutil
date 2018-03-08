@@ -42,7 +42,7 @@ describe('SasApiClientService', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(loginObs instanceof Observable)
+			expect(loginObs instanceof Observable).toBe(true)
 		})
 	})
 
@@ -58,7 +58,7 @@ describe('SasApiClientService', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(getAdObs instanceof Observable)
+			expect(getAdObs instanceof Observable).toBe(true)
 		})
 	})
 
@@ -84,7 +84,7 @@ describe('SasApiClientService', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(getAdsObs instanceof Observable)
+			expect(getAdsObs instanceof Observable).toBe(true)
 		})
 	})
 
@@ -101,7 +101,7 @@ describe('SasApiClientService', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(getAdsByPlacementObs instanceof Observable)
+			expect(getAdsByPlacementObs instanceof Observable).toBe(true)
 		})
 	})
 
@@ -118,7 +118,7 @@ describe('SasApiClientService', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(getPlacementsByCampaignObs instanceof Observable)
+			expect(getPlacementsByCampaignObs instanceof Observable).toBe(true)
 		})
 	})
 
@@ -134,7 +134,7 @@ describe('SasApiClientService', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(updateAdsObs instanceof Observable)
+			expect(updateAdsObs instanceof Observable).toBe(true)
 		})
 	})
 
@@ -158,7 +158,7 @@ describe('SasApiClientService', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(syncEntitiesObs instanceof Observable)
+			expect(syncEntitiesObs instanceof Observable).toBe(true)
 		})
 	})
 
@@ -174,7 +174,7 @@ describe('SasApiClientService', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(statusObs instanceof Observable)
+			expect(statusObs instanceof Observable).toBe(true)
 		})
 	})
 
@@ -191,7 +191,7 @@ describe('SasApiClientService', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(getAccountSettingsObs instanceof Observable)
+			expect(getAccountSettingsObs instanceof Observable).toBe(true)
 		})
 	})
 
@@ -208,7 +208,7 @@ describe('SasApiClientService', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(getAccountSettingsObs instanceof Observable)
+			expect(getAccountSettingsObs instanceof Observable).toBe(true)
 		})
 	})
 

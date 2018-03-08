@@ -35,7 +35,7 @@ describe('MsqbClient', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(syncLogsObs instanceof Observable)
+			expect(syncLogsObs instanceof Observable).toBe(true)
 		})
 	})
 
@@ -52,7 +52,7 @@ describe('MsqbClient', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(entityInfoObs instanceof Observable)
+			expect(entityInfoObs instanceof Observable).toBe(true)
 		})
 	})
 
@@ -69,7 +69,7 @@ describe('MsqbClient', () => {
 		})
 
 		it('should return an Observable', () => {
-			expect(statusObs instanceof Observable)
+			expect(statusObs instanceof Observable).toBe(true)
 		})
 	})
 })
