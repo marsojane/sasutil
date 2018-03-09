@@ -29,7 +29,7 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 	disableSubmit = true
 	entityTypes = entityTypes['sas-history']
 	entityType: string
-	entityID: number	
+	entityID: number
 
 	entityTypeFormCtrl: FormControl
 	entityIDFormCtrl: FormControl
@@ -51,7 +51,7 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 		private iconRegistry: MatIconRegistry,
 		private sanitizer: DomSanitizer,
 		private dialog: MatDialog
-	) { 
+	) {
 		iconRegistry.addSvgIcon('more', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/more.svg'))
 	}
 
@@ -65,7 +65,7 @@ export class EntityHistoryComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		this.historyResultsDS.paginator = this.paginator	
+		this.historyResultsDS.paginator = this.paginator
 	}
 
 	shouldDisableSubmit(): void {

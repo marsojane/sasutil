@@ -35,6 +35,9 @@ import { reduce, uniq } from 'lodash'
 
 export function reduceFrom<R, T, K extends keyof T>(collection: T[], property: K): R[] {
 	return uniq(reduce(collection, (accu, r) => {
+		if (!accu.hasOwnProperty(property) && !r.hasOwnProperty(property)) {
+			return accu
+		}
 		if (accu.hasOwnProperty(property)) {
 			return [accu[property], r[property]]
 		} else {

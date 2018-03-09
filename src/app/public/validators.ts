@@ -1,15 +1,15 @@
 import { FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms'
 import { unAwareToTime } from './utils'
 
-export const validateNumberField = (control: AbstractControl): ValidationErrors | null => {
+export const validateNumberField = (control: AbstractControl | { value: any }): ValidationErrors | null => {
 	return !( control.value * 1 ) ? { 'notNumber': true } : null
 }
 
-export const validateNumbersCommaSeparated = (control: AbstractControl): ValidationErrors | null => {
+export const validateNumbersCommaSeparated = (control: AbstractControl | { value: any }): ValidationErrors | null => {
 	return !!control.value && !control.value.match('^[0-9,]+$') ? { 'notNumbersCommaSeparated': true } : null
 }
 
-export const validDate = (control: AbstractControl): ValidationErrors | null => {
+export const validDate = (control: AbstractControl | { value: any }): ValidationErrors | null => {
 	return !control.value ?  { 'notValidDate': true } : null
 }
 

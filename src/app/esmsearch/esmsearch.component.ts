@@ -68,7 +68,7 @@ export class ESMSearchComponent implements OnInit, AfterViewInit {
 		this.endDateCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())
 		this.entityIDFormCtrl.valueChanges.subscribe(() => this.shouldDisableSubmit())
 
-		this.searchResults = [{ _type: 'Init', 
+		this.searchResults = [{ _type: 'Init',
 		_source: { '@timestamp': '0000-00-00', environment: '', level: '', server: '', service: '', eventID: '' }}]
 		this.searchResultsTableDS = new MatTableDataSource<ElasticMultiSearchRecordSet>(this.searchResults)
 	}

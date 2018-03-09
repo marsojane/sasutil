@@ -51,7 +51,7 @@ export class NotificationsService {
 	// Component are re-initialized on user navigation
 	// We need to flag subscriptions and filter duplicates
 	// this is a bad idea - it seems that the previous subscriptions targets the previously initialized component
-	public addSubscriber<C>(name: string, scope: C, subscriber: Function, ...args: any[]): void { 
+	public addSubscriber<C>(name: string, scope: C, subscriber: Function, ...args: any[]): void {
 		if (!environment.production) {
 			if (!find(this.subscriberFlags, (v) =>
 				v.name === name && v.flag
