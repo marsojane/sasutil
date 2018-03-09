@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 import { NotificationsService } from './notifications.service'
 import { SasApiClientService } from './sas-api-client.service'
-import { SessionDataService } from './session-data.service'
 import * as lo_ from 'lodash'
 import { Observable } from 'rxjs/Observable'
 import { bufferCount } from 'rxjs/operators'
@@ -11,8 +10,7 @@ import { reduceFrom } from '../public/utils'
 export class AdsupdateService {
 	constructor(
 		private notifications: NotificationsService,
-		private sizmekApiClient: SasApiClientService,
-		private sessionData: SessionDataService
+		private sizmekApiClient: SasApiClientService
 	) { }
 
 	updatebyAdIds(adIds: string): void {
