@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { DomSanitizer } from '@angular/platform-browser'
 import { MatIconRegistry, MatDialog, MatDialogRef } from '@angular/material'
 import { appsNav } from '../data/appsnav'
@@ -11,6 +11,7 @@ import { MsqbClient } from '../services/msqb-api-client.service'
 import { SasApiClientService } from '../services/sas-api-client.service'
 import { Status, ConnectionsData, Icon } from 'sasutil.dashboard'
 import { GensessionidComponent } from '../gensessionid/gensessionid.component'
+import { Observable } from 'rxjs/Observable'
 
 @Component({
 	selector: 'app-dashboard',
@@ -20,12 +21,11 @@ import { GensessionidComponent } from '../gensessionid/gensessionid.component'
 		ElasticAPIClientService, MsqbClient, SasApiClientService
 	]
 })
-export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit { 
+export class DashboardComponent implements OnInit, OnDestroy {
 	private genSIDRef: MatDialogRef<GensessionidComponent>
+	private connectionStatusChange: any
 	public appsNav = lo_.filter(appsNav, (nav) => nav.enabled && nav.view !== 'Dashboard')
-	// public showConnections = !1
 	public connections: ConnectionsData[] = []
-	// private $this: DashboardComponent
 	constructor(
 		private sessionData: SessionDataService,
 		private notifications: NotificationsService,
@@ -34,27 +34,18 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
 		private elasticClient: ElasticAPIClientService,
 		private msqbClient: MsqbClient,
 		private sasAPIClient: SasApiClientService,
-		private dialog: MatDialog
+		private dialog: MatDialog,
 	) {
 		iconRegistry.addSvgIcon('sync', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/sync.svg'))
 		iconRegistry.addSvgIcon('check', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/check.svg'))
 		iconRegistry.addSvgIcon('warning', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/warning.svg'))
 		iconRegistry.addSvgIcon('error', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/error.svg'))
-		// this.$this = this
 	}
 
 	ngOnInit() {
-		this.notifications.addSubscriber<DashboardComponent>('ConnectionStatus', this, () => {
-			this.notifications.eventMgr
-			.filter((event) => event.type === 'connectionStatusChange')
-			.subscribe((event) => {
-				const { name, status } = event.data
-				// lo_.remove(this.connections, (c) => c.name === name)
-				// this.connections.push(this.setConnectionStatus(name, status))
-				// console.log('connectionStatusChange this', this === this.$this, status) // this is true
-				// console.log('this.connections', this.connections) //
-				this.statusChange(name, status)
-			})
+		this.connectionStatusChange = this.notifications.eventMgr.filter((event) => event.type === 'connectionStatusChange').subscribe((event) => {
+			const { name, status } = event.data
+			this.statusChange(name, status)
 		})
 		setTimeout(() => {
 			this.statusCheck(this.elasticClient, 'Elastic-Bridge')
@@ -65,12 +56,8 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
 		})
 	}
 
-	ngAfterViewInit() {
-		// 
-	}
-
 	ngOnDestroy() {
-		//
+		this.connectionStatusChange.unsubscribe()
 	}
 
 	setConnectionStatus(name: string, status: Status): ConnectionsData {
@@ -121,7 +108,7 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
 					status: 'connected'
 				}
 			})
-		}, (error) => {	
+		}, (error) => {
 			const status = error.status === 401 && name === 'SAS-API' ? 'expired' : 'noconnection'
 			this.notifications.eventMgr.next({
 				type: 'connectionStatusChange',
