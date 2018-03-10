@@ -28,6 +28,6 @@
 	</mat-sidenav>
 	<mat-sidenav-content>		
 		<div class="label" *ngIf="showLabel">{{ label }}</div>
-		<router-outlet></router-outlet>
+		<router-outlet *ngIf="!testing"></router-outlet>
 	</mat-sidenav-content>
 </mat-sidenav-container>
