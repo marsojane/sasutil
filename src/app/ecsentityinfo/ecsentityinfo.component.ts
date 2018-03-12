@@ -26,7 +26,7 @@ export class EcsEntityInfoComponent implements OnInit {
 
 	platformFormCtrl: FormControl
 	entityTypeFormCtrl: FormControl
-	entityIDFormCtrl: FormControl	
+	entityIDFormCtrl: FormControl
 
 	constructor(
 		private notifications: NotificationsService,
