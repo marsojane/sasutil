@@ -13,6 +13,8 @@ import { Status, ConnectionsData, Icon } from 'sasutil.dashboard'
 import { GensessionidComponent } from '../gensessionid/gensessionid.component'
 import { Observable } from 'rxjs/Observable'
 
+import { environment } from '../../environments/environment'
+
 @Component({
 	selector: 'app-dashboard',
 	templateUrl: './dashboard.component.html',
@@ -34,7 +36,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 		private elasticClient: ElasticAPIClientService,
 		private msqbClient: MsqbClient,
 		private sasAPIClient: SasApiClientService,
-		private dialog: MatDialog,
+		private dialog: MatDialog
 	) {
 		iconRegistry.addSvgIcon('sync', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/sync.svg'))
 		iconRegistry.addSvgIcon('check', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/check.svg'))
@@ -43,7 +45,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
-		this.connectionStatusChange = this.notifications.eventMgr.filter((event) => event.type === 'connectionStatusChange').subscribe((event) => {
+		this.connectionStatusChange = this.notifications.eventMgr.filter((event) => event.type === 'connectionStatusChange')
+		.subscribe((event) => {
 			const { name, status } = event.data
 			this.statusChange(name, status)
 		})
@@ -56,7 +59,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 		})
 	}
 
-	ngOnDestroy() {
+	ngOnDestroy() { // this generates an error during tests - https://stackoverflow.com/questions/43350115/
 		this.connectionStatusChange.unsubscribe()
 	}
 
@@ -124,5 +127,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
 		this.genSIDRef = this.dialog.open(GensessionidComponent, {
 			width: '600px'
 		})
+	}
+
+	// this method should only return a value on testing enviroment
+	public get $notifications(): NotificationsService | undefined {
+		if (environment.testing) {
+			return this.notifications
+		} else {
+			return void 0
+		}
 	}
 }
