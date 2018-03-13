@@ -1,6 +1,6 @@
 /*
-* Writing a shallow test here.
-* This needs to be improved when we have time
+* This is a pending or an incomplete test. 
+* This needs to be improved/created when we have the chance.
 */
 
 import { NO_ERRORS_SCHEMA } from '@angular/core'
